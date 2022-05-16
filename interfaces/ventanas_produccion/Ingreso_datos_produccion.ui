@@ -52,6 +52,9 @@
     <enum>QFrame::Raised</enum>
    </property>
    <widget class="QCheckBox" name="checkBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -60,11 +63,17 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
     <property name="text">
      <string>Coccion</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_2">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -78,6 +87,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_3">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -91,6 +103,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_4">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -104,10 +119,13 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_5">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>120</y>
+      <y>110</y>
       <width>171</width>
       <height>31</height>
      </rect>
@@ -117,10 +135,13 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_6">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>150</y>
+      <y>140</y>
       <width>141</width>
       <height>20</height>
      </rect>
@@ -230,27 +251,45 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>520</x>
      <y>120</y>
      <width>151</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Llenar tables personal </string>
+    <string>Llenar tablas personal </string>
    </property>
   </widget>
   <widget class="QPushButton" name="Aceptar_2">
    <property name="geometry">
     <rect>
-     <x>720</x>
-     <y>120</y>
+     <x>650</x>
+     <y>110</y>
      <width>161</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>llenar</string>
+    <string>Llenar</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="numero_iteraciones">
+   <property name="geometry">
+    <rect>
+     <x>840</x>
+     <y>110</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
