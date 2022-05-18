@@ -24,6 +24,54 @@ class Ventana_datos_ventas(QDialog):
 
         self.move(left,top)
 
+        #conectar botones
+        self.btnmas.clicked.connect(self.agregar_filas)
+        self.btnmenos.clicked.connect(self.eliminar_filas)
+        self.tablas_opcion.activated.connect(self.opciones)
+
+    def opciones(self):
+        # en base a la opcion escogida se desata una accion
+        
+        if(self.tablas_opcion.currentIndex() == 0):
+
+            self.tabla.setColumnCount(2)
+            self.tabla.setHorizontalHeaderLabels (['Tiempo en horas', 'probabilidad'])
+            header1 = self.tabla.horizontalHeader()
+            header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+            header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
+        elif(self.tablas_opcion.currentIndex() == 1):
+
+            self.tabla.setColumnCount(2)
+            self.tabla.setHorizontalHeaderLabels (['Tiempo en horas', 'probabilidad'])
+            header1 = self.tabla.horizontalHeader()
+            header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+            header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
+
+    def agregar_filas(self):
+
+        posicion_fila = self.tabla.rowCount()
+        self.tabla.insertRow(posicion_fila)
+
+    def eliminar_filas(self):
+
+        posicion_fila = self.tabla.rowCount()
+        self.tabla.removeRow(posicion_fila-1)
+
+
+    def tomar_valores_tabla(self, matriz):
+        
+        for i in range(self.tabla.rowCount()):
+
+            for j in range(self.tabla.columnCount()):
+
+                valor_celda = self.tabla.item(i, j)
+                matriz[i][j] = float(valor_celda.text())
+
+
+        return matriz
+
 if(__name__ == "__main__"):
 
     #Instancia para iniciar la aplicsacion
@@ -32,3 +80,12 @@ if(__name__ == "__main__"):
     ventana.show()
     #ejecutar la aplicacion
     app.exec_()
+
+    """
+    para que la primeara columna se estire pero las demas se adapten al contenido
+    de esta manera se llena el esoacio de la tabla
+    header = self.table.horizontalHeader()       
+    header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+    header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+    header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
+    """

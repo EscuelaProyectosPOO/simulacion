@@ -121,6 +121,9 @@
     <enum>QFrame::Raised</enum>
    </property>
    <widget class="QCheckBox" name="checkBox_7">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -134,6 +137,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_8">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -147,6 +153,9 @@
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_9">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
