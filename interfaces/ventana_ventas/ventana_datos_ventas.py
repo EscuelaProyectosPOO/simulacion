@@ -12,7 +12,7 @@ class Ventana_datos_ventas(QDialog):
         QDialog.__init__(self)
         #super().__init__()
         #cargar la configuracion del archivo .ui en el objeto
-        uic.loadUi("interfaces/ventana_ventas/Ingreso_datos_ventas.ui", self)
+        uic.loadUi("interfaces/ventana_vebntas/Ingreso_datos_ventas.ui", self)
 
         #centrar ventana
         resolucion = ctypes.windll.user32
@@ -23,6 +23,7 @@ class Ventana_datos_ventas(QDialog):
         top = int((resolucion_alto/2) - (self.frameSize().height()/2))
 
         self.move(left,top)
+        self.opciones()
 
         #conectar botones
         self.btnmas.clicked.connect(self.agregar_filas)
@@ -61,10 +62,6 @@ class Ventana_datos_ventas(QDialog):
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
 
-
-
-
-
     def agregar_filas(self):
 
         posicion_fila = self.tabla.rowCount()
@@ -88,8 +85,6 @@ class Ventana_datos_ventas(QDialog):
 
         return matriz
 
-    
-        
 
 if(__name__ == "__main__"):
 

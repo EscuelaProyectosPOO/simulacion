@@ -24,6 +24,7 @@ class Ventana_datos_ventas(QDialog):
 
         self.move(left,top)
 
+        self.opciones()
         
         #conectar botones
         self.btnmas.clicked.connect(lambda :self.agregar_filas(self.tabla))

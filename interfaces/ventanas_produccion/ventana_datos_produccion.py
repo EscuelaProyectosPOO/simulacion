@@ -23,6 +23,7 @@ class Ventana_datos_ventas(QDialog):
         top = int((resolucion_alto/2) - (self.frameSize().height()/2))
 
         self.move(left,top)
+        self.opciones()
 
         #conectar botones
         self.btnmas.clicked.connect(self.agregar_filas)
@@ -35,7 +36,7 @@ class Ventana_datos_ventas(QDialog):
         if(self.tablas_opcion.currentIndex() == 0):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo en horas', 'probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de cocción \n en horas', 'Probabilidad'])
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
@@ -43,10 +44,37 @@ class Ventana_datos_ventas(QDialog):
         elif(self.tablas_opcion.currentIndex() == 1):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo en horas', 'probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tiempo en horas', 'Probabilidad'])
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
+        elif(self.tablas_opcion.currentIndex() == 2):
+
+            self.tabla.setColumnCount(2)
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de fermentación \n en días', 'Probabilidad'])
+            header1 = self.tabla.horizontalHeader()
+            header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+            header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
+        elif(self.tablas_opcion.currentIndex() == 3):
+
+            self.tabla.setColumnCount(2)
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de graduación del \n mezcal en minutos', 'Probabilidad'])
+            header1 = self.tabla.horizontalHeader()
+            header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+            header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
+
+        elif(self.tablas_opcion.currentIndex() == 4):
+
+            self.tabla.setColumnCount(2)
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de embotellado y \n almacenaje en minutos', 'Probabilidad'])
+            header1 = self.tabla.horizontalHeader()
+            header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+            header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
+        
 
 
     def agregar_filas(self):

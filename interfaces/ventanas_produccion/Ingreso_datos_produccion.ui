@@ -172,12 +172,12 @@
    </item>
    <item>
     <property name="text">
-     <string>Tiempo de fermentacion</string>
+     <string>Tiempo de fermentación</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>Tiempo de reposo</string>
+     <string>Tiempo de gradución</string>
     </property>
    </item>
    <item>
