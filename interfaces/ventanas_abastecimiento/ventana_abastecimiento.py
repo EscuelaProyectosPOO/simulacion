@@ -1,11 +1,13 @@
-import re
+
+import os
 import sys
-from PyQt5.QtWidgets import QDialog, QMessageBox, QApplication
+from PyQt5.QtWidgets import QDialog, QMessageBox, QApplication,  QFileDialog
 from PyQt5 import uic
 from PyQt5 import QtWidgets
 import ctypes #getSystemMetr
+from pathlib import Path
 
-class Ventana_datos_ventas(QDialog):
+class Ventana_datos_abastecimiento(QDialog):
 
     def __init__(self):
 
@@ -31,7 +33,8 @@ class Ventana_datos_ventas(QDialog):
         self.btnmenos.clicked.connect(lambda :self.eliminar_filas(self.tabla))
         self.btnmas2.clicked.connect(lambda :self.agregar_filas(self.tabla2))
         self.btnmenos2.clicked.connect(lambda :self.eliminar_filas(self.tabla2))
-        self.tablas_opcion.activated.connect(self.opciones)
+        self.tablas_opcion.activated.connect(self.opciones)#cambia la tabla deacuerdo a la opcion seleccionada
+        self.Guardar.clicked.connect(self.openFileNameDialog)
 
     def opciones(self):
         # en base a la opcion escogida se desata una accion
@@ -114,12 +117,21 @@ class Ventana_datos_ventas(QDialog):
 
         return matriz
 
+    def openFileNameDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        # escribir ruta donnde empezara a buscar
+        ruta = os.getcwd().replace("\simulacion","")
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()",  ruta,"Txt (*.txt)", options=options)
+        if fileName:
+            print(fileName)
+
 
 if(__name__ == "__main__"):
 
     #Instancia para iniciar la aplicsacion
     app = QApplication(sys.argv)
-    ventana = Ventana_datos_ventas()
+    ventana = Ventana_datos_abastecimiento()
     ventana.show()
     #ejecutar la aplicacion
     app.exec_()
