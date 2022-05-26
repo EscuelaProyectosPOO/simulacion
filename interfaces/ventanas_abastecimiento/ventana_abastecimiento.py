@@ -34,10 +34,6 @@ class Ventana_datos_abastecimiento(QDialog):
 
         self.opciones()
         
-
-
-        
-        
         #conectar botones
         self.btnmas.clicked.connect(lambda :self.agregar_filas(self.tabla))
         self.btnmenos.clicked.connect(lambda :self.eliminar_filas(self.tabla))
@@ -54,7 +50,7 @@ class Ventana_datos_abastecimiento(QDialog):
         if(self.tablas_opcion.currentIndex() == 0):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada piñas en días ', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada piñas en días', 'Probabilidad'])
             
             self.tabla2.setColumnCount(2)
             self.tabla2.setHorizontalHeaderLabels (['Costo de envio piñas', 'Probabilidad'])
@@ -73,9 +69,9 @@ class Ventana_datos_abastecimiento(QDialog):
         elif(self.tablas_opcion.currentIndex() == 1):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada botellas de vidrio, en días ', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada botellas de vidrio en días', 'Probabilidad'])
             self.tabla2.setColumnCount(2)
-            self.tabla2.setHorizontalHeaderLabels (['Costo de envio de botellas de vidrio, en días', 'Probabilidad'])
+            self.tabla2.setHorizontalHeaderLabels (['Costo de envio de botellas de vidrio en días', 'Probabilidad'])
 
             #para que las columnas se repartan el espacio de la tabla y la llenen
             header1 = self.tabla.horizontalHeader()       
@@ -89,9 +85,9 @@ class Ventana_datos_abastecimiento(QDialog):
         elif(self.tablas_opcion.currentIndex() == 2):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada botellas de plastico, en días ', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada botellas de plastico en días', 'Probabilidad'])
             self.tabla2.setColumnCount(2)
-            self.tabla2.setHorizontalHeaderLabels (['Costo de envio de botellas de plastico, en días', 'Probabilidad'])
+            self.tabla2.setHorizontalHeaderLabels (['Costo de envio de botellas de plastico en días', 'Probabilidad'])
 
             #para que las columnas se repartan el espacio de la tabla y la llenen
             header1 = self.tabla.horizontalHeader()       
@@ -104,9 +100,9 @@ class Ventana_datos_abastecimiento(QDialog):
         elif(self.tablas_opcion.currentIndex() == 3):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada tapones y corchos, en días ', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada tapones y corchos en días', 'Probabilidad'])
             self.tabla2.setColumnCount(2)
-            self.tabla2.setHorizontalHeaderLabels (['Costo de envio de tapones y corchos, en días', 'Probabilidad'])
+            self.tabla2.setHorizontalHeaderLabels (['Costo de envio de tapones y corchos en días', 'Probabilidad'])
 
             #para que las columnas se repartan el espacio de la tabla y la llenen
             header1 = self.tabla.horizontalHeader()       
@@ -150,13 +146,26 @@ class Ventana_datos_abastecimiento(QDialog):
         nombre_tabla = self.tabla.horizontalHeaderItem(0).text() 
         nombre_tabla2 = self.tabla2.horizontalHeaderItem(0).text() 
 
-        self.manejo_archivos.eliminar("base_datos/Datos_abastecimiento.txt",nombre_tabla,numero_columnas)
-        self.manejo_archivos.eliminar("base_datos/Datos_abastecimiento.txt",nombre_tabla2,numero_columnas2)
+        filas1 = self.tabla.rowCount()
+        filas2 = self.tabla2.rowCount()
 
-        self.manejo_archivos.escribrir("base_datos/Datos_abastecimiento.txt",nombre_tabla,matriz1,numero_filas,numero_columnas)
-        self.manejo_archivos.escribrir("base_datos/Datos_abastecimiento.txt",nombre_tabla2,matriz2,numero_filas2,numero_columnas2)
+        if(filas1 == 0 or filas2 == 0):
 
-        QMessageBox.information(self, "Guardar", "Los datos se han guardado exitosamente", QMessageBox.Discard)
+            QMessageBox.warning(self, "Advertencia", "Debe colocar datos en ambas tablas", QMessageBox.Discard)
+        else:
+            m1, n1 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", nombre_tabla,self.tabla.columnCount())
+            m2, n2 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", nombre_tabla2,self.tabla2.columnCount())
+
+            if(n1 != False):
+                self.manejo_archivos.eliminar("base_datos/Datos_abastecimiento.txt",nombre_tabla,numero_columnas)
+
+            if(n2 != False):
+                self.manejo_archivos.eliminar("base_datos/Datos_abastecimiento.txt",nombre_tabla2,numero_columnas2)
+
+            self.manejo_archivos.escribrir("base_datos/Datos_abastecimiento.txt",nombre_tabla,matriz1,numero_filas,numero_columnas)
+            self.manejo_archivos.escribrir("base_datos/Datos_abastecimiento.txt",nombre_tabla2,matriz2,numero_filas2,numero_columnas2)
+
+            QMessageBox.information(self, "Guardar", "Los datos se han guardado exitosamente", QMessageBox.Discard)
         
     def limpiar_tabla(self, tabla):
         # elimina todos los datos que se enucntren el la tabla
@@ -177,7 +186,7 @@ class Ventana_datos_abastecimiento(QDialog):
 
     def tomar_valores_tabla(self, tabla):
 
-        matriz = np.zeros((tabla.rowCount(),tabla.columnCount()+1))
+        matriz = np.zeros((tabla.rowCount(),tabla.columnCount()))
         
         for i in range(tabla.rowCount()):
 

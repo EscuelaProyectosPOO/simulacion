@@ -41,19 +41,25 @@ class Manejo_archivos():
         with open(nombre_archivo,"r") as file:
             lineas = file.readlines()
 
-        informacion_tabla = self.informacion_vieja(lineas,nombre_tabla,numero_columnas)
-        
-        if(len(informacion_tabla) == 0 or len(informacion_tabla) == 1 ):
+        if(len(lineas) != 0):
 
-            return 0, False
+            informacion_tabla = self.informacion_vieja(lineas,nombre_tabla,numero_columnas)
+
+            if(len(informacion_tabla) == 0 or len(informacion_tabla) == 1 ):
+
+                return 0, False
+
+            else:
+
+                matriz, numero_filas = self.convertir_datos_matriz(informacion_tabla,numero_columnas)
+
+                return matriz, numero_filas
 
         else:
 
-            matriz, numero_filas = self.convertir_datos_matriz(informacion_tabla,numero_columnas)
+            return 0, False
 
-            return matriz, numero_filas
-
-       
+        
 
 
     def informacion_nueva(self, lineas,nombre_tabla, numero_columnas):
@@ -73,7 +79,6 @@ class Manejo_archivos():
                 break
 
             contador +=1
-            
 
         return lista_nueva
 
@@ -89,13 +94,11 @@ class Manejo_archivos():
             datos_linea = linea.split(",")
 
             if nombre_tabla in datos_linea :
-                
                 lista_nueva = lineas[contador:(contador +numero_columnas+1)] 
                 break
 
             contador +=1
         
-
         return lista_nueva
 
 
