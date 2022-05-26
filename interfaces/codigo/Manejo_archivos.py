@@ -42,7 +42,16 @@ class Manejo_archivos():
             lineas = file.readlines()
 
         informacion_tabla = self.informacion_vieja(lineas,nombre_tabla,numero_columnas)
-        matriz = self.convertir_datos_matriz()
+        
+        if(len(informacion_tabla) == 0 or len(informacion_tabla) == 1 ):
+
+            return 0, False
+
+        else:
+
+            matriz, numero_filas = self.convertir_datos_matriz(informacion_tabla,numero_columnas)
+
+            return matriz, numero_filas
 
        
 
@@ -82,7 +91,6 @@ class Manejo_archivos():
             if nombre_tabla in datos_linea :
                 
                 lista_nueva = lineas[contador:(contador +numero_columnas+1)] 
-                print(lista_nueva)
                 break
 
             contador +=1
@@ -128,16 +136,24 @@ class Manejo_archivos():
     def convertir_datos_matriz(self, lineas, numero_columnas):
         # te da la informacion de la tabla y las convierte en una matriz con datos numericos en forma de string para que se pongan los datos
         numero_filas = len(lineas[1].split(","))
+        lineas = lineas[1:]
 
-        matriz = []
+        matriz = np.zeros((numero_filas, numero_columnas))
 
-        for j in range(1,numero_columnas):
+        for i in range(0,numero_columnas):
 
-            fila = []
+            linea = lineas[i].replace(",", " ")
+            datos = linea.split(" ")
 
-            for i in range(1,numero_filas):
+            for j in range(numero_filas):
 
-                print()
+                
+               
+                matriz[j][i] = float(datos[j])
+
+        return matriz, numero_filas
+
+            
 
 
 

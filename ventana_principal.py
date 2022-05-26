@@ -2,7 +2,9 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic
 import ctypes
-
+from interfaces.ventanas_produccion.ventana_datos_produccion import Ventana_datos_produccion
+from interfaces.ventanas_abastecimiento import ventana_abastecimiento
+from interfaces.ventana_ventas.ventana_datos_ventas import Ventana_datos_ventas
 class Ventana_principal(QMainWindow):
 
     def __init__(self):
@@ -10,7 +12,7 @@ class Ventana_principal(QMainWindow):
         QMainWindow.__init__(self)
         #super().__init__()
         #cargar la configuracion del archivo .ui en el objeto
-        uic.loadUi("interfaces/pantalla_principal.ui", self)
+        uic.loadUi("pantalla_principal.ui", self)
 
         #centrar ventana
         resolucion = ctypes.windll.user32
@@ -21,16 +23,28 @@ class Ventana_principal(QMainWindow):
         top = int((resolucion_alto/2) - (self.frameSize().height()/2))
 
         self.move(left,top)
-        
+        self.btnproduccion.clicked.connect(self.produccion)
+        self.btnabastecimiento.clicked.connect(self.abastecimiento)
+        self.btnventa.clicked.connect(self.ventas)
 
     
-    def eleccion(self):
+    def produccion(self):
         
-        if(self.Unidades.currentIndex() == 0):
+        self.hide()
+        self.ex = Ventana_datos_produccion(self)
+        self.ex.show()
 
-            self.hide()
-            self.ex = Ventana(self)
-            self.ex.show()
+    def abastecimiento(self):
+
+        self.hide()
+        self.ex = ventana_abastecimiento.Ventana_datos_abastecimiento(self)
+        self.ex.show()
+
+    def ventas(self):
+
+        self.hide()
+        self.ex = Ventana_datos_ventas(self)
+        self.ex.show()
 
 if(__name__ == "__main__"):
 

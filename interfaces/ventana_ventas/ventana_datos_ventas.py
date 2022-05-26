@@ -7,12 +7,15 @@ import ctypes #getSystemMetr
 
 class Ventana_datos_ventas(QDialog):
 
-    def __init__(self):
+    def __init__(self, ventana_principal):
+
+        self.ventana_principal = ventana_principal
+
 
         QDialog.__init__(self)
         #super().__init__()
         #cargar la configuracion del archivo .ui en el objeto
-        uic.loadUi("interfaces/ventana_vebntas/Ingreso_datos_ventas.ui", self)
+        uic.loadUi("interfaces/ventana_ventas/Ingreso_datos_ventas.ui", self)
 
         #centrar ventana
         resolucion = ctypes.windll.user32
@@ -85,6 +88,9 @@ class Ventana_datos_ventas(QDialog):
 
         return matriz
 
+    def closeEvent(self, event):
+
+        self.ventana_principal.show()
 
 if(__name__ == "__main__"):
 

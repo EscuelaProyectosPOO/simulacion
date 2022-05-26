@@ -5,9 +5,11 @@ from PyQt5 import uic
 from PyQt5 import QtWidgets
 import ctypes #getSystemMetr
 
-class Ventana_datos_ventas(QDialog):
+class Ventana_datos_produccion(QDialog):
 
-    def __init__(self):
+    def __init__(self, ventana_principal):
+
+        self.ventana_principal = ventana_principal
 
         QDialog.__init__(self)
         #super().__init__()
@@ -100,14 +102,18 @@ class Ventana_datos_ventas(QDialog):
 
         return matriz
 
+    def closeEvent(self, event):
+
+        self.ventana_principal.show()
+        
 if(__name__ == "__main__"):
 
     #Instancia para iniciar la aplicsacion
-    app = QApplication(sys.argv)
-    ventana = Ventana_datos_ventas()
-    ventana.show()
+    #app = QApplication(sys.argv)
+    #ventana = Ventana_datos_ventas()
+    #ventana.show()
     #ejecutar la aplicacion
-    app.exec_()
+    #app.exec_()
 
     """
     para que la primeara columna se estire pero las demas se adapten al contenido

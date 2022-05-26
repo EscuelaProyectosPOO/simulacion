@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1002</width>
-    <height>606</height>
+    <width>1174</width>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>790</x>
+     <x>910</x>
      <y>190</y>
      <width>151</width>
      <height>16</height>
@@ -122,7 +122,7 @@
   <widget class="QFrame" name="requisitos_frame">
    <property name="geometry">
     <rect>
-     <x>770</x>
+     <x>890</x>
      <y>220</y>
      <width>241</width>
      <height>201</height>
@@ -256,7 +256,7 @@
   <widget class="QTableWidget" name="tabla2">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>530</x>
      <y>170</y>
      <width>341</width>
      <height>271</height>

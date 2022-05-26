@@ -40,7 +40,7 @@
      <string>Venta</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnaastecimiento">
+   <widget class="QPushButton" name="btnabastecimiento">
     <property name="geometry">
      <rect>
       <x>20</x>

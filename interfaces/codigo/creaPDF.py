@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 
-def crear_pdf(ruta_template, informacion,rutacss=''):
+def crear_pdf(ruta_template, informacion, nombre_archivo,rutacss=''):
     # dividimos la ruta por /, nos devuelve una lista, le indicamos que nos de el ultimo
     # elemento de la lista indicado con un [-1]
     nombre_template = ruta_template.split("/")[-1]
@@ -36,7 +36,7 @@ def crear_pdf(ruta_template, informacion,rutacss=''):
     configuracion = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe')
     # nos da la ruta de downloads del sistema en donde estamos
     path_to_download_folder = str(os.path.join(Path.home(), "Downloads"))
-    ruta_salida = path_to_download_folder + "/Informe.pdf"
+    ruta_salida = path_to_download_folder + "/" + nombre_archivo
     pdfkit.from_string(html,ruta_salida,css=rutacss,options=options,configuration=configuracion)
 
 if(__name__=="__main__"):
