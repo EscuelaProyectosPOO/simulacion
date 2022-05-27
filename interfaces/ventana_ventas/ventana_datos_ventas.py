@@ -39,7 +39,7 @@ class Ventana_datos_ventas(QDialog):
         if(self.tablas_opcion.currentIndex() == 0):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada \n en minutos', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada en minutos', 'Probabilidad'])
 
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
@@ -48,7 +48,7 @@ class Ventana_datos_ventas(QDialog):
         elif(self.tablas_opcion.currentIndex() == 1):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo de estancia \n en minutos', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de estancia en minutos', 'Probabilidad'])
 
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
@@ -58,7 +58,7 @@ class Ventana_datos_ventas(QDialog):
         elif(self.tablas_opcion.currentIndex() == 2):
 
             self.tabla.setColumnCount(3)
-            self.tabla.setHorizontalHeaderLabels (['Tipo de alcohol \n  que se lleva', 'Costo botella', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Tipo de alcohol que se lleva', 'Costo botella', 'Probabilidad'])
 
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)

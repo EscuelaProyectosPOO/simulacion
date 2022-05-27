@@ -1,4 +1,4 @@
-from matplotlib.pyplot import pink
+
 import numpy as np
 import os
 
