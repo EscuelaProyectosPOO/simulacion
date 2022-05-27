@@ -41,6 +41,8 @@ class Ventana_datos_abastecimiento(QDialog):
         self.btnmenos2.clicked.connect(lambda :self.eliminar_filas(self.tabla2))
         self.tablas_opcion.activated.connect(self.opciones)#cambia la tabla deacuerdo a la opcion seleccionada
         self.Guardar.clicked.connect(self.guardar_datos)
+        self.btndatos.clicked.connect(self.Guardar_file)
+        self.btncargar.clicked.connect(self.open_file)
 
     def opciones(self):
         # en base a la opcion escogida se desata una accion
@@ -186,7 +188,7 @@ class Ventana_datos_abastecimiento(QDialog):
 
     def tomar_valores_tabla(self, tabla):
 
-        matriz = np.zeros((tabla.rowCount(),tabla.columnCount()))
+        matriz = np.zeros((tabla.rowCount(),tabla.columnCount()+1))
         
         for i in range(tabla.rowCount()):
 
@@ -198,14 +200,46 @@ class Ventana_datos_abastecimiento(QDialog):
 
         return matriz, tabla.columnCount(),tabla.rowCount()
 
-    def openFileNameDialog(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        # escribir ruta donnde empezara a buscar
-        ruta = os.getcwd().replace("\simulacion","")
-        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()",  ruta,"Txt (*.txt)", options=options)
-        if fileName:
-            print(fileName)
+    def open_file(self):
+        # abre el archivo con datos de una simulacion anterior para cargarlos al nuevo
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()","file","Txt (*.txt)")
+
+        archivo = "base_datos/Datos_abastecimiento.txt"
+        if(os.stat(fileName).st_size != 0):
+
+            with open(fileName, "r") as file:
+                lineas = file.readlines()
+
+            with open(archivo, "w") as file:
+                for i in lineas:
+                    file.write(i)
+
+            self.opciones()
+            QMessageBox.information(self, "Felicidades", "han sido recuperados con exito", QMessageBox.Discard)
+
+        else:
+
+            QMessageBox.warning(self, "Ups!!!", "Actualemten no hay datos que se puedan guardar", QMessageBox.Discard)
+
+    def Guardar_file(self):
+        # guarda con el nombre que le dio el usuario el archivo con los datos dentro
+        save_as = QFileDialog.getSaveFileName(self, "Save as...", '', "Txt (*.txt)")[0]
+        archivo = "base_datos/Datos_abastecimiento.txt"
+        if(os.stat(archivo).st_size != 0):
+
+            with open(archivo, "r") as file:
+                lineas = file.readlines()
+
+            with open(save_as, "w") as file:
+                for i in lineas:
+                    file.write(i)
+
+            QMessageBox.information(self, "Guardar", "Los datos de esta simulacion se han guardado exitosamente", QMessageBox.Discard)
+
+        else:
+
+            QMessageBox.warning(self, "Ups!!!", "Actualemten no hay datos que se puedan guardar", QMessageBox.Discard)
+
 
     def closeEvent(self, event):
 
