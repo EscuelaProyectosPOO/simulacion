@@ -41,7 +41,8 @@ class Abastecimiento():
         promedio_tiempo = promedio_tiempo/numero_iteraciones
 
         print("Tiempo promeio:", promedio_tiempo, ",Envio maximo:", envio_maximo, "Envio minimo:", envio_minimo)
-
+        
+        return promedio_tiempo, envio_maximo, envio_minimo
 
 
 
@@ -89,6 +90,7 @@ class Abastecimiento():
 
         print("Costo promedio:", promedio_costo, ",Costo maximo:", envio_maximo, "Costo minimo:", envio_minimo)
 
+        return promedio_costo, envio_maximo, envio_minimo
     def probabilidad_acumulada(self,matriz,numero_filas,numero_columnas):
         #saca la probabilidad acumulada y la coloca en la matriz
 
