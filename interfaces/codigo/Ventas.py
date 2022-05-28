@@ -30,8 +30,6 @@ class Ventas(Abastecimiento):
         ganancias_totales = self.extraer_ganancias_totales(matriz_contador,numero_filas)
         print(matriz_contador, ganancias_totales)
 
-        
-
     def crear_matriz_botellas(self, matriz, numero_filas):
         # crea una nueva matriz que se ultilizara para el conteo de las botellas
 
@@ -56,10 +54,6 @@ class Ventas(Abastecimiento):
 
 
         return ganancias_totales
-
-
-
-
 
 
 if(__name__ == "__main__"):

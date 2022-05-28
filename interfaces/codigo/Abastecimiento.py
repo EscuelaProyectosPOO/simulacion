@@ -40,13 +40,12 @@ class Abastecimiento():
 
         promedio_tiempo = promedio_tiempo/numero_iteraciones
 
-        print("Tiempo promeio:", promedio_tiempo, ",Envio maximo:", envio_maximo, "Envio minimo:", envio_minimo)
+        #print("Tiempo promeio:", promedio_tiempo, ",Envio maximo:", envio_maximo, "Envio minimo:", envio_minimo)
         
         return promedio_tiempo, envio_maximo, envio_minimo
 
-
-
     def proceso_costo(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
+
         # este se encarga de calcular el costo
 
         contador = 0
@@ -55,7 +54,7 @@ class Abastecimiento():
         promedio_costo = 0    
 
         matriz = self.probabilidad_acumulada(matriz,numero_filas,numero_columnas)
-        print(matriz)
+        #print(matriz)
         while(contador < numero_iteraciones):
 
             numero_aleatorio  = random.random()
@@ -88,9 +87,10 @@ class Abastecimiento():
 
         promedio_costo = promedio_costo/numero_iteraciones
 
-        print("Costo promedio:", promedio_costo, ",Costo maximo:", envio_maximo, "Costo minimo:", envio_minimo)
+        #print("Costo promedio:", promedio_costo, ",Costo maximo:", envio_maximo, "Costo minimo:", envio_minimo)
 
         return promedio_costo, envio_maximo, envio_minimo
+    
     def probabilidad_acumulada(self,matriz,numero_filas,numero_columnas):
         #saca la probabilidad acumulada y la coloca en la matriz
 
@@ -134,9 +134,6 @@ class Abastecimiento():
                 suelo = tope 
                     
         return numero, numero_fila
-
-
-
 
 if(__name__ == "__main__"):
 
