@@ -5,6 +5,7 @@ import ctypes
 from interfaces.ventanas_produccion.ventana_datos_produccion import Ventana_datos_produccion
 from interfaces.ventanas_abastecimiento import ventana_abastecimiento
 from interfaces.ventana_ventas.ventana_datos_ventas import Ventana_datos_ventas
+from interfaces.codigo.Manejo_archivos import Manejo_archivos
 class Ventana_principal(QMainWindow):
 
     def __init__(self):
@@ -26,6 +27,17 @@ class Ventana_principal(QMainWindow):
         self.btnproduccion.clicked.connect(self.produccion)
         self.btnabastecimiento.clicked.connect(self.abastecimiento)
         self.btnventa.clicked.connect(self.ventas)
+
+        
+        self.conexion_Archivos = Manejo_archivos()
+        self.conexion_Archivos.eliminar_archivo("base_datos/Datos_abastecimiento.txt")
+        self.conexion_Archivos.eliminar_archivo("base_datos/Datos_produccion.txt")
+        self.conexion_Archivos.eliminar_archivo("base_datos/Datos_ventas.txt")
+
+        self.conexion_Archivos.crear_archivo("base_datos/Datos_abastecimiento.txt")
+        self.conexion_Archivos.crear_archivo("base_datos/Datos_produccion.txt")
+        self.conexion_Archivos.crear_archivo("base_datos/Datos_ventas.txt")
+
 
     
     def produccion(self):

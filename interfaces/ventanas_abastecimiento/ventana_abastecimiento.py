@@ -205,7 +205,7 @@ class Ventana_datos_abastecimiento(QDialog):
         fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()","file","Txt (*.txt)")
 
         archivo = "base_datos/Datos_abastecimiento.txt"
-        if(os.stat(fileName).st_size != 0):
+        if(os.stat(fileName).st_size != 0 and fileName != ""):
 
             with open(fileName, "r") as file:
                 lineas = file.readlines()
@@ -225,7 +225,7 @@ class Ventana_datos_abastecimiento(QDialog):
         # guarda con el nombre que le dio el usuario el archivo con los datos dentro
         save_as = QFileDialog.getSaveFileName(self, "Save as...", '', "Txt (*.txt)")[0]
         archivo = "base_datos/Datos_abastecimiento.txt"
-        if(os.stat(archivo).st_size != 0):
+        if(os.stat(archivo).st_size != 0 and save_as != ""):
 
             with open(archivo, "r") as file:
                 lineas = file.readlines()
