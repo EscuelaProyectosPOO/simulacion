@@ -83,8 +83,8 @@ class Ventana_datos_ventas(QDialog):
         # si hay datos en la ase de datos de la tabla seleccionada los trae de regreso
         nombre_tabla = self.tabla.horizontalHeaderItem(0).text() 
 
-        matriz, numero_filas = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", nombre_tabla,self.tabla.columnCount())
-
+        matriz, numero_filas = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", nombre_tabla,self.tabla.columnCount()+1)
+        print(matriz)
         if(numero_filas != False):
             self.agregar_datos_tabla(self.tabla,numero_filas,matriz)
 
@@ -108,13 +108,12 @@ class Ventana_datos_ventas(QDialog):
         
         nombre_tabla = self.tabla.horizontalHeaderItem(0).text() 
 
-        filas1 = self.tabla.rowCount()
 
-        if(filas1 == 0 ):
+        if(numero_filas == 0 ):
 
             QMessageBox.warning(self, "Advertencia", "Debe colocar datos en la tabla", QMessageBox.Discard)
         else:
-            m1, n1 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", nombre_tabla,self.tabla.columnCount())
+            m1, n1 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", nombre_tabla,self.tabla.columnCount()+1)
 
             if(n1 != False):
                 self.manejo_archivos.eliminar("base_datos/Datos_ventas.txt",nombre_tabla,numero_columnas)
@@ -142,58 +141,86 @@ class Ventana_datos_ventas(QDialog):
 
     def tomar_valores_tabla(self, tabla):
 
-        matriz = np.zeros((tabla.rowCount(),tabla.columnCount()+1))
-        
-        for i in range(tabla.rowCount()):
+        numero_filas = tabla.rowCount()
+        numero_columnas = tabla.columnCount()+1
+        nombre_tabla = tabla.horizontalHeaderItem(0).text() 
 
-            for j in range(tabla.columnCount()):
+        matriz = [ [0]*numero_columnas for _ in range(numero_filas)]
+        try:
+            for i in range(numero_filas):
 
-                valor_celda = tabla.item(i, j)
-                matriz[i][j] = float(valor_celda.text())
+                for j in range(numero_columnas-1):
 
+                    celda = tabla.item(i, j)
+                    valor = celda.text().strip()
 
-        return matriz, tabla.columnCount(),tabla.rowCount()
+                    if(nombre_tabla == "Tipo de alcohol que se lleva" and j == 0):
+                        matriz[i][j] = valor
+
+                    elif(self.has_numbers(valor)):
+
+                        matriz[i][j] = float(valor)
+                    else:
+                        raise  AttributeError
+
+        except AttributeError as e:
+            QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla ", QMessageBox.Discard)
+            numero_filas = 0
+
+        return matriz, numero_columnas, numero_filas
 
     def open_file(self):
         # abre el archivo con datos de una simulacion anterior para cargarlos al nuevo
         fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()","file","Txt (*.txt)")
 
         archivo = "base_datos/Datos_ventas.txt"
-        if(os.stat(fileName).st_size != 0 and fileName != ""):
+        try:
+            if(os.stat(fileName).st_size != 0 and fileName ):
 
-            with open(fileName, "r") as file:
-                lineas = file.readlines()
+                with open(fileName, "r") as file:
+                    lineas = file.readlines()
 
-            with open(archivo, "w") as file:
-                for i in lineas:
-                    file.write(i)
+                with open(archivo, "w") as file:
+                    for i in lineas:
+                        file.write(i)
 
-            self.opciones()
-            QMessageBox.information(self, "Felicidades", "han sido recuperados con exito", QMessageBox.Discard)
+                self.opciones()
+                QMessageBox.information(self, "Felicidades", "han sido recuperados con exito", QMessageBox.Discard)
 
-        else:
+            else:
 
-            QMessageBox.warning(self, "Ups!!!", "Actualemten no hay datos que se puedan guardar", QMessageBox.Discard)
+                QMessageBox.warning(self, "Ups!!!", "Actualemten no hay datos que se puedan guardar", QMessageBox.Discard)
+        except FileNotFoundError as e:
+
+            QMessageBox().critical(self, "Error", "no se pudo econtrar el archivo", QMessageBox.Discard)
 
     def Guardar_file(self):
         # guarda con el nombre que le dio el usuario el archivo con los datos dentro
         save_as = QFileDialog.getSaveFileName(self, "Save as...", '', "Txt (*.txt)")[0]
         archivo = "base_datos/Datos_ventas.txt"
-        if(os.stat(archivo).st_size != 0 and save_as != ""):
+        try:
+            if(os.stat(archivo).st_size != 0 and save_as ):
 
-            with open(archivo, "r") as file:
-                lineas = file.readlines()
+                with open(archivo, "r") as file:
+                    lineas = file.readlines()
 
-            with open(save_as, "w") as file:
-                for i in lineas:
-                    file.write(i)
+                with open(save_as, "w") as file:
+                    for i in lineas:
+                        file.write(i)
 
-            QMessageBox.information(self, "Guardar", "Los datos de esta simulacion se han guardado exitosamente", QMessageBox.Discard)
+                QMessageBox.information(self, "Guardar", "Los datos de esta simulacion se han guardado exitosamente", QMessageBox.Discard)
 
-        else:
+            else:
 
-            QMessageBox.warning(self, "Ups!!!", "Actualemten no hay datos que se puedan guardar", QMessageBox.Discard)
+                QMessageBox.warning(self, "Ups!!!", "Actualemten no hay datos que se puedan guardar", QMessageBox.Discard)
 
+        except FileNotFoundError as e:
+
+            QMessageBox().critical(self, "Error", "no se pudo guardar el archivo", QMessageBox.Discard)
+            
+    def has_numbers(self,inputString):
+        # te devuelve si existe algun numero en el string
+        return any(char.isdigit() for char in inputString)
 
     def closeEvent(self, event):
 

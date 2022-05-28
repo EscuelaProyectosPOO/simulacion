@@ -138,23 +138,36 @@ class Manejo_archivos():
 
     def convertir_datos_matriz(self, lineas, numero_columnas):
         # te da la informacion de la tabla y las convierte en una matriz con datos numericos en forma de string para que se pongan los datos
+        nombre_tabla = lineas[0].split(",")
         numero_filas = len(lineas[1].split(","))
         lineas = lineas[1:]
 
-        matriz = np.zeros((numero_filas, numero_columnas))
+        matriz = [ [0]*numero_columnas for _ in range(numero_filas)]
+        #matriz = np.zeros((numero_filas, numero_columnas))
 
         for i in range(0,numero_columnas):
 
-            linea = lineas[i].replace(",", " ")
-            datos = linea.split(" ")
+            #linea = lineas[i].replace(",", " ")
+            #datos = linea.split(" ")
+            datos = lineas[i].split(",")
 
             for j in range(numero_filas):
 
-                
+                if(nombre_tabla[0] == "Tipo de alcohol que se lleva" and i == 0):
+
+                    matriz[j][i] = datos[j]
+
+                else:
+                        
+                    matriz[j][i] = float(datos[j])
                
-                matriz[j][i] = float(datos[j])
+                #matriz[j][i] = float(datos[j])
 
         return matriz, numero_filas
+
+    def has_numbers(self,inputString):
+        # te devuelve si existe algun numero en el string
+        return any(char.isdigit() for char in inputString)
 
             
 

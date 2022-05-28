@@ -35,7 +35,8 @@ class Ventas(Abastecimiento):
     def crear_matriz_botellas(self, matriz, numero_filas):
         # crea una nueva matriz que se ultilizara para el conteo de las botellas
 
-        matriz_nueva = np.zeros((numero_filas,4))
+        matriz_nueva = [ [0]*4 for _ in range(numero_filas)]
+        #matriz_nueva = np.zeros((numero_filas,4))
 
         for i in range(numero_filas):
 
