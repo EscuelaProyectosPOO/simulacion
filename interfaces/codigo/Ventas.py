@@ -5,7 +5,6 @@ from Abastecimiento import Abastecimiento
 class Ventas(Abastecimiento):
 
     # esta clase sirve para contabilizar y saber el tiempo de llegada del cliente, su estancia, y el tipo de alcohol que se llevara
-
     def proceso_alcohol(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
         # saber que tipo 
 

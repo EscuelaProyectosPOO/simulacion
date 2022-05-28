@@ -7,19 +7,32 @@ from Abastecimiento import Abastecimiento
 class funciones_abastecimiento(Abastecimiento):
     #Creacion del hilo para los suministros de piñas
     def pinas(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        pass
+        
+        tiempo_promedio_pinas, tiempo_maximo_pinas, tiempo_minimo_pinas =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_pinas, costo_maximo_pinas, costo_minimo_pinas = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
 
     def botellas_vidrio(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        pass
+        
+        tiempo_promedio_bv, tiempo_maximo_bv, tiempo_minimo_bv =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_bv, costo_maximo_bv, costo_minimo_bv= self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
 
     def tapones_corchos(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        pass
+        
+        tiempo_promedio_corchos, tiempo_maximo_corchos, tiempo_minimo_corchos =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_corchos, costo_maximo_corchos, costo_minimo_corchos = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
 
     def botellas_pet(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        pass
+        tiempo_promedio_bp, tiempo_maximo_bp, tiempo_minimo_bp =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_bp, costo_maximo_bp, costo_minimo_bp = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
 
     def etiquetas_sellos(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        pass
+        tiempo_promedio_sellos, tiempo_maximo_sellos, tiempo_minimo_sellos =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_sellos, costo_maximo_sellos, costo_minimo_sellos = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
 
     def iniciar_hilos(self):
         numerofilas, numerocolumnas = 3,3
