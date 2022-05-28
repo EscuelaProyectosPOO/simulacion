@@ -4,7 +4,7 @@ import numpy as np
 #Importacion de los archivos necesarios
 from Abastecimiento import Abastecimiento
 
-class funciones_producción(Abastecimiento):
+class funciones_produccion(Abastecimiento):
     # Hilo que se encarga de la coccion en el honro
     def metodo_hornos(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
         tiempo_promedio_horno, tiempo_maximo_horno, tiempo_minimo_horno = self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
@@ -64,6 +64,7 @@ class funciones_producción(Abastecimiento):
 
         matriz[2][0] = 8
         matriz[2][1] = 0.2
+
         #Creacion de los hilos para las funciones anteriormente creadas
         hilo_horno = Thread(target=self.metodo_hornos, name="Hilo_Hornos", args=(matriz,numerofilas,numerocolumnas,10))
 
@@ -86,4 +87,4 @@ class funciones_producción(Abastecimiento):
         hilo_embotellado.start()
 
 if __name__ == "__main__":
-    funciones_producción().iniciar_hilos()
+    funciones_produccion().iniciar_hilos()

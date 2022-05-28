@@ -43,16 +43,14 @@ if(__name__=="__main__"):
 
     #nos da la ruta absoluta del template 
     directorio = os.getcwd()
-    ruta_template =  directorio +'/template.html'
+    ruta_template =  directorio +'/template_abastecimiento.html'
+    print(ruta_template)
 
     # el diccionario debe tener las keys con el mismo nombre que tenemos las variables en el html
-    informacion ={"minimo": 234,
-                "maximo": "567",
-                "promedio":"23.45",
-                "tipos": "ron<br>345<br>354",
-                "precios":"67<br>34<br>1234",
-                "ventas": "125<br>123<br>12",
-                "ganancia": "12000<br>345<br>234",
-                "ganancia_total": 12346
-    }
-    crear_pdf(ruta_template=ruta_template, informacion=informacion)
+    informacion ={"pina_min":"10",
+                "pina_max":"100",
+                "pina_prom":"50",
+                "cost_min_pina":"15",
+                "costo_max_pina":"150",
+                "costo_prom_pina":"75"}
+    crear_pdf(ruta_template=ruta_template, informacion=informacion,nombre_archivo="Prueba_pdf_1.pdf")
