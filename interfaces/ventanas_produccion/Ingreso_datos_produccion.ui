@@ -199,7 +199,7 @@
     <string>Tabla</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Aceptar">
+  <widget class="QPushButton" name="Guardar">
    <property name="geometry">
     <rect>
      <x>290</x>
@@ -290,6 +290,32 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btncargar">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>10</y>
+     <width>231</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cargar datos simulacion </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btndatos">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>231</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Guardar datos simulacion actual</string>
    </property>
   </widget>
  </widget>
