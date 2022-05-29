@@ -1,5 +1,6 @@
 from threading import *
 import numpy as np
+from datetime import *
 
 #Importación de los archivos necesarios
 from Abastecimiento import Abastecimiento
@@ -124,4 +125,15 @@ class funciones_abastecimiento(Abastecimiento):
                        "costo_min_ec": sello_costo_min,
                        "costo_max_ec": sello_costo_max,
                        "costo_prom_ec": sello_costo_prom}
+        
+        #Creación del pdf
+        anio = datetime.now().year
+        mes = datetime.now().month
+        dia = datetime.now().day
+        hora = datetime.now().hour
+        minuto = datetime.now().minute
+        segundo = datetime.now().second
+        nombre_pdf = "Reporte_produccion-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
+    
+        creaPDF.crear_pdf("\template_producción.html",diccionario,nombre_pdf)
         

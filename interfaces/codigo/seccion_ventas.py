@@ -1,50 +1,75 @@
 from threading import *
 import numpy as np
 from sympy import false
+from datetime import *
 
 #Importacion del las clases necesarias para la venta mediante herencia
 from Ventas import Ventas
-
+import creaPDF
 class funciones_ventas(Ventas): 
     def llegada_clientes(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
         #Funcion que contabiliza el tiempo de llegada de los clientes
         tiempo_promedio_llegada, tiempo_maximo_llegada, tiempo_minimo_llegada = self.proceso_tiempo(matriz,numero_filas,numero_columnas,numero_iteraciones)
 
+        return tiempo_promedio_llegada, tiempo_maximo_llegada, tiempo_minimo_llegada
+
     def estancia_clientes(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
         #Funcion que contabiliza el tiempo de estancia de los clientes
         tiempo_promedio_estancia, tiempo_maximo_estancia, tiempo_minimo_estancia = self.proceso_tiempo(matriz,numero_filas,numero_columnas,numero_iteraciones)
+
+        return tiempo_promedio_estancia, tiempo_maximo_estancia, tiempo_minimo_estancia
 
     def venta_botellas(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
         
         matriz_contador, ganancias = self.proceso_alcohol(matriz,numero_filas,numero_columnas,numero_iteraciones)
 
-    def iniciar_hilos(self):
+        return matriz_contador, ganancias
+
+    def iniciar_hilos(self, lista_llegada, lista_estancia, lista_ventas, numero_iteraciones):
         #Valores iniciales para los parametros de los hilos
-        numero_filas_llegada = self.numero_filas_llegada
-        numero_columnas_llegada = self.numero_columnas_llegada
-        numero_iteraciones_llegada = self.numero_iteraciones_llegada
+        matriz_llegada = lista_llegada[0]
+        numero_filas_llegada = lista_llegada[1]
+        numero_columnas_llegada = lista_llegada[2]
 
-        numero_filas_estancia = self.numero_filas_estancia
-        numero_columnas_estancia = self.numero_columnas_estancia
-        numero_iteraciones_estancia = self.numero_iteraciones_estancia
+        matriz_estancia = lista_estancia[0]
+        numero_filas_estancia = lista_estancia[1]
+        numero_columnas_estancia = lista_estancia[2]
 
-        numero_filas_venta = self.numero_filas_venta
-        numero_columnas_venta = self.numero_columnas_venta
-        numero_iteraciones_venta = self.numero_iteraciones_venta
-        
-        matriz_llegada = np.zeros((self.numero_filas,self.numero_columnas))
-        matriz_estancia = np.zeros((self.numero_filas,self.numero_columnas))
-        matriz_botellas = np.zeros((self.numero_filas,self.numero_columnas))
-        
-        hilo_llegada = Thread(target=self.llegada_clientes,name="Hilo_llegada_clientes",args=(matriz_llegada,numero_filas_llegada,numero_columnas_llegada,numero_iteraciones_llegada))
+        matriz_ventas = lista_ventas[0]
+        numero_filas_ventas = lista_ventas[1]
+        numero_columnas_ventas = lista_ventas[2]
 
-        hilo_estancia = Thread(target=self.estancia_clientes,name="Hilo_estancia_clientes",args=(matriz_estancia,numero_filas_estancia,numero_columnas_estancia,numero_iteraciones_estancia))
 
-        hilo_venta = Thread(target=self.venta_botellas,name="Hilo_venta_botellas",args=(matriz_botellas,numero_filas_venta,numero_columnas_venta,numero_iteraciones_venta))
+        hilo_llegada = Thread(target=self.llegada_clientes,name="Hilo_llegada_clientes",args=(matriz_llegada,numero_filas_llegada,numero_columnas_llegada,numero_iteraciones))
+
+        hilo_estancia = Thread(target=self.estancia_clientes,name="Hilo_estancia_clientes",args=(matriz_estancia,numero_filas_estancia,numero_columnas_estancia,numero_iteraciones))
+
+        hilo_venta = Thread(target=self.venta_botellas,name="Hilo_venta_botellas",args=(matriz_ventas,numero_filas_ventas,numero_columnas_ventas,numero_iteraciones))
 
         #Inicializar los hilos
-        hilo_llegada.start()
-        hilo_estancia.start()
-        hilo_venta.start()
+        hora_min_cliente, hora_max_cliente, hora_prom_cliente = hilo_llegada.start()
+        est_min_cliente, est_max_cliente, est_prom_cliente = hilo_estancia.start()
+        matriz_botellas, ganancias = hilo_venta.start()
+
+        #Crear el diccionario que contendrá todos los valores para la template
+        diccionario = {"hora_min_cliente":hora_min_cliente,
+                        "hora_max_cliente":hora_max_cliente,
+                        "hora_prom_cliente":hora_prom_cliente,
+                        "est_min_cliente":est_min_cliente,
+                        "est_max_cliente":est_max_cliente,
+                        "est_prom_cliente":est_prom_cliente,
+                        "matriz_botellas":matriz_botellas,
+                        "ganancias":ganancias}
+        
+        #Crear el pdf con los valores del diccionario
+        anio = datetime.now().year
+        mes = datetime.now().month
+        dia = datetime.now().day
+        hora = datetime.now().hour
+        minuto = datetime.now().minute
+        segundo = datetime.now().second
+        nombre_pdf = "Reporte_produccion-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
+    
+        creaPDF.crear_pdf("\template_producción.html",diccionario,nombre_pdf)
 
         
