@@ -1,5 +1,6 @@
 from threading import *
 import numpy as np
+from datetime import *
 
 #Importacion de los archivos necesarios
 from Abastecimiento import Abastecimiento
@@ -52,104 +53,91 @@ class funciones_produccion(Abastecimiento):
         print("El hilo embotellado realizo la iteracion")
 
     #Funcion que inicializa los hilos
-    def iniciar_hilos(self):
+    def iniciar_hilos(self, lista_horno, lista_molino_1, lista_molino_2, lista_molino_3, lista_fermentacion, lista_graduacion, lista_reposo, lista_embotellado_1, lista_embotellado_2, lista_embotellado_3, numero_iteraciones):
         #Se hará la asignación de los parametros para los hilos
 
         #Datos para la asignación de los hornos
-        matriz_horno = []
-        numero_filas_horno = 0
-        numero_columnas_horno = 0
-        numero_iteraciones_horno = 0
+        matriz_horno = lista_horno[0]
+        numero_filas_horno = lista_horno[1]
+        numero_columnas_horno = lista_horno[2]
 
         #Datos para la asignación de los molinos
-        matriz_molino_1 = []
-        numero_filas_molino_1 = 0
-        numero_columnas_molino_1 = 0
-        numero_iteraciones_molino_1 = 0
+        matriz_molino_1 = lista_molino_1[0]
+        numero_filas_molino_1 = lista_molino_1[1]
+        numero_columnas_molino_1 = lista_molino_1[2]
 
-        matriz_molino_2 = []
-        numero_filas_molino_2 = 0
-        numero_columnas_molino_2 = 0
-        numero_iteraciones_molino_2 = 0
+        matriz_molino_2 = lista_molino_2[0]
+        numero_filas_molino_2 = lista_molino_2[1]
+        numero_columnas_molino_2 = lista_molino_2[2]
 
-        matriz_molino_3 = []
-        numero_filas_molino_3 = 0
-        numero_columnas_molino_3 = 0
-        numero_iteraciones_molino_3 = 0
+        matriz_molino_3 = lista_molino_3[0]
+        numero_filas_molino_3 = lista_molino_3[1]
+        numero_columnas_molino_3 = lista_molino_3[2]
 
         #Datos para la asignación de la fermentacion
-        matriz_fermentacion = []
-        numero_filas_fermentacion = 0
-        numero_columnas_fermentacion = 0
-        numero_iteraciones_fermentacion = 0
+        matriz_fermentacion = lista_fermentacion[0]
+        numero_filas_fermentacion = lista_fermentacion[1]
+        numero_columnas_fermentacion = lista_fermentacion[2]
 
         #Datos para la asignación de la graduacion
-        matriz_graduacion = []
-        numero_filas_graduacion = 0
-        numero_columnas_graduacion = 0
-        numero_iteraciones_graduacion = 0
+        matriz_graduacion = lista_graduacion[0]
+        numero_filas_graduacion = lista_graduacion[1]
+        numero_columnas_graduacion = lista_graduacion[2]
 
         #Datos para la asignación del reposo
-        matriz_reposo = []
-        numero_filas_reposo = 0
-        numero_columnas_reposo = 0
-        numero_iteraciones_reposo = 0
+        matriz_reposo = lista_reposo[0]
+        numero_filas_reposo = lista_reposo[1]
+        numero_columnas_reposo = lista_reposo[2]
+        numero_iteraciones_reposo = numero_iteraciones
 
         #Datos para la asignación del embotellado
-        matriz_embotellado_1 = []
-        numero_filas_embotellado_1 = 0
-        numero_columnas_embotellado_1 = 0
-        numero_iteraciones_embotellado_1 = 0
+        matriz_embotellado_1 = lista_embotellado_1[0]
+        numero_filas_embotellado_1 = lista_embotellado_1[1]
+        numero_columnas_embotellado_1 = lista_embotellado_1[2]
 
-        matriz_embotellado_2 = []
-        numero_filas_embotellado_2 = 0
-        numero_columnas_embotellado_2 = 0
-        numero_iteraciones_embotellado_2 = 0
+        matriz_embotellado_2 = lista_embotellado_2[0]
+        numero_filas_embotellado_2 = lista_embotellado_2[1]
+        numero_columnas_embotellado_2 = lista_embotellado_2[2]
 
-        matriz_embotellado_3 = []
-        numero_filas_embotellado_3 = 0
-        numero_columnas_embotellado_3 = 0
-        numero_iteraciones_embotellado_3 = 0
-
+        matriz_embotellado_3 = lista_embotellado_3[0]
+        numero_filas_embotellado_3 = lista_embotellado_3[1]
+        numero_columnas_embotellado_3 = lista_embotellado_3[2]
 
         #Creacion de los hilos para las funciones anteriormente creadas
-        hilo_horno = Thread(target=self.metodo_hornos, name="Hilo_Hornos", args=(matriz_horno, numero_filas_horno,numero_columnas_horno,numero_iteraciones_horno))
+        hilo_horno = Thread(target=self.metodo_hornos, name="Hilo_Hornos", args=(matriz_horno, numero_filas_horno,numero_columnas_horno,numero_iteraciones))
 
-        hilo_molino_1 = Thread(target=self.metodo_molinos, name="Hilo_Molinos", args=(matriz_molino_1, numero_filas_molino_1,numero_columnas_molino_1,numero_iteraciones_molino_1))
+        hilo_molino_1 = Thread(target=self.metodo_molinos, name="Hilo_Molinos", args=(matriz_molino_1, numero_filas_molino_1,numero_columnas_molino_1,numero_iteraciones))
 
-        hilo_molino_2 = Thread(target=self.metodo_molinos, name="Hilo_Molinos", args=(matriz_molino_2, numero_filas_molino_2,numero_columnas_molino_2,numero_iteraciones_molino_2))
+        hilo_molino_2 = Thread(target=self.metodo_molinos, name="Hilo_Molinos", args=(matriz_molino_2, numero_filas_molino_2,numero_columnas_molino_2,numero_iteraciones))
 
-        hilo_molino_3 = Thread(target=self.metodo_molinos, name="Hilo_Molinos", args=(matriz_molino_3, numero_filas_molino_3,numero_columnas_molino_3,numero_iteraciones_molino_3))
+        hilo_molino_3 = Thread(target=self.metodo_molinos, name="Hilo_Molinos", args=(matriz_molino_3, numero_filas_molino_3,numero_columnas_molino_3,numero_iteraciones))
 
-        hilo_fermentacion = Thread(target=self.metodo_fermentacion, name="Hilo_Fermentacion", args=(matriz_fermentacion, numero_filas_fermentacion,numero_columnas_fermentacion,numero_iteraciones_fermentacion))
+        hilo_fermentacion = Thread(target=self.metodo_fermentacion, name="Hilo_Fermentacion", args=(matriz_fermentacion, numero_filas_fermentacion,numero_columnas_fermentacion,numero_iteraciones))
 
-        hilo_graduacion = Thread(target=self.metodo_graduacion, name="Hilo_Graduacion", args=(matriz_graduacion, numero_filas_graduacion,numero_columnas_graduacion,numero_iteraciones_graduacion))
+        hilo_graduacion = Thread(target=self.metodo_graduacion, name="Hilo_Graduacion", args=(matriz_graduacion, numero_filas_graduacion,numero_columnas_graduacion,numero_iteraciones))
         
-        hilo_reposo = Thread(target=self.metodo_reposo, name="Hilo_Reposo", args=(matriz_reposo, numero_filas_reposo,numero_columnas_reposo,numero_iteraciones_reposo))
+        hilo_reposo = Thread(target=self.metodo_reposo, name="Hilo_Reposo", args=(matriz_reposo, numero_filas_reposo,numero_columnas_reposo,numero_iteraciones))
 
-        hilo_embotellado_1 = Thread(target=self.metodo_embotellado, name="Hilo_Embotellado", args=(matriz_embotellado_1, numero_filas_embotellado_1,numero_columnas_embotellado_1,numero_iteraciones_embotellado_1))
+        hilo_embotellado_1 = Thread(target=self.metodo_embotellado, name="Hilo_Embotellado", args=(matriz_embotellado_1, numero_filas_embotellado_1,numero_columnas_embotellado_1,numero_iteraciones))
 
-        hilo_embotellado_2 = Thread(target=self.metodo_embotellado, name="Hilo_Embotellado", args=(matriz_embotellado_2, numero_filas_embotellado_2,numero_columnas_embotellado_2,numero_iteraciones_embotellado_2))
+        hilo_embotellado_2 = Thread(target=self.metodo_embotellado, name="Hilo_Embotellado", args=(matriz_embotellado_2, numero_filas_embotellado_2,numero_columnas_embotellado_2,numero_iteraciones))
 
-        hilo_embotellado_3 = Thread(target=self.metodo_embotellado, name="Hilo_Embotellado", args=(matriz_embotellado_3, numero_filas_embotellado_3,numero_columnas_embotellado_3,numero_iteraciones_embotellado_3))
+        hilo_embotellado_3 = Thread(target=self.metodo_embotellado, name="Hilo_Embotellado", args=(matriz_embotellado_3, numero_filas_embotellado_3,numero_columnas_embotellado_3,numero_iteraciones))
 
         #Inicializacion de todos los procesos de la simulacion y retorno de los resultados
         horno_prom, horno_max, horno_min, cost_prom_horno, costo_max_horno, costo_min_horno  = hilo_horno.start()
         
-
         molino_prom_1, molino_max_1, molino_min_1, cost_prom_molino_1, costo_max_molino_1, costo_min_molino_1 = hilo_molino_1.start()
         
         molino_prom_2, molino_max_2, molino_min_2, cost_prom_molino_2, costo_max_molino_2, costo_min_molino_2 = hilo_molino_2.start()
         
         molino_prom_3, molino_max_3, molino_min_3, cost_prom_molino_3, costo_max_molino_3, costo_min_molino_3 = hilo_molino_3.start()
-        
 
         fermentacion_prom, fermentacion_max, fermentacion_min, cost_prom_fermentacion, costo_max_fermentacion, costo_min_fermentacion = hilo_fermentacion.start()
         
         graduacion_prom, graduacion_max, graduacion_min, cost_prom_graduacion, costo_max_graduacion, costo_min_graduacion = hilo_graduacion.start()
         
         repo_prom, repo_max, repo_min, cost_prom_reposo, costo_max_reposo, costo_min_reposo = hilo_reposo.start()
-        
 
         embotellado_prom_1, embotellado_max_1, embotellado_min_1, cost_prom_embotellado_1, costo_max_embotellado_1, costo_min_embotellado_1= hilo_embotellado_1.start()
         
@@ -157,6 +145,7 @@ class funciones_produccion(Abastecimiento):
         
         embotellado_prom_3, embotellado_max_3, embotellado_min_3, cost_prom_embotellado_3, costo_max_embotellado_3, costo_min_embotellado_3= hilo_embotellado_3.start()
 
+        #Creación del diccionario que contendrá los valores para la generación de un pdf
         diccionario = {"horno_min":horno_min,
                     "horno_max":horno_max,
                     "horno_prom":horno_prom,
@@ -218,8 +207,17 @@ class funciones_produccion(Abastecimiento):
                     "cost_max_embotellado_3":costo_max_embotellado_3,
                     "cost_prom_embotellado_3":cost_prom_embotellado_3
                     }
-
-        creaPDF.crear_pdf("\templates",diccionario,"reporte_produccion.html")
+        
+        #Creación del pdf
+        anio = datetime.now().year
+        mes = datetime.now().month
+        dia = datetime.now().day
+        hora = datetime.now().hour
+        minuto = datetime.now().minute
+        segundo = datetime.now().second
+        nombre_pdf = "Reporte_produccion-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
+    
+        creaPDF.crear_pdf("\template_producción.html",diccionario,nombre_pdf)
 
 
 if __name__ == "__main__":
