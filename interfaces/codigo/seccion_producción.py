@@ -3,9 +3,8 @@ import numpy as np
 from datetime import *
 
 #Importacion de los archivos necesarios
-from Abastecimiento import Abastecimiento
-import creaPDF
-
+from interfaces.codigo.Abastecimiento import Abastecimiento
+from interfaces.codigo import creaPDF
 class funciones_produccion(Abastecimiento):
     # Hilo que se encarga de la coccion en el honro
     def metodo_hornos(self, matriz, numero_filas,numero_columnas,numero_iteraciones):

@@ -6,6 +6,7 @@ from PyQt5 import uic
 from PyQt5 import QtWidgets
 import ctypes #getSystemMetr
 from interfaces.codigo.Manejo_archivos import Manejo_archivos
+from interfaces.codigo.seccion_ventas import funciones_ventas
 
 class Ventana_datos_ventas(QDialog):
 
@@ -31,6 +32,7 @@ class Ventana_datos_ventas(QDialog):
 
         # instancias de clases necesarias
         self.manejo_archivos = Manejo_archivos()
+        self.funcionesVentas = funciones_ventas()
         self.opciones()
 
         
@@ -41,6 +43,7 @@ class Ventana_datos_ventas(QDialog):
         self.Guardar.clicked.connect(self.guardar_datos)
         self.btndatos.clicked.connect(self.Guardar_file)
         self.btncargar.clicked.connect(self.open_file)
+        self.btniniciar.clicked.connect(self.iniciar_simulacion)
 
     def opciones(self):
         # en base a la opcion escogida se desata una accion
@@ -84,7 +87,7 @@ class Ventana_datos_ventas(QDialog):
         nombre_tabla = self.tabla.horizontalHeaderItem(0).text() 
 
         matriz, numero_filas = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", nombre_tabla,self.tabla.columnCount()+1)
-        print(matriz)
+
         if(numero_filas != False):
             self.agregar_datos_tabla(self.tabla,numero_filas,matriz)
 
@@ -221,6 +224,18 @@ class Ventana_datos_ventas(QDialog):
     def has_numbers(self,inputString):
         # te devuelve si existe algun numero en el string
         return any(char.isdigit() for char in inputString)
+
+    def iniciar_simulacion(self):
+        # inicia los hilos con lps datos de las tablas
+        matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tiempo de llegada en minutos',3)
+        matriz2, numeroFilas2 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tiempo de estancia en minutos',3)
+        matriz3, numeroFilas3 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tipo de alcohol que se lleva',4)
+
+        lista1 = [matriz1,numeroFilas1,3]
+        lista2 = [matriz2,numeroFilas2,3]
+        lista3 = [matriz3,numeroFilas3,4]
+        self.funcionesVentas.iniciar_hilos(lista1,lista2, lista3, 100)
+
 
     def closeEvent(self, event):
 

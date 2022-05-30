@@ -59,7 +59,7 @@
     <string>-</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Aceptar">
+  <widget class="QPushButton" name="Guardar">
    <property name="geometry">
     <rect>
      <x>290</x>
@@ -69,10 +69,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>Aceptar</string>
+    <string>Guardar</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="titulo">
    <property name="geometry">
     <rect>
      <x>70</x>

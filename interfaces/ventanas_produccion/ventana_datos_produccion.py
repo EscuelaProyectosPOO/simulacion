@@ -6,6 +6,7 @@ from PyQt5 import uic
 from PyQt5 import QtWidgets
 import ctypes #getSystemMetr
 from interfaces.codigo.Manejo_archivos import Manejo_archivos
+from interfaces.ventanas_produccion.ventana_datos_personal import Ventana_datos_personal
 
 class Ventana_datos_produccion(QDialog):
 
@@ -39,6 +40,7 @@ class Ventana_datos_produccion(QDialog):
         self.Guardar.clicked.connect(self.guardar_datos)
         self.btndatos.clicked.connect(self.Guardar_file)
         self.btncargar.clicked.connect(self.open_file)
+        self.llenar.clicked.connect(self.llamar_tablas)
 
     def opciones(self):
         # en base a la opcion escogida se desata una accion
@@ -240,6 +242,28 @@ class Ventana_datos_produccion(QDialog):
     def has_numbers(self,inputString):
         # te devuelve si existe algun numero en el string
         return any(char.isdigit() for char in inputString)
+
+
+    def llamar_tablas(self):
+        # llama a las tablas de personal para que se le inserten datos
+        numero_tablas = int(self.numeroPersonal.text())
+        trabajadores  = 3
+        nombre_opcion = self.tablas_opcion.currentText()
+
+        if(nombre_opcion == "Tiempo de molino" or nombre_opcion == "Embotellado y almacenaje"):
+            for i in range(numero_tablas):
+                
+                #como uso un dialow puedo usar un exce_ para oque me retorne un valor cuando se cierre la ventana
+                self.hide()
+                self.ex = Ventana_datos_personal(self,nombre_opcion,trabajadores)
+                valor = self.ex.exec_()
+                
+
+                trabajadores += 1
+
+        
+
+        
 
     def closeEvent(self, event):
 
