@@ -6,6 +6,7 @@ from interfaces.ventanas_produccion.ventana_datos_produccion import Ventana_dato
 from interfaces.ventanas_abastecimiento import ventana_abastecimiento
 from interfaces.ventana_ventas.ventana_datos_ventas import Ventana_datos_ventas
 from interfaces.codigo.Manejo_archivos import Manejo_archivos
+
 class Ventana_principal(QMainWindow):
 
     def __init__(self):

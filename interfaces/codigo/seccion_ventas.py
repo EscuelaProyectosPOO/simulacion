@@ -42,7 +42,8 @@ class funciones_ventas(Ventas):
         #Inicializar los hilos
         hora_min_cliente, hora_max_cliente, hora_prom_cliente = self.llegada_clientes(matriz_llegada, numero_filas_llegada, numero_columnas_llegada, numero_iteraciones)
         est_min_cliente, est_max_cliente, est_prom_cliente = self.estancia_clientes(matriz_estancia, numero_filas_estancia, numero_columnas_estancia, numero_iteraciones)
-        #matriz_botellas, ganancias = self.venta_botellas(matriz_ventas, numero_filas_ventas, numero_columnas_ventas, numero_iteraciones)
+        matriz_botellas, ganancias = self.venta_botellas(matriz_ventas, numero_filas_ventas, numero_columnas_ventas, numero_iteraciones)      
+
 
         #Crear el diccionario que contendrá todos los valores para la template
         diccionario = {"hora_min_cliente":hora_min_cliente,
