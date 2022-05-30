@@ -39,17 +39,10 @@ class funciones_ventas(Ventas):
         numero_filas_ventas = lista_ventas[1]
         numero_columnas_ventas = lista_ventas[2]
 
-
-        hilo_llegada = Thread(target=self.llegada_clientes,name="Hilo_llegada_clientes",args=(matriz_llegada,numero_filas_llegada,numero_columnas_llegada,numero_iteraciones))
-
-        hilo_estancia = Thread(target=self.estancia_clientes,name="Hilo_estancia_clientes",args=(matriz_estancia,numero_filas_estancia,numero_columnas_estancia,numero_iteraciones))
-
-        hilo_venta = Thread(target=self.venta_botellas,name="Hilo_venta_botellas",args=(matriz_ventas,numero_filas_ventas,numero_columnas_ventas,numero_iteraciones))
-
         #Inicializar los hilos
-        hora_min_cliente, hora_max_cliente, hora_prom_cliente = hilo_llegada.start()
-        est_min_cliente, est_max_cliente, est_prom_cliente = hilo_estancia.start()
-        matriz_botellas, ganancias = hilo_venta.start()
+        hora_min_cliente, hora_max_cliente, hora_prom_cliente = self.llegada_clientes(matriz_llegada, numero_filas_llegada, numero_columnas_llegada, numero_iteraciones)
+        est_min_cliente, est_max_cliente, est_prom_cliente = self.estancia_clientes(matriz_estancia, numero_filas_estancia, numero_columnas_estancia, numero_iteraciones)
+        #matriz_botellas, ganancias = self.venta_botellas(matriz_ventas, numero_filas_ventas, numero_columnas_ventas, numero_iteraciones)
 
         #Crear el diccionario que contendrá todos los valores para la template
         diccionario = {"hora_min_cliente":hora_min_cliente,
@@ -58,8 +51,9 @@ class funciones_ventas(Ventas):
                         "est_min_cliente":est_min_cliente,
                         "est_max_cliente":est_max_cliente,
                         "est_prom_cliente":est_prom_cliente,
-                        "matriz_botellas":matriz_botellas,
-                        "ganancias":ganancias}
+                        #"matriz_botellas":matriz_botellas,
+                        #"ganancias":ganancias
+    }
         
         #Crear el pdf con los valores del diccionario
         anio = datetime.now().year
@@ -72,4 +66,14 @@ class funciones_ventas(Ventas):
     
         creaPDF.crear_pdf("\template_producción.html",diccionario,nombre_pdf)
 
-        
+if __name__ == "__main__":
+    matriz = [[2,0.3],[5,0.5],[8,0.2]]
+    numero_filas = 3
+    numero_columnas = 2
+    numero_iteraciones = 10
+
+    lista_llegada = [matriz,numero_filas,numero_columnas,numero_iteraciones]
+    lista_estancia = [matriz,numero_filas,numero_columnas,numero_iteraciones]
+    lista_ventas = [matriz,numero_filas,numero_columnas,numero_iteraciones]
+    objeto = funciones_ventas()
+    objeto.iniciar_hilos(lista_llegada, lista_estancia, lista_ventas, numero_iteraciones)

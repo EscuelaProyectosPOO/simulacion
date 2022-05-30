@@ -2,4 +2,7 @@
   <qresource prefix="bacground">
     <file>images/bg.jpg</file>
   </qresource>
+  <qresource prefix="logo">
+    <file>images/logo.png</file>
+  </qresource>
 </RCC>
