@@ -73,24 +73,12 @@ class funciones_abastecimiento(Abastecimiento):
         numero_filas_sellos = lista_sellos[1]
         numero_columnas_sellos = lista_sellos[2]
         
-        #Creacion de los hilos para las funciones anteriormente creadas
-
-        hilo_pinas = Thread(target=self.pinas, name="Hilo_pinas",args=(matriz_pinas,numero_filas_pinas,numero_columnas_pinas,numero_iteraciones))
-
-        hilo_botellas_vidrio = Thread(target=self.botellas_vidrio,name="Hilo_botellas_vidiro",args=(matriz_bp,numero_filas_bp,numero_columnas_bp,numero_iteraciones))
-
-        hilo_tapones_corcho = Thread(target=self.tapones_corchos,name="Hilo_tapones",args=(matriz_corchos,numero_filas_corchos,numero_columnas_corchos,numero_iteraciones))
-
-        hilo_botellas_pet = Thread(target=self.botellas_pet,name="Hilo_botellas_pet",args=(matriz_bp,numero_filas_bp,numero_columnas_bp,numero_iteraciones))
-
-        hilo_etiquetas = Thread(target=self.etiquetas_sellos,name="Hilo_etiquetas",args=(matriz_sellos,numero_filas_sellos,numero_columnas_sellos,numero_iteraciones))
-
         #Inicialización de los hilos
-        pina_prom, pina_max, pina_min, pina_costo_prom, pina_costo_max, pina_costo_min = hilo_pinas.start()
-        bv_min, bv_max, bv_prom, bv_costo_min, bv_costo_max, bv_costo_prom = hilo_botellas_vidrio.start()
-        corcho_min, corcho_max, corcho_prom, corcho_costo_min, corcho_costo_max, corcho_costo_prom = hilo_tapones_corcho.start()
-        bp_min, bp_max, bp_prom, bp_costo_min, bp_costo_max, bp_costo_prom = hilo_botellas_pet.start()
-        sello_min, sello_max, sello_prom, sello_costo_min, sello_costo_max, sello_costo_prom = hilo_etiquetas.start()
+        pina_prom, pina_max, pina_min, pina_costo_prom, pina_costo_max, pina_costo_min = self.pinas(matriz_pinas, numero_filas_pinas, numero_columnas_pinas, numero_iteraciones)
+        bv_min, bv_max, bv_prom, bv_costo_min, bv_costo_max, bv_costo_prom = self.botellas_vidrio(matriz_bv, numero_filas_bv, numero_columnas_bv, numero_iteraciones)
+        corcho_min, corcho_max, corcho_prom, corcho_costo_min, corcho_costo_max, corcho_costo_prom = self.tapones_corchos(matriz_corchos, numero_filas_corchos, numero_columnas_corchos, numero_iteraciones)
+        bp_min, bp_max, bp_prom, bp_costo_min, bp_costo_max, bp_costo_prom = self.botellas_pet(matriz_bp, numero_filas_bp, numero_columnas_bp, numero_iteraciones)
+        sello_min, sello_max, sello_prom, sello_costo_min, sello_costo_max, sello_costo_prom = self.etiquetas_sellos(matriz_sellos, numero_filas_sellos, numero_columnas_sellos, numero_iteraciones)
         
     
         #Creacion del diccionario para almacenar los resultados
@@ -137,3 +125,17 @@ class funciones_abastecimiento(Abastecimiento):
     
         creaPDF.crear_pdf("\template_producción.html",diccionario,nombre_pdf)
         
+if __name__ == "__main__":
+    matriz = [[2,0.3],[5,0.5],[8,0.2]]
+    numero_filas = 3
+    numero_columnas = 2
+
+    lista_pinas = [matriz, numero_filas, numero_columnas]
+    lista_bv = [matriz, numero_filas, numero_columnas]
+    lista_corchos = [matriz, numero_filas, numero_columnas]
+    lista_bp = [matriz, numero_filas, numero_columnas]
+    lista_sellos = [matriz, numero_filas, numero_columnas]
+    numeros_iteraciones = 10
+
+    objeto = funciones_abastecimiento()
+    objeto.iniciar_hilos(lista_pinas, lista_bv, lista_corchos, lista_bp, lista_sellos, numeros_iteraciones)

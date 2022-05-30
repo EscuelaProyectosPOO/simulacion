@@ -19,7 +19,7 @@ class Ventas(Abastecimiento):
 
             numero_aleatorio = random.random()
 
-            valor, numero_fila = self.sacar_valor(matriz,numero_filas,numero_columnas,numero_aleatorio)
+            valor, numero_fila = self.sacar_valor(matriz,numero_fila,numero_columnas,numero_aleatorio)
 
             matriz_contador[numero_fila][2] += 1
             matriz_contador[numero_fila][3] += matriz[numero_fila][1]

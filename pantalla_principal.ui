@@ -34,6 +34,7 @@
 *{
 font-family: Victor Mono;
 background-image: url(:/bacground/images/bg.jpg);
+border-radius: 10px;
 }
 
 QPushButton{
@@ -46,6 +47,12 @@ QPushButton:hover{
 background: #acc8e2;
 font-weight:bold;
 border-radius: 10px;
+}
+
+QLabel#label1{
+border-radius: 10px;
+font-size: 19px;
+background: #80a7ca;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -86,6 +93,25 @@ border-radius: 10px;
     </property>
     <property name="text">
      <string>Abasteimiento</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label1">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>150</y>
+      <width>421</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>SIMULACION PROYECTO FINAL MEZCALERA</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
