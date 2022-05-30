@@ -4,8 +4,8 @@ from sympy import false
 from datetime import *
 
 #Importacion del las clases necesarias para la venta mediante herencia
-from Ventas import Ventas
-import creaPDF
+from interfaces.codigo.Ventas import Ventas
+from interfaces.codigo import creaPDF
 class funciones_ventas(Ventas): 
     def llegada_clientes(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
         #Funcion que contabiliza el tiempo de llegada de los clientes

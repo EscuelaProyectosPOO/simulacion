@@ -1,6 +1,6 @@
 import numpy as np
 import random
-from Abastecimiento import Abastecimiento
+from interfaces.codigo.Abastecimiento  import Abastecimiento
 
 class Ventas(Abastecimiento):
 
@@ -27,7 +27,8 @@ class Ventas(Abastecimiento):
             contador += 1
 
         ganancias_totales = self.extraer_ganancias_totales(matriz_contador,numero_filas)
-        print(matriz_contador, ganancias_totales)
+        #print(matriz_contador, ganancias_totales)
+        return matriz_contador, ganancias_totales
 
     def crear_matriz_botellas(self, matriz, numero_filas):
         # crea una nueva matriz que se ultilizara para el conteo de las botellas

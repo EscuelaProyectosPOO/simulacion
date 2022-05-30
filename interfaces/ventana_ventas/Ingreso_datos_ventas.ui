@@ -95,14 +95,14 @@
   <widget class="QPushButton" name="Guardar">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>190</x>
      <y>490</y>
      <width>201</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
-    <string>Guardar</string>
+    <string>Guardar datos</string>
    </property>
   </widget>
   <widget class="QFrame" name="requisitos_frame">
@@ -211,6 +211,19 @@
    </property>
    <property name="text">
     <string>Guardar datos simulacion actual</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btniniciar">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>490</y>
+     <width>201</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Iniciar simulación</string>
    </property>
   </widget>
  </widget>
