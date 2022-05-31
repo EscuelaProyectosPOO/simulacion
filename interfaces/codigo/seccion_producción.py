@@ -20,18 +20,12 @@ class funciones_produccion(Abastecimiento):
     # Hilo que se encarga de controlar la molida 
     def metodo_molinos(self,lista_datos_molinos,numero_iteraciones):
         matriz_tiempo = lista_datos_molinos[0]
-        matriz_costo = lista_datos_molinos[1]
         numero_filas_tiempo = lista_datos_molinos[2]
-        numero_filas_costo = lista_datos_molinos[3]
         numero_columnas_tiempo = lista_datos_molinos[4]
-        numero_columnas_costo = lista_datos_molinos[5]
         
         tiempo_promedio_molino, tiempo_maximo_molino, tiempo_minimo_molino = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
 
-        #Obtencion de los registros de nominas
-        costo_promedio_molino, costo_maximo_molino, costo_minimo_molino  = self.proceso_costo(matriz_costo, numero_filas_costo,numero_columnas_costo,numero_iteraciones)
-
-        return tiempo_promedio_molino, tiempo_maximo_molino, tiempo_minimo_molino, costo_promedio_molino, costo_maximo_molino, costo_minimo_molino
+        return tiempo_promedio_molino, tiempo_maximo_molino, tiempo_minimo_molino
     
     # Hilo que se encarga de controlar la fermentacion
     def metodo_fermentacion(self,matriz, numero_filas,numero_columnas,numero_iteraciones):
@@ -62,7 +56,7 @@ class funciones_produccion(Abastecimiento):
         return tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado
 
     #Funcion que inicializa los hilos
-    def iniciar_hilos(self, lista_horno, lista_molino_1, lista_molino_2, lista_molino_3, lista_fermentacion, lista_graduacion, lista_reposo, lista_embotellado_1, lista_embotellado_2, lista_embotellado_3, numero_iteraciones, nomina_empleado, costo_uso_horno):
+    def iniciar_hilos(self, lista_horno, lista_molino_1, lista_molino_2, lista_molino_3, lista_fermentacion, lista_graduacion, lista_reposo, lista_embotellado_1, lista_embotellado_2, lista_embotellado_3, numero_iteraciones, nomina_empleado, costo_uso_horno,costo_uso_molino,costo_uso_embotellado):
                 
         #Datos para la asignación de la fermentacion
         matriz_fermentacion = lista_fermentacion[0]
@@ -84,11 +78,11 @@ class funciones_produccion(Abastecimiento):
         #Inicializacion de todos los procesos de la simulacion y retorno de los resultados
         horno_prom, horno_max, horno_min = self.metodo_hornos(lista_horno, numero_iteraciones)
         
-        molino_prom_1, molino_max_1, molino_min_1, cost_prom_molino_1, costo_max_molino_1, costo_min_molino_1 = self.metodo_molinos(lista_molino_1, numero_iteraciones)
+        molino_prom_1, molino_max_1, molino_min_1  = self.metodo_molinos(lista_molino_1, numero_iteraciones)
         
-        molino_prom_2, molino_max_2, molino_min_2, cost_prom_molino_2, costo_max_molino_2, costo_min_molino_2 = self.metodo_molinos(lista_molino_2, numero_iteraciones)
+        molino_prom_2, molino_max_2, molino_min_2 = self.metodo_molinos(lista_molino_2, numero_iteraciones)
         
-        molino_prom_3, molino_max_3, molino_min_3, cost_prom_molino_3, costo_max_molino_3, costo_min_molino_3 = self.metodo_molinos(lista_molino_3, numero_iteraciones)
+        molino_prom_3, molino_max_3, molino_min_3 = self.metodo_molinos(lista_molino_3, numero_iteraciones)
 
         fermentacion_prom, fermentacion_max, fermentacion_min = self.metodo_fermentacion(matriz_fermentacion, numero_filas_fermentacion, numero_columnas_fermentacion, numero_iteraciones)
         
@@ -96,11 +90,11 @@ class funciones_produccion(Abastecimiento):
         
         repo_prom, repo_max, repo_min = self.metodo_reposo(matriz_reposo, numero_filas_reposo, numero_columnas_reposo, numero_iteraciones_reposo)
 
-        embotellado_prom_1, embotellado_max_1, embotellado_min_1, cost_prom_embotellado_1, costo_max_embotellado_1, costo_min_embotellado_1= self.metodo_embotellado(lista_embotellado_1, numero_iteraciones)
+        embotellado_prom_1, embotellado_max_1, embotellado_min_1 = self.metodo_embotellado(lista_embotellado_1, numero_iteraciones)
         
-        embotellado_prom_2, embotellado_max_2, embotellado_min_2, cost_prom_embotellado_2, costo_max_embotellado_2, costo_min_embotellado_2= self.metodo_embotellado(lista_embotellado_2, numero_iteraciones)
+        embotellado_prom_2, embotellado_max_2, embotellado_min_2 = self.metodo_embotellado(lista_embotellado_2, numero_iteraciones)
         
-        embotellado_prom_3, embotellado_max_3, embotellado_min_3, cost_prom_embotellado_3, costo_max_embotellado_3, costo_min_embotellado_3= self.metodo_embotellado(lista_embotellado_3, numero_iteraciones)
+        embotellado_prom_3, embotellado_max_3, embotellado_min_3 = self.metodo_embotellado(lista_embotellado_3, numero_iteraciones)
 
         #Calculamos las nominas de los procesos
         nomina_prom_molino_1 = molino_prom_1 * nomina_empleado * 3
@@ -131,7 +125,34 @@ class funciones_produccion(Abastecimiento):
         costo_min_horno = horno_min * costo_uso_horno
         costo_max_horno = horno_max * costo_uso_horno
         costo_prom_horno = horno_prom * costo_uso_horno
-        
+
+        #Se caluculan los costos del uso del molino
+        costo_min_molino_1 = molino_min_1 * costo_uso_molino
+        costo_max_molino_1 = molino_max_1 * costo_uso_molino
+        costo_prom_molino_1 = molino_prom_1 * costo_uso_molino
+
+        costo_min_molino_2 = molino_min_2 * costo_uso_molino
+        costo_max_molino_2 = molino_max_2 * costo_uso_molino
+        costo_prom_molino_2 = molino_prom_2 * costo_uso_molino
+
+        costo_min_molino_3 = molino_min_3 * costo_uso_molino
+        costo_max_molino_3 = molino_max_3 * costo_uso_molino
+        costo_prom_molino_3 = molino_prom_3 * costo_uso_molino
+                
+
+        #Se calculan los costos del embotellado
+        costo_min_embotellado_1 = embotellado_min_1 * costo_uso_embotellado
+        costo_max_embotellado_1 = embotellado_max_1 * costo_uso_embotellado
+        costo_prom_embotellado_1 = embotellado_prom_1 * costo_uso_embotellado
+
+        costo_min_embotellado_2 = embotellado_min_2 * costo_uso_embotellado
+        costo_max_embotellado_2 = embotellado_max_2 * costo_uso_embotellado
+        costo_prom_embotellado_2 = embotellado_prom_2 * costo_uso_embotellado
+
+        costo_min_embotellado_3 = embotellado_min_3 * costo_uso_embotellado
+        costo_max_embotellado_3 = embotellado_max_3 * costo_uso_embotellado
+        costo_prom_embotellado_3 = embotellado_prom_3 * costo_uso_embotellado
+
         #Creación del diccionario que contendrá los valores para la generación de un pdf
         diccionario = {"horno_min":horno_min,
                     "horno_max":horno_max,
@@ -145,7 +166,7 @@ class funciones_produccion(Abastecimiento):
                     "molino_prom_1":molino_prom_1,
                     "cost_min_molino_1":costo_min_molino_1,
                     "costo_max_molino_1":costo_max_molino_1,
-                    "costo_prom_molino_1":cost_prom_molino_1,
+                    "costo_prom_molino_1":costo_prom_molino_1,
                     "pago_min_molinos_1":nomina_min_molino_1,
                     "pago_max_molinos_1":nomina_max_molino_1,
                     "pago_prom_molinos_1":nomina_prom_molino_1,
@@ -155,7 +176,7 @@ class funciones_produccion(Abastecimiento):
                     "molino_prom_2":molino_prom_2,
                     "cost_min_molino_2":costo_min_molino_2,
                     "costo_max_molino_2":costo_max_molino_2,
-                    "costo_prom_molino_2":cost_prom_molino_2,
+                    "costo_prom_molino_2":costo_prom_molino_2,
                     "pago_min_molinos_2":nomina_min_molino_2,
                     "pago_max_molinos_2":nomina_max_molino_2,
                     "pago_prom_molinos_2":nomina_prom_molino_2,
@@ -166,7 +187,7 @@ class funciones_produccion(Abastecimiento):
                     "molino_prom_3":molino_prom_3,
                     "cost_min_molino_3":costo_min_molino_3,
                     "costo_max_molino_3":costo_max_molino_3,
-                    "costo_prom_molino_3":cost_prom_molino_3,
+                    "costo_prom_molino_3":costo_prom_molino_3,
                     "pago_min_molinos_3":nomina_min_molino_3,
                     "pago_max_molinos_3":nomina_max_molino_3,
                     "pago_prom_molinos_3":nomina_prom_molino_3,
@@ -188,7 +209,7 @@ class funciones_produccion(Abastecimiento):
                     "alm_prom_1":embotellado_prom_1,
                     "cost_min_alm_1":costo_min_embotellado_1,
                     "costo_max_alm_1":costo_max_embotellado_1,
-                    "costo_prom_alm_1":cost_prom_embotellado_1,
+                    "costo_prom_alm_1":costo_prom_embotellado_1,
                     "pago_min_alm_1":nomina_min_envasado_1,
                     "pago_max_alm_1":nomina_max_envasado_1,
                     "pago_prom_alm_1":nomina_prom_envasado_1,
@@ -198,7 +219,7 @@ class funciones_produccion(Abastecimiento):
                     "alm_prom_2":embotellado_prom_2,
                     "cost_min_alm_2":costo_min_embotellado_2,
                     "costo_max_alm_2":costo_max_embotellado_2,
-                    "costo_prom_alm_2":cost_prom_embotellado_2,
+                    "costo_prom_alm_2":costo_prom_embotellado_2,
                     "pago_min_alm_2":nomina_min_envasado_2,
                     "pago_max_alm_2":nomina_max_envasado_2,
                     "pago_prom_alm_2":nomina_prom_envasado_2,
@@ -209,7 +230,7 @@ class funciones_produccion(Abastecimiento):
                     "alm_prom_3":embotellado_prom_3,
                     "cost_min_alm_3":costo_min_embotellado_3,
                     "costo_max_alm_3":costo_max_embotellado_3,
-                    "costo_prom_alm_3":cost_prom_embotellado_3,
+                    "costo_prom_alm_3":costo_prom_embotellado_3,
                     "pago_min_alm_3":nomina_min_envasado_3,
                     "pago_max_alm_3":nomina_max_envasado_3,
                     "pago_prom_alm_3":nomina_prom_envasado_3,
