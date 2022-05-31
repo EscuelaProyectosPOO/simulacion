@@ -93,7 +93,7 @@ class funciones_abastecimiento(Abastecimiento):
         diccionario = {"pina_min": pina_min,
                        "pina_max": pina_max,
                        "pina_prom": pina_prom,
-                       "costo_min_pina": pina_costo_min,
+                       "cost_min_pina": pina_costo_min,
                        "costo_max_pina": pina_costo_max,
                        "costo_prom_pina": pina_costo_prom,
                        "bv_min": bv_min,

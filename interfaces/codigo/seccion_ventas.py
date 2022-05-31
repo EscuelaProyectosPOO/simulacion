@@ -21,9 +21,9 @@ class funciones_ventas(Ventas):
 
     def venta_botellas(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
         
-        ganancias_totales, ganancias_promedio, nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida  = self.proceso_alcohol(matriz,numero_filas,numero_columnas,numero_iteraciones)
+        resultados  = self.proceso_alcohol(matriz,numero_filas,numero_columnas,numero_iteraciones)
 
-        return ganancias_totales, ganancias_promedio, nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida
+        return resultados
 
     def iniciar_hilos(self, lista_llegada, lista_estancia, lista_ventas, numero_iteraciones):
         #Valores iniciales para los parametros de los hilos
@@ -41,9 +41,17 @@ class funciones_ventas(Ventas):
 
         #Inicializar los hilos
         hora_prom_cliente, hora_max_cliente, hora_min_cliente  = self.llegada_clientes(matriz_llegada, numero_filas_llegada, numero_columnas_llegada, numero_iteraciones)
-        est_min_cliente, est_max_cliente, est_prom_cliente = self.estancia_clientes(matriz_estancia, numero_filas_estancia, numero_columnas_estancia, numero_iteraciones)
-        ganancias_totales, ganancias_promedio, nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida, ganancias_minimas, ganancias_maximas  = self.venta_botellas(matriz_ventas, numero_filas_ventas, numero_columnas_ventas, numero_iteraciones)      
+        est_prom_cliente, est_max_cliente, est_min_cliente = self.estancia_clientes(matriz_estancia, numero_filas_estancia, numero_columnas_estancia, numero_iteraciones)
+        resultados = self.venta_botellas(matriz_ventas, numero_filas_ventas, numero_columnas_ventas, numero_iteraciones)      
 
+        ganancias_totales = resultados[0]
+        ganancias_promedio =  resultados[1]
+        nombre_mas_vendida = resultados[2]
+        mas_vendida = resultados[3]
+        nombre_menos_vendida = resultados[4]
+        menos_vendida = resultados[5]
+        ganancias_minimas = resultados[6]
+        ganancias_maximas = resultados[7]    
         #Crear el diccionario que contendrá todos los valores para la template
         diccionario = {"hora_min_ciente":hora_min_cliente,
                         "hora_max_ciente":hora_max_cliente,
