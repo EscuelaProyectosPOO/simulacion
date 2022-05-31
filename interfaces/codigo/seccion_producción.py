@@ -7,25 +7,42 @@ from interfaces.codigo.Abastecimiento import Abastecimiento
 from interfaces.codigo import creaPDF
 class funciones_produccion(Abastecimiento):
     # Hilo que se encarga de la coccion en el honro
-    def metodo_hornos(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
-        tiempo_promedio_horno, tiempo_maximo_horno, tiempo_minimo_horno = self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+    def metodo_hornos(self, lista_datos_hornos, numero_iteraciones):
+        matriz_tiempo = lista_datos_hornos[0][0]
+        numero_filas_tiempo = lista_datos_hornos[1][0]
+        numero_columnas_tiempo = lista_datos_hornos[2][0]
+
+        matriz_costo = lista_datos_hornos[0][1]
+        numero_filas_costo = lista_datos_hornos[1][1]
+        numero_columnas_costo = lista_datos_hornos[2][1]
+        
+        #Obtencion de los registros de los tiempos de operación
+        tiempo_promedio_horno, tiempo_maximo_horno, tiempo_minimo_horno = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
 
         #Obtencion de los registros de los costos de operación
-        costo_promedio_horno, costo_maximo_horno, costo_minimo_horno = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+        costo_promedio_horno, costo_maximo_horno, costo_minimo_horno = self.proceso_costo(matriz_costo, numero_filas_costo,numero_columnas_costo,numero_iteraciones)
 
         return tiempo_promedio_horno, tiempo_maximo_horno, tiempo_minimo_horno, costo_promedio_horno, costo_maximo_horno, costo_minimo_horno
 
     # Hilo que se encarga de controlar la molida 
-    def metodo_molinos(self,matriz, numero_filas,numero_columnas,numero_iteraciones):
-        tiempo_promedio_molino, tiempo_maximo_molino, tiempo_minimo_molino = self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+    def metodo_molinos(self,lista_datos_molinos,numero_iteraciones):
+        matriz_tiempo = lista_datos_molinos[0][0]
+        numero_filas_tiempo = lista_datos_molinos[1][0]
+        numero_columnas_tiempo = lista_datos_molinos[2][0]
+
+        matriz_costo = lista_datos_molinos[0][1]
+        numero_filas_costo = lista_datos_molinos[1][1]
+        numero_columnas_costo = lista_datos_molinos[2][1]
+        
+        tiempo_promedio_molino, tiempo_maximo_molino, tiempo_minimo_molino = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
 
         #Obtencion de los registros de nominas
-        costo_promedio_molino, costo_maximo_molino, costo_minimo_molino  = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+        costo_promedio_molino, costo_maximo_molino, costo_minimo_molino  = self.proceso_costo(matriz_costo, numero_filas_costo,numero_columnas_costo,numero_iteraciones)
 
         return tiempo_promedio_molino, tiempo_maximo_molino, tiempo_minimo_molino, costo_promedio_molino, costo_maximo_molino, costo_minimo_molino
     
     # Hilo que se encarga de controlar la fermentacion
-    def metodo_fermentacion(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
+    def metodo_fermentacion(self,matriz, numero_filas,numero_columnas,numero_iteraciones):
         tiempo_promedio_fermentacion, tiempo_maximo_fermentacion, tiempo_minimo_fermentacion = self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
 
         return tiempo_promedio_fermentacion, tiempo_maximo_fermentacion, tiempo_minimo_fermentacion
@@ -43,34 +60,26 @@ class funciones_produccion(Abastecimiento):
         return tiempo_promedio_reposo, tiempo_maximo_reposo, tiempo_minimo_reposo
 
     # Hilo que se encarga de controlar el embotellamiento
-    def metodo_embotellado(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
-        tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado = self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+    def metodo_embotellado(self, lista_embotellado,numero_iteraciones):
+        matriz_tiempo = lista_embotellado[0][0]
+        numero_filas_tiempo = lista_embotellado[1][0]
+        numero_columnas_tiempo = lista_embotellado[2][0]
+
+        matriz_costo = lista_embotellado[0][1]
+        numero_filas_costo = lista_embotellado[1][1]
+        numero_columnas_costo = lista_embotellado[2][1]
+
+
+        tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
 
         #Obtencion de los registros de los costos de operación
-        costo_promedio_embotellado, costo_maximo_embotellado, costo_minimo_embotellado = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+        costo_promedio_embotellado, costo_maximo_embotellado, costo_minimo_embotellado = self.proceso_costo(matriz_costo, numero_filas_costo,numero_columnas_costo,numero_iteraciones)
 
         return tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado, costo_promedio_embotellado, costo_maximo_embotellado, costo_minimo_embotellado
 
     #Funcion que inicializa los hilos
     def iniciar_hilos(self, lista_horno, lista_molino_1, lista_molino_2, lista_molino_3, lista_fermentacion, lista_graduacion, lista_reposo, lista_embotellado_1, lista_embotellado_2, lista_embotellado_3, numero_iteraciones, nomina_empleado):
         #Se hará la asignación de los parametros para los hilos
-        #Datos para la asignación de los hornos
-        matriz_horno = lista_horno[0]
-        numero_filas_horno = lista_horno[1]
-        numero_columnas_horno = lista_horno[2]
-
-        #Datos para la asignación de los molinos
-        matriz_molino_1 = lista_molino_1[0]
-        numero_filas_molino_1 = lista_molino_1[1]
-        numero_columnas_molino_1 = lista_molino_1[2]
-
-        matriz_molino_2 = lista_molino_2[0]
-        numero_filas_molino_2 = lista_molino_2[1]
-        numero_columnas_molino_2 = lista_molino_2[2]
-
-        matriz_molino_3 = lista_molino_3[0]
-        numero_filas_molino_3 = lista_molino_3[1]
-        numero_columnas_molino_3 = lista_molino_3[2]
 
         #Datos para la asignación de la fermentacion
         matriz_fermentacion = lista_fermentacion[0]
@@ -88,27 +97,15 @@ class funciones_produccion(Abastecimiento):
         numero_columnas_reposo = lista_reposo[2]
         numero_iteraciones_reposo = numero_iteraciones
 
-        #Datos para la asignación del embotellado
-        matriz_embotellado_1 = lista_embotellado_1[0]
-        numero_filas_embotellado_1 = lista_embotellado_1[1]
-        numero_columnas_embotellado_1 = lista_embotellado_1[2]
-
-        matriz_embotellado_2 = lista_embotellado_2[0]
-        numero_filas_embotellado_2 = lista_embotellado_2[1]
-        numero_columnas_embotellado_2 = lista_embotellado_2[2]
-
-        matriz_embotellado_3 = lista_embotellado_3[0]
-        numero_filas_embotellado_3 = lista_embotellado_3[1]
-        numero_columnas_embotellado_3 = lista_embotellado_3[2]
 
         #Inicializacion de todos los procesos de la simulacion y retorno de los resultados
-        horno_prom, horno_max, horno_min, cost_prom_horno, costo_max_horno, costo_min_horno  = self.metodo_hornos(matriz_horno, numero_filas_horno, numero_columnas_horno, numero_iteraciones)
+        horno_prom, horno_max, horno_min, cost_prom_horno, costo_max_horno, costo_min_horno  = self.metodo_hornos(lista_horno, numero_iteraciones)
         
-        molino_prom_1, molino_max_1, molino_min_1, cost_prom_molino_1, costo_max_molino_1, costo_min_molino_1 = self.metodo_molinos(matriz_molino_1, numero_filas_molino_1, numero_columnas_molino_1, numero_iteraciones)
+        molino_prom_1, molino_max_1, molino_min_1, cost_prom_molino_1, costo_max_molino_1, costo_min_molino_1 = self.metodo_molinos(lista_molino_1, numero_iteraciones)
         
-        molino_prom_2, molino_max_2, molino_min_2, cost_prom_molino_2, costo_max_molino_2, costo_min_molino_2 = self.metodo_molinos(matriz_molino_2, numero_filas_molino_2, numero_columnas_molino_2, numero_iteraciones)
+        molino_prom_2, molino_max_2, molino_min_2, cost_prom_molino_2, costo_max_molino_2, costo_min_molino_2 = self.metodo_molinos(lista_molino_2, numero_iteraciones)
         
-        molino_prom_3, molino_max_3, molino_min_3, cost_prom_molino_3, costo_max_molino_3, costo_min_molino_3 = self.metodo_molinos(matriz_molino_3, numero_filas_molino_3, numero_columnas_molino_3, numero_iteraciones)
+        molino_prom_3, molino_max_3, molino_min_3, cost_prom_molino_3, costo_max_molino_3, costo_min_molino_3 = self.metodo_molinos(lista_molino_3, numero_iteraciones)
 
         fermentacion_prom, fermentacion_max, fermentacion_min = self.metodo_fermentacion(matriz_fermentacion, numero_filas_fermentacion, numero_columnas_fermentacion, numero_iteraciones)
         
@@ -116,11 +113,11 @@ class funciones_produccion(Abastecimiento):
         
         repo_prom, repo_max, repo_min = self.metodo_reposo(matriz_reposo, numero_filas_reposo, numero_columnas_reposo, numero_iteraciones_reposo)
 
-        embotellado_prom_1, embotellado_max_1, embotellado_min_1, cost_prom_embotellado_1, costo_max_embotellado_1, costo_min_embotellado_1= self.metodo_embotellado(matriz_embotellado_1, numero_filas_embotellado_1, numero_columnas_embotellado_1, numero_iteraciones)
+        embotellado_prom_1, embotellado_max_1, embotellado_min_1, cost_prom_embotellado_1, costo_max_embotellado_1, costo_min_embotellado_1= self.metodo_embotellado(lista_embotellado_1, numero_iteraciones)
         
-        embotellado_prom_2, embotellado_max_2, embotellado_min_2, cost_prom_embotellado_2, costo_max_embotellado_2, costo_min_embotellado_2= self.metodo_embotellado(matriz_embotellado_2, numero_filas_embotellado_2, numero_columnas_embotellado_2, numero_iteraciones)
+        embotellado_prom_2, embotellado_max_2, embotellado_min_2, cost_prom_embotellado_2, costo_max_embotellado_2, costo_min_embotellado_2= self.metodo_embotellado(lista_embotellado_2, numero_iteraciones)
         
-        embotellado_prom_3, embotellado_max_3, embotellado_min_3, cost_prom_embotellado_3, costo_max_embotellado_3, costo_min_embotellado_3= self.metodo_embotellado(matriz_embotellado_3, numero_filas_embotellado_3, numero_columnas_embotellado_3, numero_iteraciones)
+        embotellado_prom_3, embotellado_max_3, embotellado_min_3, cost_prom_embotellado_3, costo_max_embotellado_3, costo_min_embotellado_3= self.metodo_embotellado(lista_embotellado_3, numero_iteraciones)
 
         #Calculamos las nominas de los procesos
         nomina_prom_molino_1 = molino_prom_1 * nomina_empleado * 3
@@ -267,3 +264,8 @@ if __name__ == "__main__":
     nomina = 100
 
     funciones_produccion().iniciar_hilos(lista_horno,lista_molino_1,lista_molino_2,lista_molino_3,lista_fermentacion,lista_graduacion,lista_reposo,lista_embotellado_1,lista_embotellado_2,lista_embotellado_3,numero_iteraciones, nomina)
+
+    '''lista_datos_x = [   [Matriz tiempo],        [Matriz costo],
+                        Numero filas tiempo,    Numero filas costo
+                        Numero columnas tiempo, Numero columnas costo
+                    ]  '''                  
