@@ -54,19 +54,12 @@ class funciones_produccion(Abastecimiento):
     # Hilo que se encarga de controlar el embotellamiento
     def metodo_embotellado(self, lista_embotellado,numero_iteraciones):
         matriz_tiempo = lista_embotellado[0]
-        matriz_costo = lista_embotellado[1]
-        numero_filas_tiempo = lista_embotellado[2]
-        numero_filas_costo = lista_embotellado[3]
-        numero_columnas_tiempo = lista_embotellado[4]
-        numero_columnas_costo = lista_embotellado[5]
-
+        numero_filas_tiempo = lista_embotellado[1]
+        numero_columnas_tiempo = lista_embotellado[2]
 
         tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
 
-        #Obtencion de los registros de los costos de operación
-        costo_promedio_embotellado, costo_maximo_embotellado, costo_minimo_embotellado = self.proceso_costo(matriz_costo, numero_filas_costo,numero_columnas_costo,numero_iteraciones)
-
-        return tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado, costo_promedio_embotellado, costo_maximo_embotellado, costo_minimo_embotellado
+        return tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado
 
     #Funcion que inicializa los hilos
     def iniciar_hilos(self, lista_horno, lista_molino_1, lista_molino_2, lista_molino_3, lista_fermentacion, lista_graduacion, lista_reposo, lista_embotellado_1, lista_embotellado_2, lista_embotellado_3, numero_iteraciones, nomina_empleado, costo_uso_horno):
