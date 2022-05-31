@@ -1,3 +1,4 @@
+from pathlib import Path
 import numpy as np
 import os
 import sys
@@ -238,7 +239,27 @@ class Ventana_datos_ventas(QDialog):
             lista1 = [matriz1,numeroFilas1,3]
             lista2 = [matriz2,numeroFilas2,3]
             lista3 = [matriz3,numeroFilas3,4]
-            self.funcionesVentas.iniciar_hilos(lista1,lista2, lista3, int(iteraciones))
+            
+
+            try:
+            
+                nombre_archivo = self.funcionesVentas.iniciar_hilos(lista1,lista2, lista3, int(iteraciones))
+
+                ruta = str(os.path.join(Path.home(), "Downloads"))  + "/" + nombre_archivo
+
+                if(os.path.exists(ruta)):
+                    QMessageBox.information(self, "Felicidades", "El reporte se ha generados exitosamente", QMessageBox.Discard)
+
+                else:
+                    QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+
+            except Exception as e:
+
+                QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+        else:
+
+            QMessageBox().critical(self, "Error", "Debe colocar un numero de semanas", QMessageBox.Discard)
+
 
 
     def closeEvent(self, event):

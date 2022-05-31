@@ -51,7 +51,7 @@ class Ventana_datos_personal(QDialog):
      
 
         self.tabla.setColumnCount(2)
-        self.tabla.setHorizontalHeaderLabels ([f'Tiempo de {self.numero_trabajadores} trabajadores' , 'Probabilidad'])
+        self.tabla.setHorizontalHeaderLabels ([f'Tiempo de {self.numero_trabajadores} trabajadores en horas' , 'Probabilidad'])
 
         header1 = self.tabla.horizontalHeader()
         header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
