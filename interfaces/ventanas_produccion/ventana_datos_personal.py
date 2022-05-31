@@ -39,6 +39,7 @@ class Ventana_datos_personal(QDialog):
         self.opciones()
 
         self.titulo.setText(nombre_opcion + f" para {self.numero_trabajadores} numero de trabajadores")
+        self.titulo.adjustSize()
         
        #conectar botones
         self.btnmas.clicked.connect(lambda :self.agregar_filas(self.tabla))

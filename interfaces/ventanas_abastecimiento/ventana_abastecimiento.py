@@ -6,6 +6,7 @@ from PyQt5 import uic
 from PyQt5 import QtWidgets
 import ctypes #getSystemMetr
 from interfaces.codigo.Manejo_archivos import Manejo_archivos
+from interfaces.codigo.seccion_abastecimiento import funciones_abastecimiento
 import numpy as np
 
 class Ventana_datos_abastecimiento(QDialog):
@@ -31,6 +32,7 @@ class Ventana_datos_abastecimiento(QDialog):
         self.move(left,top)
         # instancias de clases necesarias
         self.manejo_archivos = Manejo_archivos()
+        self.funcionesAbastecimiento = funciones_abastecimiento()
 
         self.opciones()
 
@@ -44,6 +46,7 @@ class Ventana_datos_abastecimiento(QDialog):
         self.Guardar.clicked.connect(self.guardar_datos)
         self.btndatos.clicked.connect(self.Guardar_file)
         self.btncargar.clicked.connect(self.open_file)
+        self.btniniciar.clicked.connect(self.iniciar_simulacion)
 
     def opciones(self):
         # en base a la opcion escogida se desata una accion
@@ -273,6 +276,38 @@ class Ventana_datos_abastecimiento(QDialog):
     def has_numbers(self,inputString):
         # te devuelve si existe algun numero en el string
         return any(char.isdigit() for char in inputString)
+
+    def iniciar_simulacion(self):
+        # inicia los hilos con lps datos de las tablas
+
+        iteraciones = self.iteraciones.text()
+
+        if(iteraciones != "" and self.has_numbers(iteraciones)):
+
+            matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de llegada piñas en días',3)
+            matriz2, numeroFilas2 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Costo de envio piñas',3)
+
+            matriz3, numeroFilas3 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de llegada botellas de vidrio en días',3)
+            matriz4, numeroFilas4 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Costo de envio de botellas de vidrio en días',3)
+
+            matriz5, numeroFilas5 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de llegada botellas de plastico en días',3)
+            matriz6, numeroFilas6 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Costo de envio de botellas de plastico en días',3)
+
+            matriz7, numeroFilas7 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de llegada tapones y corchos en días',3)
+            matriz8, numeroFilas8 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Costo de envio de tapones y corchos en días',3)
+                     
+            lista1 = [matriz1,numeroFilas1,3]
+            lista2 = [matriz2,numeroFilas2,3]
+            lista3 = [matriz3,numeroFilas3,3]
+            lista4 = [matriz4,numeroFilas4,3]
+            lista5 = [matriz5,numeroFilas5,3]
+            lista6 = [matriz6,numeroFilas6,3]
+            lista7 = [matriz7,numeroFilas7,3]
+            lista8 = [matriz8,numeroFilas8,3]
+            
+            self.funcionesAbastecimiento.iniciar_hilos()
+
+
         
 
 if(__name__ == "__main__"):

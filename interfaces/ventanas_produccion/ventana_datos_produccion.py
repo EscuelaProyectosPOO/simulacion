@@ -93,8 +93,6 @@ class Ventana_datos_produccion(QDialog):
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
 
-            self.colocar_datos_tablas()
-        
 
 
    
@@ -246,7 +244,7 @@ class Ventana_datos_produccion(QDialog):
 
     def llamar_tablas(self):
         # llama a las tablas de personal para que se le inserten datos
-        numero_tablas = int(self.numeroPersonal.text())
+        numero_tablas = 3
         trabajadores  = 3
         nombre_opcion = self.tablas_opcion.currentText()
 
@@ -261,7 +259,42 @@ class Ventana_datos_produccion(QDialog):
 
                 trabajadores += 1
 
+    def iniciar_simulacion(self):
+        # inicia los hilos con lps datos de las tablas
+
+        iteraciones = self.iteraciones.text()
+
+        if(iteraciones != "" and self.has_numbers(iteraciones)):
+
+            matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de cocción en horas',3)
+
+            matriz_trabajadoresMolino_3, numeroFilas_trabajadoresMolino3 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Tiempo de molino Tiempo de 3 trabajadores",3)
+            matriz_trabajadoresMolino_4, numeroFilas_trabajadoresMolino4 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Tiempo de molino Tiempo de 4 trabajadores",3)
+            matriz_trabajadoresMolino_5, numeroFilas_trabajadoresMolino5 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Tiempo de molino Tiempo de 5 trabajadores",3)
+
+            matriz3, numeroFilas3 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de fermentación en días',3)
+            matriz4, numeroFilas4 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de graduación del mezcal en minutos',3)
+
+            matriz_trabajadoresEmbotellado_3, numeroFilas_trabajadoresEmbotellado3 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Embotellado y almacenaje Tiempo de 3 trabajadores",3)
+            matriz_trabajadoresEmbotellado_4, numeroFilas_trabajadoresEmbotellado4 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Embotellado y almacenaje Tiempo de 4 trabajadores",3)
+            matriz_trabajadoresEmbotellado_5, numeroFilas_trabajadoresEmbotellado5 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Embotellado y almacenaje Tiempo de 5 trabajadores",3)
+
         
+            lista_coccion = [matriz1,numeroFilas1,3]
+
+            trabajadoresMolino_3 = [matriz_trabajadoresMolino_3,numeroFilas_trabajadoresMolino3,3]
+            trabajadoresMolino_4 = [matriz_trabajadoresMolino_4,numeroFilas_trabajadoresMolino4,3]
+            trabajadoresMolino_5 = [matriz_trabajadoresMolino_5,numeroFilas_trabajadoresMolino5,3]
+
+            lista_fermentacion = [matriz3,numeroFilas3,3]
+            lista_graduacion = [matriz4,numeroFilas4,3]
+
+            trabajadoresEmbotellado_3 = [matriz_trabajadoresEmbotellado_3,numeroFilas_trabajadoresEmbotellado3,3]
+            trabajadoresEmbotellado_4 = [matriz_trabajadoresEmbotellado_4,numeroFilas_trabajadoresEmbotellado4,3]
+            trabajadoresEmbotellado_5 = [matriz_trabajadoresEmbotellado_5,numeroFilas_trabajadoresEmbotellado5,3]
+           
+            
+            self.funcionesAbastecimiento.iniciar_hilos()
 
         
 

@@ -1,7 +1,7 @@
 import numpy as np
 import random
 from interfaces.codigo.Abastecimiento  import Abastecimiento
-
+#from Abastecimiento import Abastecimiento
 class Ventas(Abastecimiento):
 
     # esta clase sirve para contabilizar y saber el tiempo de llegada del cliente, su estancia, y el tipo de alcohol que se llevara
@@ -19,7 +19,7 @@ class Ventas(Abastecimiento):
 
             numero_aleatorio = random.random()
 
-            valor, numero_fila = self.sacar_valor(matriz,numero_fila,numero_columnas,numero_aleatorio)
+            valor, numero_fila = self.sacar_valor(matriz,numero_filas,numero_columnas,numero_aleatorio)
 
             matriz_contador[numero_fila][2] += 1
             matriz_contador[numero_fila][3] += matriz[numero_fila][1]
@@ -58,18 +58,18 @@ class Ventas(Abastecimiento):
 
 
 if(__name__ == "__main__"):
+    matriz = [ [0]*4 for _ in range(3)]
+    #matriz = np.zeros((3,4))
 
-    matriz = np.zeros((3,4))
-
-    matriz[0][0] = 2.5
+    matriz[0][0] = "nombr sjfnjs"
     matriz[0][1] = 6000
     matriz[0][2] = 0.3
 
-    matriz[1][0] = 5
+    matriz[1][0] = "wejwbekdvj"
     matriz[1][1] = 70000
     matriz[1][2] = 0.5
 
-    matriz[2][0] = 1.2
+    matriz[2][0] = "wehuiwenk"
     matriz[2][1] = 69000 
     matriz[2][2] = 0.2
 
@@ -78,7 +78,7 @@ if(__name__ == "__main__"):
     #print(m.crear_matriz_botellas(matriz,3))
     #print(m.probabilidad_acumulada(matriz,3,4))
     #m.crear_matriz_botellas(matriz,3)
-    m.proceso_alcohol(matriz,3,4,10)
+    print(m.proceso_alcohol(matriz,3,4,10))
 
     
     

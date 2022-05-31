@@ -62,9 +62,9 @@ class funciones_ventas(Ventas):
         hora = datetime.now().hour
         minuto = datetime.now().minute
         segundo = datetime.now().second
-        nombre_pdf = "Reporte_produccion-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
-    
-        creaPDF.crear_pdf("\template_producción.html",diccionario,nombre_pdf)
+        nombre_pdf = "Reporte_ventas-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
+        creaPDF.crear_pdf("C:/Users/tetil/OneDrive/Documents/simulacion/templates/template_ventas.html",diccionario,nombre_pdf)
+        #creaPDF.crear_pdf("/template_producción.html",diccionario,nombre_pdf)
 
 if __name__ == "__main__":
     matriz = [[2,0.3],[5,0.5],[8,0.2]]
