@@ -42,17 +42,59 @@ class funciones_ventas(Ventas):
         #Inicializar los hilos
         hora_min_cliente, hora_max_cliente, hora_prom_cliente = self.llegada_clientes(matriz_llegada, numero_filas_llegada, numero_columnas_llegada, numero_iteraciones)
         est_min_cliente, est_max_cliente, est_prom_cliente = self.estancia_clientes(matriz_estancia, numero_filas_estancia, numero_columnas_estancia, numero_iteraciones)
-        #matriz_botellas, ganancias = self.venta_botellas(matriz_ventas, numero_filas_ventas, numero_columnas_ventas, numero_iteraciones)
+        matriz_botellas, ganancias = self.venta_botellas(matriz_ventas, numero_filas_ventas, numero_columnas_ventas, numero_iteraciones)      
+
+        for i in matriz_botellas:
+            print(i)
+        
+        lista_nombres = []
+        for i in range(len(matriz_botellas)):
+            lista_nombres.append(matriz_botellas[i][0])
+        
+        lista_precios = []
+        for i in range(len(matriz_botellas)):
+            lista_precios.append(matriz_botellas[i][1])
+        
+        lista_cantidad = []
+        for i in range(len(matriz_botellas)):
+            lista_cantidad.append(matriz_botellas[i][2])
+        
+        lista_ganancias = []
+        for i in range(len(matriz_botellas)):
+            lista_ganancias.append(matriz_botellas[i][3])
+        
+        #Encuentra el valor más grande en la lista de ganancias, su posicion y con el index obten el nombre de la lista_nombres e imprime las variables
+        max_ganancia = max(lista_ganancias)
+        pos_max_ganancia = lista_ganancias.index(max_ganancia)
+        nombre_max_ganancia = lista_nombres[pos_max_ganancia]
+        cantidad_botellas_max = lista_cantidad[pos_max_ganancia]
+        
+        #Encuentra el valor más pequeño en la lista de ganancias, su posicion y con el index obten el nombre de la lista_nombres e imprime las variables
+        min_ganancia = min(lista_ganancias)
+        pos_min_ganancia = lista_ganancias.index(min_ganancia)
+        nombre_min_ganancia = lista_nombres[pos_min_ganancia]
+        cantidad_botellas_min = lista_cantidad[pos_min_ganancia]
+
+        #Obtener las ganacias promedio
+        ganancia_promedio = sum(lista_ganancias)/len(lista_ganancias)
+
+
 
         #Crear el diccionario que contendrá todos los valores para la template
-        diccionario = {"hora_min_cliente":hora_min_cliente,
-                        "hora_max_cliente":hora_max_cliente,
+        diccionario = {"hora_min_ciente":hora_min_cliente,
+                        "hora_max_ciente":hora_max_cliente,
                         "hora_prom_cliente":hora_prom_cliente,
-                        "est_min_cliente":est_min_cliente,
-                        "est_max_cliente":est_max_cliente,
+                        "est_min_ciente":est_min_cliente,
+                        "est_max_ciente":est_max_cliente,
                         "est_prom_cliente":est_prom_cliente,
-                        #"matriz_botellas":matriz_botellas,
-                        #"ganancias":ganancias
+                        "min_bot":nombre_min_ganancia,
+                        "max_bot":nombre_max_ganancia,
+                        "min_cant_bot":cantidad_botellas_min,
+                        "max_cant_bot":cantidad_botellas_max,
+                        "gan_prom":ganancia_promedio,
+                        "gan_min":min_ganancia,
+                        "gan_max":max_ganancia,
+                        "gan_total":ganancias
     }
         
         #Crear el pdf con los valores del diccionario

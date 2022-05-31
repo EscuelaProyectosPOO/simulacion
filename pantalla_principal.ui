@@ -34,7 +34,6 @@
 *{
 font-family: Victor Mono;
 background-image: url(:/bacground/images/bg.jpg);
-border-radius: 10px;
 }
 
 QPushButton{
@@ -51,7 +50,7 @@ border-radius: 10px;
 
 QLabel#label1{
 border-radius: 10px;
-font-size: 19px;
+font-size: 22px;
 background: #80a7ca;
 }</string>
   </property>
@@ -59,8 +58,8 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnproduccion">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>50</y>
+      <x>310</x>
+      <y>310</y>
       <width>161</width>
       <height>81</height>
      </rect>
@@ -72,8 +71,8 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnventa">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>280</y>
+      <x>100</x>
+      <y>310</y>
       <width>161</width>
       <height>81</height>
      </rect>
@@ -85,22 +84,22 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnabastecimiento">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>160</y>
+      <x>520</x>
+      <y>310</y>
       <width>161</width>
       <height>81</height>
      </rect>
     </property>
     <property name="text">
-     <string>Abasteimiento</string>
+     <string>Abastecimiento</string>
     </property>
    </widget>
    <widget class="QLabel" name="label1">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>150</y>
-      <width>421</width>
+      <x>180</x>
+      <y>30</y>
+      <width>431</width>
       <height>91</height>
      </rect>
     </property>

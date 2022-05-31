@@ -52,9 +52,8 @@ class funciones_produccion(Abastecimiento):
         return tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado, costo_promedio_embotellado, costo_maximo_embotellado, costo_minimo_embotellado
 
     #Funcion que inicializa los hilos
-    def iniciar_hilos(self, lista_horno, lista_molino_1, lista_molino_2, lista_molino_3, lista_fermentacion, lista_graduacion, lista_reposo, lista_embotellado_1, lista_embotellado_2, lista_embotellado_3, numero_iteraciones):
+    def iniciar_hilos(self, lista_horno, lista_molino_1, lista_molino_2, lista_molino_3, lista_fermentacion, lista_graduacion, lista_reposo, lista_embotellado_1, lista_embotellado_2, lista_embotellado_3, numero_iteraciones, nomina_empleado):
         #Se hará la asignación de los parametros para los hilos
-
         #Datos para la asignación de los hornos
         matriz_horno = lista_horno[0]
         numero_filas_horno = lista_horno[1]
@@ -123,60 +122,116 @@ class funciones_produccion(Abastecimiento):
         
         embotellado_prom_3, embotellado_max_3, embotellado_min_3, cost_prom_embotellado_3, costo_max_embotellado_3, costo_min_embotellado_3= self.metodo_embotellado(matriz_embotellado_3, numero_filas_embotellado_3, numero_columnas_embotellado_3, numero_iteraciones)
 
+        #Calculamos las nominas de los procesos
+        nomina_prom_molino_1 = molino_prom_1 * nomina_empleado * 3
+        nomina_prom_molino_2 = molino_prom_2 * nomina_empleado * 4
+        nomina_prom_molino_3 = molino_prom_3 * nomina_empleado * 5
+
+        nomina_min_molino_1 = molino_min_1 * nomina_empleado * 3
+        nomina_min_molino_2 = molino_min_2 * nomina_empleado * 4
+        nomina_min_molino_3 = molino_min_3 * nomina_empleado * 5
+
+        nomina_max_molino_1 = molino_max_1 * nomina_empleado * 3
+        nomina_max_molino_2 = molino_max_2 * nomina_empleado * 4
+        nomina_max_molino_3 = molino_max_3 * nomina_empleado * 5
+
+        nomina_prom_envasado_1 = embotellado_prom_1 * nomina_empleado * 3
+        nomina_prom_envasado_2 = embotellado_prom_2 * nomina_empleado * 4
+        nomina_prom_envasado_3 = embotellado_prom_3 * nomina_empleado * 5
+        
+        nomina_min_envasado_1 = embotellado_min_1 * nomina_empleado * 3
+        nomina_min_envasado_2 = embotellado_min_2 * nomina_empleado * 4
+        nomina_min_envasado_3 = embotellado_min_3 * nomina_empleado * 5
+
+        nomina_max_envasado_1 = embotellado_max_1 * nomina_empleado * 3
+        nomina_max_envasado_2 = embotellado_max_2 * nomina_empleado * 4
+        nomina_max_envasado_3 = embotellado_max_3 * nomina_empleado * 5
+
         #Creación del diccionario que contendrá los valores para la generación de un pdf
         diccionario = {"horno_min":horno_min,
                     "horno_max":horno_max,
                     "horno_prom":horno_prom,
                     "cost_min_horno":costo_min_horno,
-                    "cost_max_horno":costo_max_horno,
-                    "cost_prom_horno":cost_prom_horno,
+                    "costo_max_horno":costo_max_horno,
+                    "costo_prom_horno":cost_prom_horno,
+
                     "molino_min_1":molino_min_1,
                     "molino_max_1":molino_max_1,
                     "molino_prom_1":molino_prom_1,
                     "cost_min_molino_1":costo_min_molino_1,
-                    "cost_max_molino_1":costo_max_molino_1,
-                    "cost_prom_molino_1":cost_prom_molino_1,
+                    "costo_max_molino_1":costo_max_molino_1,
+                    "costo_prom_molino_1":cost_prom_molino_1,
+                    "pago_min_molinos_1":nomina_min_molino_1,
+                    "pago_max_molinos_1":nomina_max_molino_1,
+                    "pago_prom_molinos_1":nomina_prom_molino_1,
+
                     "molino_min_2":molino_min_2,
                     "molino_max_2":molino_max_2,
                     "molino_prom_2":molino_prom_2,
                     "cost_min_molino_2":costo_min_molino_2,
-                    "cost_max_molino_2":costo_max_molino_2,
-                    "cost_prom_molino_2":cost_prom_molino_2,
+                    "costo_max_molino_2":costo_max_molino_2,
+                    "costo_prom_molino_2":cost_prom_molino_2,
+                    "pago_min_molinos_2":nomina_min_molino_2,
+                    "pago_max_molinos_2":nomina_max_molino_2,
+                    "pago_prom_molinos_2":nomina_prom_molino_2,
+
+
                     "molino_min_3":molino_min_3,
                     "molino_max_3":molino_max_3,
                     "molino_prom_3":molino_prom_3,
                     "cost_min_molino_3":costo_min_molino_3,
-                    "cost_max_molino_3":costo_max_molino_3,
-                    "cost_prom_molino_3":cost_prom_molino_3,
-                    "fermentacion_min":fermentacion_min,
-                    "fermentacion_max":fermentacion_max,
-                    "fermentacion_prom":fermentacion_prom,
-                    "graduacion_min":graduacion_min,
-                    "graduacion_max":graduacion_max,
-                    "graduacion_prom":graduacion_prom,
-                    "repo_min":repo_min,
-                    "repo_max":repo_max,
-                    "repo_prom":repo_prom,
-                    "embotellado_min_1":embotellado_min_1,
-                    "embotellado_max_1":embotellado_max_1,
-                    "embotellado_prom_1":embotellado_prom_1,
-                    "cost_min_embotellado_1":costo_min_embotellado_1,
-                    "cost_max_embotellado_1":costo_max_embotellado_1,
-                    "cost_prom_embotellado_1":cost_prom_embotellado_1,
-                    "embotellado_min_2":embotellado_min_2,
-                    "embotellado_max_2":embotellado_max_2,
-                    "embotellado_prom_2":embotellado_prom_2,
-                    "cost_min_embotellado_2":costo_min_embotellado_2,
-                    "cost_max_embotellado_2":costo_max_embotellado_2,
-                    "cost_prom_embotellado_2":cost_prom_embotellado_2,
-                    "embotellado_min_3":embotellado_min_3,
-                    "embotellado_max_3":embotellado_max_3,
-                    "embotellado_prom_3":embotellado_prom_3,
-                    "cost_min_embotellado_3":costo_min_embotellado_3,
-                    "cost_max_embotellado_3":costo_max_embotellado_3,
-                    "cost_prom_embotellado_3":cost_prom_embotellado_3
+                    "costo_max_molino_3":costo_max_molino_3,
+                    "costo_prom_molino_3":cost_prom_molino_3,
+                    "pago_min_molinos_3":nomina_min_molino_3,
+                    "pago_max_molinos_3":nomina_max_molino_3,
+                    "pago_prom_molinos_3":nomina_prom_molino_3,
+                    
+                    "ferm_min":fermentacion_min,
+                    "ferm_max":fermentacion_max,
+                    "ferm_prom":fermentacion_prom,
+
+                    "grad_min":graduacion_min,
+                    "grad_max":graduacion_max,
+                    "grad_prom":graduacion_prom,
+
+                    "rep_min":repo_min,
+                    "rep_max":repo_max,
+                    "rep_prom":repo_prom,
+
+                    "alm_min_1":embotellado_min_1,
+                    "alm_max_1":embotellado_max_1,
+                    "alm_prom_1":embotellado_prom_1,
+                    "cost_min_alm_1":costo_min_embotellado_1,
+                    "costo_max_alm_1":costo_max_embotellado_1,
+                    "costo_prom_alm_1":cost_prom_embotellado_1,
+                    "pago_min_alm_1":nomina_min_envasado_1,
+                    "pago_max_alm_1":nomina_max_envasado_1,
+                    "pago_prom_alm_1":nomina_prom_envasado_1,
+
+                    "alm_min_2":embotellado_min_2,
+                    "alm_max_2":embotellado_max_2,
+                    "alm_prom_2":embotellado_prom_2,
+                    "cost_min_alm_2":costo_min_embotellado_2,
+                    "costo_max_alm_2":costo_max_embotellado_2,
+                    "costo_prom_alm_2":cost_prom_embotellado_2,
+                    "pago_min_alm_2":nomina_min_envasado_2,
+                    "pago_max_alm_2":nomina_max_envasado_2,
+                    "pago_prom_alm_2":nomina_prom_envasado_2,
+
+
+                    "alm_min_3":embotellado_min_3,
+                    "alm_max_3":embotellado_max_3,
+                    "alm_prom_3":embotellado_prom_3,
+                    "cost_min_alm_3":costo_min_embotellado_3,
+                    "costo_max_alm_3":costo_max_embotellado_3,
+                    "costo_prom_alm_3":cost_prom_embotellado_3,
+                    "pago_min_alm_3":nomina_min_envasado_3,
+                    "pago_max_alm_3":nomina_max_envasado_3,
+                    "pago_prom_alm_3":nomina_prom_envasado_3,
                     }
         
+        print("Despues del diccionario")
+
         #Creación del pdf
         anio = datetime.now().year
         mes = datetime.now().month
@@ -185,8 +240,13 @@ class funciones_produccion(Abastecimiento):
         minuto = datetime.now().minute
         segundo = datetime.now().second
         nombre_pdf = "Reporte_produccion-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
-    
-        creaPDF.crear_pdf("template_producción.html",diccionario,nombre_pdf)
+
+        print(nombre_pdf)
+
+        print("Antes del pdf")
+
+        creaPDF.crear_pdf("C:/Users/ALEXG/Documents/Ingeniería en Sistemas Computacionales/Semestre 4/Simulacion/Proyecto simulacion/simulacion/templates/template_produccion.html",diccionario,nombre_pdf)
+        
 
 
 if __name__ == "__main__":
@@ -204,5 +264,6 @@ if __name__ == "__main__":
     lista_embotellado_2 = [matriz,numero_filas,numero_columnas]
     lista_embotellado_3 = [matriz,numero_filas,numero_columnas]
     numero_iteraciones = 10
+    nomina = 100
 
-    funciones_produccion().iniciar_hilos(lista_horno,lista_molino_1,lista_molino_2,lista_molino_3,lista_fermentacion,lista_graduacion,lista_reposo,lista_embotellado_1,lista_embotellado_2,lista_embotellado_3,numero_iteraciones)
+    funciones_produccion().iniciar_hilos(lista_horno,lista_molino_1,lista_molino_2,lista_molino_3,lista_fermentacion,lista_graduacion,lista_reposo,lista_embotellado_1,lista_embotellado_2,lista_embotellado_3,numero_iteraciones, nomina)
