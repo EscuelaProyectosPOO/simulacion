@@ -8,13 +8,10 @@ from interfaces.codigo import creaPDF
 class funciones_produccion(Abastecimiento):
     # Hilo que se encarga de la coccion en el honro
     def metodo_hornos(self, lista_datos_hornos, numero_iteraciones):
-        matriz_tiempo = lista_datos_hornos[0][0]
-        numero_filas_tiempo = lista_datos_hornos[1][0]
-        numero_columnas_tiempo = lista_datos_hornos[2][0]
-
-        matriz_costo = lista_datos_hornos[0][1]
-        numero_filas_costo = lista_datos_hornos[1][1]
-        numero_columnas_costo = lista_datos_hornos[2][1]
+        matriz_tiempo = lista_datos_hornos[0]
+        matriz_costo = lista_datos_hornos[1]
+        numero_filas_tiempo = lista_datos_hornos[2]
+        numero_columnas_tiempo = lista_datos_hornos[3]
         
         #Obtencion de los registros de los tiempos de operación
         tiempo_promedio_horno, tiempo_maximo_horno, tiempo_minimo_horno = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
@@ -26,13 +23,12 @@ class funciones_produccion(Abastecimiento):
 
     # Hilo que se encarga de controlar la molida 
     def metodo_molinos(self,lista_datos_molinos,numero_iteraciones):
-        matriz_tiempo = lista_datos_molinos[0][0]
-        numero_filas_tiempo = lista_datos_molinos[1][0]
-        numero_columnas_tiempo = lista_datos_molinos[2][0]
-
-        matriz_costo = lista_datos_molinos[0][1]
-        numero_filas_costo = lista_datos_molinos[1][1]
-        numero_columnas_costo = lista_datos_molinos[2][1]
+        matriz_tiempo = lista_datos_molinos[0]
+        matriz_costo = lista_datos_molinos[1]
+        numero_filas_tiempo = lista_datos_molinos[2]
+        numero_filas_costo = lista_datos_molinos[3]
+        numero_columnas_tiempo = lista_datos_molinos[4]
+        numero_columnas_costo = lista_datos_molinos[5]
         
         tiempo_promedio_molino, tiempo_maximo_molino, tiempo_minimo_molino = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
 
@@ -61,13 +57,12 @@ class funciones_produccion(Abastecimiento):
 
     # Hilo que se encarga de controlar el embotellamiento
     def metodo_embotellado(self, lista_embotellado,numero_iteraciones):
-        matriz_tiempo = lista_embotellado[0][0]
-        numero_filas_tiempo = lista_embotellado[1][0]
-        numero_columnas_tiempo = lista_embotellado[2][0]
-
-        matriz_costo = lista_embotellado[0][1]
-        numero_filas_costo = lista_embotellado[1][1]
-        numero_columnas_costo = lista_embotellado[2][1]
+        matriz_tiempo = lista_embotellado[0]
+        matriz_costo = lista_embotellado[1]
+        numero_filas_tiempo = lista_embotellado[2]
+        numero_filas_costo = lista_embotellado[3]
+        numero_columnas_tiempo = lista_embotellado[4]
+        numero_columnas_costo = lista_embotellado[5]
 
 
         tiempo_promedio_embotellado, tiempo_maximo_embotellado, tiempo_minimo_embotellado = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
@@ -264,8 +259,3 @@ if __name__ == "__main__":
     nomina = 100
 
     funciones_produccion().iniciar_hilos(lista_horno,lista_molino_1,lista_molino_2,lista_molino_3,lista_fermentacion,lista_graduacion,lista_reposo,lista_embotellado_1,lista_embotellado_2,lista_embotellado_3,numero_iteraciones, nomina)
-
-    '''lista_datos_x = [   [Matriz tiempo],        [Matriz costo],
-                        Numero filas tiempo,    Numero filas costo
-                        Numero columnas tiempo, Numero columnas costo
-                    ]  '''                  
