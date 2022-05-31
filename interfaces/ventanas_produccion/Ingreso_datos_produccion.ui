@@ -253,7 +253,7 @@
   <widget class="QPushButton" name="llenar">
    <property name="geometry">
     <rect>
-     <x>790</x>
+     <x>780</x>
      <y>110</y>
      <width>161</width>
      <height>31</height>
@@ -329,7 +329,7 @@
    <property name="geometry">
     <rect>
      <x>700</x>
-     <y>70</y>
+     <y>40</y>
      <width>113</width>
      <height>22</height>
     </rect>
@@ -342,13 +342,39 @@
    <property name="geometry">
     <rect>
      <x>560</x>
-     <y>70</y>
+     <y>40</y>
      <width>131</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Nomina de empleados</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="costo_horno">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>70</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>70</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Costo de usp de horo</string>
    </property>
   </widget>
  </widget>
