@@ -8,77 +8,89 @@ from interfaces.codigo.creaPDF import creaPDF
 
 class funciones_abastecimiento(Abastecimiento):
     #Creacion del hilo para los suministros de piñas
-    def pinas(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        
-        tiempo_promedio_pinas, tiempo_maximo_pinas, tiempo_minimo_pinas =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+    def pinas(self,lista_pinas,numero_iteraciones):
 
-        costo_promedio_pinas, costo_maximo_pinas, costo_minimo_pinas = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+        matriz_tiempo = lista_pinas[0][0]
+        numero_filas = lista_pinas[1][0]
+        numero_columnas = lista_pinas[2][0]
+
+        matriz_costos = lista_pinas[0][1]
+        numero_filas_costos = lista_pinas[1][1]
+        numero_columnas_costos = lista_pinas[2][1]
+        
+        tiempo_promedio_pinas, tiempo_maximo_pinas, tiempo_minimo_pinas =  self.proceso_tiempo(matriz_tiempo, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_pinas, costo_maximo_pinas, costo_minimo_pinas = self.proceso_costo(matriz_costos, numero_filas_costos,numero_columnas_costos,numero_iteraciones)
 
         return tiempo_promedio_pinas, tiempo_maximo_pinas, tiempo_minimo_pinas, costo_promedio_pinas, costo_maximo_pinas, costo_minimo_pinas
 
-    def botellas_vidrio(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        
-        tiempo_promedio_bv, tiempo_maximo_bv, tiempo_minimo_bv =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+    def botellas_vidrio(self,lista_vidrio,numero_iteraciones):
+        matriz_tiempo = lista_vidrio[0][0]
+        numero_filas = lista_vidrio[1][0]
+        numero_columnas = lista_vidrio[2][0]
 
-        costo_promedio_bv, costo_maximo_bv, costo_minimo_bv= self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+        matriz_costos = lista_vidrio[0][1]
+        numero_filas_costos = lista_vidrio[1][1]
+        numero_columnas_costos = lista_vidrio[2][1]
+                
+        tiempo_promedio_bv, tiempo_maximo_bv, tiempo_minimo_bv =  self.proceso_tiempo(matriz_tiempo, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_bv, costo_maximo_bv, costo_minimo_bv= self.proceso_costo(matriz_costos, numero_filas_costos,numero_columnas_costos,numero_iteraciones)
         
         return tiempo_promedio_bv, tiempo_maximo_bv, tiempo_minimo_bv, costo_promedio_bv, costo_maximo_bv, costo_minimo_bv
 
-    def tapones_corchos(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        
-        tiempo_promedio_corchos, tiempo_maximo_corchos, tiempo_minimo_corchos =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+    def tapones_corchos(self,lista_tapones,numero_iteraciones):
+        matriz_tiempo = lista_tapones[0][0]
+        numero_filas = lista_tapones[1][0]
+        numero_columnas = lista_tapones[2][0]
 
-        costo_promedio_corchos, costo_maximo_corchos, costo_minimo_corchos = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+        matriz_costos = lista_tapones[0][1]
+        numero_filas_costos = lista_tapones[1][1]
+        numero_columnas_costos = lista_tapones[2][1]
+        
+        tiempo_promedio_corchos, tiempo_maximo_corchos, tiempo_minimo_corchos =  self.proceso_tiempo(matriz_tiempo, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_corchos, costo_maximo_corchos, costo_minimo_corchos = self.proceso_costo(matriz_costos, numero_filas_costos,numero_columnas_costos,numero_iteraciones)
 
         return tiempo_promedio_corchos, tiempo_maximo_corchos, tiempo_minimo_corchos, costo_promedio_corchos, costo_maximo_corchos, costo_minimo_corchos
 
-    def botellas_pet(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        tiempo_promedio_bp, tiempo_maximo_bp, tiempo_minimo_bp =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+    def botellas_pet(self,lista_pet,numero_iteraciones):
+        matriz_tiempo = lista_pet[0][0]
+        numero_filas = lista_pet[1][0]
+        numero_columnas = lista_pet[2][0]
 
-        costo_promedio_bp, costo_maximo_bp, costo_minimo_bp = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+        matriz_costos = lista_pet[0][1]
+        numero_filas_costos = lista_pet[1][1]
+        numero_columnas_costos = lista_pet[2][1]
+
+        tiempo_promedio_bp, tiempo_maximo_bp, tiempo_minimo_bp =  self.proceso_tiempo(matriz_tiempo, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_bp, costo_maximo_bp, costo_minimo_bp = self.proceso_costo(matriz_costos, numero_filas_costos,numero_columnas_costos,numero_iteraciones)
 
         return tiempo_promedio_bp, tiempo_maximo_bp, tiempo_minimo_bp, costo_promedio_bp, costo_maximo_bp, costo_minimo_bp
 
-    def etiquetas_sellos(self,matriz,numero_filas,numero_columnas,numero_iteraciones):
-        tiempo_promedio_sellos, tiempo_maximo_sellos, tiempo_minimo_sellos =  self.proceso_tiempo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+    def etiquetas_sellos(self,lista_sellos,numero_iteraciones):
+        matriz_tiempo = lista_sellos[0][0]
+        numero_filas = lista_sellos[1][0]
+        numero_columnas = lista_sellos[2][0]
 
-        costo_promedio_sellos, costo_maximo_sellos, costo_minimo_sellos = self.proceso_costo(matriz, numero_filas,numero_columnas,numero_iteraciones)
+        matriz_costos = lista_sellos[0][1]
+        numero_filas_costos = lista_sellos[1][1]
+        numero_columnas_costos = lista_sellos[2][1]
+
+        tiempo_promedio_sellos, tiempo_maximo_sellos, tiempo_minimo_sellos =  self.proceso_tiempo(matriz_tiempo, numero_filas,numero_columnas,numero_iteraciones)
+
+        costo_promedio_sellos, costo_maximo_sellos, costo_minimo_sellos = self.proceso_costo(matriz_costos, numero_filas_costos,numero_columnas_costos,numero_iteraciones)
 
         return tiempo_promedio_sellos, tiempo_maximo_sellos, tiempo_minimo_sellos, costo_promedio_sellos, costo_maximo_sellos, costo_minimo_sellos
 
     def iniciar_hilos(self, lista_pinas, lista_bv, lista_corchos, lista_bp, lista_sellos, numero_iteraciones):
-        #Se hará la asignación de los parametros para los hilos
-        #Datos para la ejecucion del proceso de las piñas
-        matriz_pinas = lista_pinas[0]
-        numero_filas_pinas = lista_pinas[1]
-        numero_columnas_pinas = lista_pinas[2]
-        
-        #Datos para la ejecucion de las botellas de vidrio
-        matriz_bv = lista_bv[0]
-        numero_filas_bv = lista_bv[1]
-        numero_columnas_bv = lista_bv[2]
-
-        #Datos para la ejecucion de los tapones corchos
-        matriz_corchos = lista_corchos[0]
-        numero_filas_corchos = lista_corchos[1]
-        numero_columnas_corchos = lista_corchos[2]
-        
-        #Datos para la ejecucion de las botellas de pet
-        matriz_bp = lista_bp[0]
-        numero_filas_bp = lista_bp[1]
-        numero_columnas_bp = lista_bp[2]
-
-        #Datos para la ejecucion de las etiquetas de sellos
-        matriz_sellos = lista_sellos[0]
-        numero_filas_sellos = lista_sellos[1]
-        numero_columnas_sellos = lista_sellos[2]
-        
-        #Inicialización de los hilos
-        pina_prom, pina_max, pina_min, pina_costo_prom, pina_costo_max, pina_costo_min = self.pinas(matriz_pinas, numero_filas_pinas, numero_columnas_pinas, numero_iteraciones)
-        bv_min, bv_max, bv_prom, bv_costo_min, bv_costo_max, bv_costo_prom = self.botellas_vidrio(matriz_bv, numero_filas_bv, numero_columnas_bv, numero_iteraciones)
-        corcho_min, corcho_max, corcho_prom, corcho_costo_min, corcho_costo_max, corcho_costo_prom = self.tapones_corchos(matriz_corchos, numero_filas_corchos, numero_columnas_corchos, numero_iteraciones)
-        bp_min, bp_max, bp_prom, bp_costo_min, bp_costo_max, bp_costo_prom = self.botellas_pet(matriz_bp, numero_filas_bp, numero_columnas_bp, numero_iteraciones)
-        sello_min, sello_max, sello_prom, sello_costo_min, sello_costo_max, sello_costo_prom = self.etiquetas_sellos(matriz_sellos, numero_filas_sellos, numero_columnas_sellos, numero_iteraciones)
+                #Inicialización de los hilos
+        pina_prom, pina_max, pina_min, pina_costo_prom, pina_costo_max, pina_costo_min = self.pinas(lista_pinas, numero_iteraciones)
+        bv_min, bv_max, bv_prom, bv_costo_min, bv_costo_max, bv_costo_prom = self.botellas_vidrio(lista_bv, numero_iteraciones)
+        corcho_min, corcho_max, corcho_prom, corcho_costo_min, corcho_costo_max, corcho_costo_prom = self.tapones_corchos(lista_corchos, numero_iteraciones)
+        bp_min, bp_max, bp_prom, bp_costo_min, bp_costo_max, bp_costo_prom = self.botellas_pet(lista_bp, numero_iteraciones)
+        sello_min, sello_max, sello_prom, sello_costo_min, sello_costo_max, sello_costo_prom = self.etiquetas_sellos(lista_sellos, numero_iteraciones)
         
     
         #Creacion del diccionario para almacenar los resultados
