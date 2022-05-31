@@ -83,10 +83,6 @@ class Ventas(Abastecimiento):
 
         return nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida
 
-            
-                
-
-
 
 if(__name__ == "__main__"):
     matriz = [ [0]*4 for _ in range(3)]
