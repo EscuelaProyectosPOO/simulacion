@@ -239,6 +239,7 @@ class funciones_produccion(Abastecimiento):
 
         #creaPDF.crear_pdf("C:/Users/ALEXG/Documents/Ingeniería en Sistemas Computacionales/Semestre 4/Simulacion/Proyecto simulacion/simulacion/templates/template_produccion.html",diccionario,nombre_pdf)
         creaPDF.crear_pdf("C:/Users/tetil/OneDrive/Documents/simulacion/templates/template_abastecimiento.html",diccionario,nombre_pdf)
+        return nombre_pdf
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import numpy as np
 import random
-from interfaces.codigo.Abastecimiento  import Abastecimiento
-#from Abastecimiento import Abastecimiento
+#from interfaces.codigo.Abastecimiento  import Abastecimiento
+from Abastecimiento import Abastecimiento
 class Ventas(Abastecimiento):
 
     # esta clase sirve para contabilizar y saber el tiempo de llegada del cliente, su estancia, y el tipo de alcohol que se llevara
