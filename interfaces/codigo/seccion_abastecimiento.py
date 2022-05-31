@@ -82,10 +82,10 @@ class funciones_abastecimiento(Abastecimiento):
     def iniciar_hilos(self, lista_pinas, lista_bv, lista_corchos, lista_bp, lista_sellos, numero_iteraciones):
                 #Inicialización de los hilos
         pina_prom, pina_max, pina_min, pina_costo_prom, pina_costo_max, pina_costo_min = self.pinas(lista_pinas, numero_iteraciones)
-        bv_min, bv_max, bv_prom, bv_costo_min, bv_costo_max, bv_costo_prom = self.botellas_vidrio(lista_bv, numero_iteraciones)
-        corcho_min, corcho_max, corcho_prom, corcho_costo_min, corcho_costo_max, corcho_costo_prom = self.tapones_corchos(lista_corchos, numero_iteraciones)
-        bp_min, bp_max, bp_prom, bp_costo_min, bp_costo_max, bp_costo_prom = self.botellas_pet(lista_bp, numero_iteraciones)
-        sello_min, sello_max, sello_prom, sello_costo_min, sello_costo_max, sello_costo_prom = self.etiquetas_sellos(lista_sellos, numero_iteraciones)
+        bv_prom, bv_max, bv_min, bv_costo_prom, bv_costo_max, bv_costo_min  = self.botellas_vidrio(lista_bv, numero_iteraciones)
+        corcho_prom, corcho_max, corcho_min,corcho_costo_prom,corcho_costo_max, corcho_costo_min  = self.tapones_corchos(lista_corchos, numero_iteraciones)
+        bp_prom, bp_max,bp_min, bp_costo_prom, bp_costo_max, bp_costo_min  = self.botellas_pet(lista_bp, numero_iteraciones)
+        sello_prom, sello_max, sello_min, sello_costo_prom, sello_costo_max, sello_costo_min  = self.etiquetas_sellos(lista_sellos, numero_iteraciones)
         
     
         #Creacion del diccionario para almacenar los resultados
