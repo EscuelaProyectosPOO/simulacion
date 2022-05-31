@@ -51,7 +51,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="check_coccion">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -70,7 +70,7 @@
      <string>Coccion</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_2">
+   <widget class="QCheckBox" name="check_molino">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -86,7 +86,7 @@
      <string>Tiempo del molinno</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_3">
+   <widget class="QCheckBox" name="check_fermentacion">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -102,7 +102,7 @@
      <string>Tiempo de fermentacion</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_4">
+   <widget class="QCheckBox" name="check_reposo">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -118,7 +118,7 @@
      <string>Tiempo de reposo</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox_5">
+   <widget class="QCheckBox" name="check_embotellado">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -132,22 +132,6 @@
     </property>
     <property name="text">
      <string>Embotellado y almacenaje</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBox_6">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>140</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tiempo de reposo</string>
     </property>
    </widget>
   </widget>
@@ -183,6 +167,11 @@
    <item>
     <property name="text">
      <string>Embotellado y almacenaje</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Tiempo de reposo</string>
     </property>
    </item>
   </widget>
@@ -317,7 +306,7 @@
    <property name="geometry">
     <rect>
      <x>700</x>
-     <y>80</y>
+     <y>20</y>
      <width>113</width>
      <height>22</height>
     </rect>
@@ -327,13 +316,39 @@
    <property name="geometry">
     <rect>
      <x>560</x>
-     <y>80</y>
+     <y>20</y>
      <width>131</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Cantidad de semanas</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nomina">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>70</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>70</y>
+     <width>131</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Nomina de empleados</string>
    </property>
   </widget>
  </widget>
