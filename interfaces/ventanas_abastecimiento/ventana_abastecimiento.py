@@ -314,16 +314,16 @@ class Ventana_datos_abastecimiento(QDialog):
             matriz9, numeroFilas9 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de llegada etiquetas y sellos en días',3)
             matriz10, numeroFilas10 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Costo de envio de etiquetas y sellos en días',3)
                      
-            lista_pinas = [[matriz1],[matriz2],numeroFilas1, numeroFilas2,3,3]
+            lista_pinas = [matriz1,matriz2,numeroFilas1, numeroFilas2,3,3]
            
-            lista_botellas =  [[matriz3],[matriz4],numeroFilas3, numeroFilas4,3,3]
+            lista_botellas =  [matriz3,matriz4,numeroFilas3, numeroFilas4,3,3]
            
-            lista_plastico =  [[matriz5],[matriz6],numeroFilas5, numeroFilas6,3,3]
+            lista_plastico =  [matriz5,matriz6,numeroFilas5, numeroFilas6,3,3]
            
            
-            lista_tapones =  [[matriz7],[matriz8],numeroFilas7, numeroFilas8,3,3]
+            lista_tapones =  [matriz7,matriz8,numeroFilas7, numeroFilas8,3,3]
             
-            lista_sellos =  [[matriz9],[matriz10],numeroFilas9, numeroFilas10,3,3]
+            lista_sellos =  [matriz9,matriz10,numeroFilas9, numeroFilas10,3,3]
             try:
             
                 nombre_archivo = self.funcionesAbastecimiento.iniciar_hilos(lista_pinas,lista_botellas,lista_tapones,lista_plastico,lista_sellos,int(iteraciones))
@@ -339,6 +339,7 @@ class Ventana_datos_abastecimiento(QDialog):
             except Exception as e:
 
                 QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+        
         else:
 
             QMessageBox().critical(self, "Error", "Debe colocar un numero de semanas", QMessageBox.Discard)

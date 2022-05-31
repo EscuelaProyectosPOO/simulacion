@@ -28,11 +28,13 @@ class Ventas(Abastecimiento):
 
          
         ganancias_totales = self.extraer_ganancias_totales(matriz_contador,numero_filas)
-        ganancias_promedio = ganancias_totales/ numero_filas
+        ganancias_promedio = ganancias_totales/ numero_iteraciones
+        ganancia_maxima, ganancia_minima = self.extraer_ganancia_minima_maxima(matriz_contador,numero_filas)
+
         nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida = self.extraer_mas_menos_vendida(matriz_contador,numero_filas)
 
         #print(matriz_contador, ganancias_totales)
-        return ganancias_totales, ganancias_promedio, nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida 
+        return [ganancias_totales, ganancias_promedio, nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida, ganancia_minima, ganancia_maxima]
 
     def crear_matriz_botellas(self, matriz, numero_filas):
         # crea una nueva matriz que se ultilizara para el conteo de las botellas
@@ -82,6 +84,29 @@ class Ventas(Abastecimiento):
                 nombre_menos_vendida = matriz[i][0]
 
         return nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida
+
+    def extraer_ganancia_minima_maxima(self, matriz, numero_filas):
+        # extrae la ganancia maxima y la minima
+
+        ganancia_minima = matriz[0][3]
+
+        ganancia_maxima = 0
+
+
+        for i in range(numero_filas):
+
+            cantidad = matriz[i][3]
+
+            if(cantidad >= ganancia_maxima):
+
+                ganancia_maxima = cantidad
+
+
+            if(cantidad <= ganancia_minima):
+
+                ganancia_minima = cantidad
+
+        return ganancia_maxima, ganancia_minima
 
 
 if(__name__ == "__main__"):
