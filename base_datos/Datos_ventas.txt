@@ -1,0 +1,13 @@
+Tiempo de llegada en minutos,3
+30.0,40.0
+0.5,0.5
+0,0
+Tiempo de estancia en minutos,3
+2.0,3.0,5.0
+0.4,0.2,0.4
+0,0,0
+Tipo de alcohol que se lleva,4
+alcohol del 96,rancho escondido,jose cuervo,tonaya
+100.0,200.0,1000.0,120.0
+0.2,0.5,0.1,0.4
+0,0,0,0

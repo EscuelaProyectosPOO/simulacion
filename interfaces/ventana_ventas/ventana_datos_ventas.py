@@ -227,14 +227,18 @@ class Ventana_datos_ventas(QDialog):
 
     def iniciar_simulacion(self):
         # inicia los hilos con lps datos de las tablas
-        matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tiempo de llegada en minutos',3)
-        matriz2, numeroFilas2 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tiempo de estancia en minutos',3)
-        matriz3, numeroFilas3 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tipo de alcohol que se lleva',4)
 
-        lista1 = [matriz1,numeroFilas1,3]
-        lista2 = [matriz2,numeroFilas2,3]
-        lista3 = [matriz3,numeroFilas3,4]
-        self.funcionesVentas.iniciar_hilos(lista1,lista2, lista3, 100)
+        iteraciones = self.iteraciones.text()
+        if(iteraciones != "" and self.has_numbers(iteraciones)):
+
+            matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tiempo de llegada en minutos',3)
+            matriz2, numeroFilas2 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tiempo de estancia en minutos',3)
+            matriz3, numeroFilas3 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", 'Tipo de alcohol que se lleva',4)
+
+            lista1 = [matriz1,numeroFilas1,3]
+            lista2 = [matriz2,numeroFilas2,3]
+            lista3 = [matriz3,numeroFilas3,4]
+            self.funcionesVentas.iniciar_hilos(lista1,lista2, lista3, int(iteraciones))
 
 
     def closeEvent(self, event):

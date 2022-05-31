@@ -5,7 +5,7 @@ from datetime import *
 
 #Importacion del las clases necesarias para la venta mediante herencia
 from interfaces.codigo.Ventas import Ventas
-from interfaces.codigo.creaPDF import crear_pdf
+from interfaces.codigo import creaPDF
 class funciones_ventas(Ventas): 
     def llegada_clientes(self, matriz, numero_filas,numero_columnas,numero_iteraciones):
         #Funcion que contabiliza el tiempo de llegada de los clientes
@@ -104,9 +104,9 @@ class funciones_ventas(Ventas):
         hora = datetime.now().hour
         minuto = datetime.now().minute
         segundo = datetime.now().second
-        nombre_pdf = "Reporte_produccion-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
-    
-        creaPDF.crear_pdf("C:/Users/ALEXG/Documents/Ingeniería en Sistemas Computacionales/Semestre 4/Simulacion/Proyecto simulacion/simulacion/templates/template_ventas.html",diccionario,nombre_pdf)
+        nombre_pdf = "Reporte_ventas-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
+        creaPDF.crear_pdf("C:/Users/tetil/OneDrive/Documents/simulacion/templates/template_ventas.html",diccionario,nombre_pdf)
+        #creaPDF.crear_pdf("/template_producción.html",diccionario,nombre_pdf)
 
 if __name__ == "__main__":
     matriz = [[2,0.3],[5,0.5],[8,0.2]]
