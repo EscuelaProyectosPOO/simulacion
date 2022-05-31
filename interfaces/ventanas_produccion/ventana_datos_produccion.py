@@ -42,10 +42,14 @@ class Ventana_datos_produccion(QDialog):
         self.btncargar.clicked.connect(self.open_file)
         self.llenar.clicked.connect(self.llamar_tablas)
 
+        
+
     def opciones(self):
         # en base a la opcion escogida se desata una accion
         
         self.limpiar_tabla(self.tabla)
+        self.llenar.hide()
+        self.Guardar.show()
 
         if(self.tablas_opcion.currentIndex() == 0):
 
@@ -64,6 +68,8 @@ class Ventana_datos_produccion(QDialog):
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+            self.llenar.show()
+            self.Guardar.hide()
 
         elif(self.tablas_opcion.currentIndex() == 2):
 
@@ -92,6 +98,19 @@ class Ventana_datos_produccion(QDialog):
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+            self.llenar.show()
+            self.Guardar.hide()
+        
+
+        elif(self.tablas_opcion.currentIndex() == 5):
+
+            self.tabla.setColumnCount(2)
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de reposo en años', 'Probabilidad'])
+            header1 = self.tabla.horizontalHeader()
+            header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+            header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+
+            self.colocar_datos_tablas()
 
 
 
@@ -263,8 +282,9 @@ class Ventana_datos_produccion(QDialog):
         # inicia los hilos con lps datos de las tablas
 
         iteraciones = self.iteraciones.text()
+        nomina = self.nimina.text()
 
-        if(iteraciones != "" and self.has_numbers(iteraciones)):
+        if(iteraciones != "" and self.has_numbers(iteraciones) and nomina != "" and self.has_numbers(nomina)):
 
             matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de cocción en horas',3)
 
@@ -292,9 +312,14 @@ class Ventana_datos_produccion(QDialog):
             trabajadoresEmbotellado_3 = [matriz_trabajadoresEmbotellado_3,numeroFilas_trabajadoresEmbotellado3,3]
             trabajadoresEmbotellado_4 = [matriz_trabajadoresEmbotellado_4,numeroFilas_trabajadoresEmbotellado4,3]
             trabajadoresEmbotellado_5 = [matriz_trabajadoresEmbotellado_5,numeroFilas_trabajadoresEmbotellado5,3]
+
+            matriz_reposo, numeroFilas_reposo = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de reposo en años',3)
+            lista_reposo = [matriz_reposo,numeroFilas_reposo,3]
            
             
-            self.funcionesAbastecimiento.iniciar_hilos()
+            self.funcionesAbastecimiento.iniciar_hilos(lista_coccion,trabajadoresMolino_3,trabajadoresMolino_4, trabajadoresMolino_5,
+                                                       lista_fermentacion,lista_graduacion,lista_reposo,trabajadoresEmbotellado_3,
+                                                       trabajadoresEmbotellado_4,trabajadoresEmbotellado_5, int(iteraciones), float(nomina))
 
         
 

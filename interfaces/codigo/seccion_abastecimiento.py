@@ -4,7 +4,7 @@ from datetime import *
 
 #Importación de los archivos necesarios
 from interfaces.codigo.Abastecimiento import Abastecimiento
-from interfaces.codigo.creaPDF import creaPDF
+from interfaces.codigo import creaPDF
 
 class funciones_abastecimiento(Abastecimiento):
     #Creacion del hilo para los suministros de piñas
