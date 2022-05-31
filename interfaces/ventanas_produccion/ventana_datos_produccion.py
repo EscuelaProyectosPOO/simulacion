@@ -1,3 +1,4 @@
+from pathlib import Path
 import os
 import sys
 import  numpy as np
@@ -7,6 +8,7 @@ from PyQt5 import QtWidgets
 import ctypes #getSystemMetr
 from interfaces.codigo.Manejo_archivos import Manejo_archivos
 from interfaces.ventanas_produccion.ventana_datos_personal import Ventana_datos_personal
+from interfaces.codigo.seccion_producción import funciones_produccion
 
 class Ventana_datos_produccion(QDialog):
 
@@ -30,6 +32,7 @@ class Ventana_datos_produccion(QDialog):
         self.move(left,top)
         # instancias de clases necesarias
         self.manejo_archivos = Manejo_archivos()
+        self.funcionesProduccion = funciones_produccion()
         self.opciones()
 
         
@@ -41,6 +44,7 @@ class Ventana_datos_produccion(QDialog):
         self.btndatos.clicked.connect(self.Guardar_file)
         self.btncargar.clicked.connect(self.open_file)
         self.llenar.clicked.connect(self.llamar_tablas)
+        self.btniniciar.clicked.connect(self.iniciar_simulacion)
 
         
 
@@ -64,12 +68,12 @@ class Ventana_datos_produccion(QDialog):
         elif(self.tablas_opcion.currentIndex() == 1):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo en horas', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Costo de molino en horas', 'Probabilidad'])
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
             self.llenar.show()
-            self.Guardar.hide()
+            self.colocar_datos_tablas()
 
         elif(self.tablas_opcion.currentIndex() == 2):
 
@@ -94,12 +98,12 @@ class Ventana_datos_produccion(QDialog):
         elif(self.tablas_opcion.currentIndex() == 4):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Tiempo de embotellado y almacenaje en minutos', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Costo de embotellado y almacenaje', 'Probabilidad'])
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
             self.llenar.show()
-            self.Guardar.hide()
+            self.colocar_datos_tablas()
         
 
         elif(self.tablas_opcion.currentIndex() == 5):
@@ -282,46 +286,69 @@ class Ventana_datos_produccion(QDialog):
         # inicia los hilos con lps datos de las tablas
 
         iteraciones = self.iteraciones.text()
-        nomina = self.nimina.text()
+        nomina = self.nomina.text()
+        costo_horno = self.costo_horno.text()
 
-        if(iteraciones != "" and self.has_numbers(iteraciones) and nomina != "" and self.has_numbers(nomina)):
+        if(iteraciones != "" and self.has_numbers(iteraciones) and nomina != "" and self.has_numbers(nomina) and costo_horno != "" and self.has_numbers(costo_horno)):
 
-            matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de cocción en horas',3)
+            matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", 'Tiempo de cocción en horas',3)
 
-            matriz_trabajadoresMolino_3, numeroFilas_trabajadoresMolino3 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Tiempo de molino Tiempo de 3 trabajadores",3)
-            matriz_trabajadoresMolino_4, numeroFilas_trabajadoresMolino4 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Tiempo de molino Tiempo de 4 trabajadores",3)
-            matriz_trabajadoresMolino_5, numeroFilas_trabajadoresMolino5 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Tiempo de molino Tiempo de 5 trabajadores",3)
+            matriz_costo_molino, costo_molino_filas = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", 'Costo de molino en horas',3)
+            matriz_trabajadoresMolino_3, numeroFilas_trabajadoresMolino3 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", "Tiempo de molino Tiempo de 3 trabajadores en horas",3)
+            matriz_trabajadoresMolino_4, numeroFilas_trabajadoresMolino4 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", "Tiempo de molino Tiempo de 4 trabajadores en horas",3)
+            matriz_trabajadoresMolino_5, numeroFilas_trabajadoresMolino5 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", "Tiempo de molino Tiempo de 5 trabajadores en horas",3)
 
-            matriz3, numeroFilas3 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de fermentación en días',3)
-            matriz4, numeroFilas4 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de graduación del mezcal en minutos',3)
+            matriz3, numeroFilas3 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", 'Tiempo de fermentación en días',3)
+            matriz4, numeroFilas4 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", 'Tiempo de graduación del mezcal en minutos',3)
 
-            matriz_trabajadoresEmbotellado_3, numeroFilas_trabajadoresEmbotellado3 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Embotellado y almacenaje Tiempo de 3 trabajadores",3)
-            matriz_trabajadoresEmbotellado_4, numeroFilas_trabajadoresEmbotellado4 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Embotellado y almacenaje Tiempo de 4 trabajadores",3)
-            matriz_trabajadoresEmbotellado_5, numeroFilas_trabajadoresEmbotellado5 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", "Embotellado y almacenaje Tiempo de 5 trabajadores",3)
+            matriz_embotellado, embotellado_filas = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", 'Costo de embotellado y almacenaje',3)
+            matriz_trabajadoresEmbotellado_3, numeroFilas_trabajadoresEmbotellado3 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", "Embotellado y almacenaje Tiempo de 3 trabajadores en horas",3)
+            matriz_trabajadoresEmbotellado_4, numeroFilas_trabajadoresEmbotellado4 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", "Embotellado y almacenaje Tiempo de 4 trabajadores en horas",3)
+            matriz_trabajadoresEmbotellado_5, numeroFilas_trabajadoresEmbotellado5 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", "Embotellado y almacenaje Tiempo de 5 trabajadores en horas",3)
 
         
             lista_coccion = [matriz1,numeroFilas1,3]
 
-            trabajadoresMolino_3 = [matriz_trabajadoresMolino_3,numeroFilas_trabajadoresMolino3,3]
-            trabajadoresMolino_4 = [matriz_trabajadoresMolino_4,numeroFilas_trabajadoresMolino4,3]
-            trabajadoresMolino_5 = [matriz_trabajadoresMolino_5,numeroFilas_trabajadoresMolino5,3]
+            trabajadoresMolino_3 = [matriz_trabajadoresMolino_3, matriz_costo_molino,numeroFilas_trabajadoresMolino3, costo_molino_filas,3,3]
+            trabajadoresMolino_4 = [matriz_trabajadoresMolino_4, matriz_costo_molino,numeroFilas_trabajadoresMolino4, costo_molino_filas,3,3]
+            trabajadoresMolino_5 = [matriz_trabajadoresMolino_5, matriz_costo_molino,numeroFilas_trabajadoresMolino5, costo_molino_filas,3,3]
 
             lista_fermentacion = [matriz3,numeroFilas3,3]
             lista_graduacion = [matriz4,numeroFilas4,3]
 
-            trabajadoresEmbotellado_3 = [matriz_trabajadoresEmbotellado_3,numeroFilas_trabajadoresEmbotellado3,3]
-            trabajadoresEmbotellado_4 = [matriz_trabajadoresEmbotellado_4,numeroFilas_trabajadoresEmbotellado4,3]
-            trabajadoresEmbotellado_5 = [matriz_trabajadoresEmbotellado_5,numeroFilas_trabajadoresEmbotellado5,3]
+            trabajadoresEmbotellado_3 = [matriz_trabajadoresEmbotellado_3, matriz_embotellado,numeroFilas_trabajadoresEmbotellado3, embotellado_filas,3,3]
+            trabajadoresEmbotellado_4 = [matriz_trabajadoresEmbotellado_4, matriz_embotellado,numeroFilas_trabajadoresEmbotellado4, embotellado_filas,3,3]
+            trabajadoresEmbotellado_5 = [matriz_trabajadoresEmbotellado_5, matriz_embotellado,numeroFilas_trabajadoresEmbotellado5, embotellado_filas,3,3]
 
-            matriz_reposo, numeroFilas_reposo = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de reposo en años',3)
+            matriz_reposo, numeroFilas_reposo = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", 'Tiempo de reposo en años',3)
             lista_reposo = [matriz_reposo,numeroFilas_reposo,3]
            
             
-            self.funcionesAbastecimiento.iniciar_hilos(lista_coccion,trabajadoresMolino_3,trabajadoresMolino_4, trabajadoresMolino_5,
-                                                       lista_fermentacion,lista_graduacion,lista_reposo,trabajadoresEmbotellado_3,
-                                                       trabajadoresEmbotellado_4,trabajadoresEmbotellado_5, int(iteraciones), float(nomina))
+            
 
-        
+            try:
+            
+                nombre_archivo = self.funcionesProduccion.iniciar_hilos(lista_coccion,trabajadoresMolino_3,trabajadoresMolino_4, trabajadoresMolino_5,
+                                                       lista_fermentacion,lista_graduacion,lista_reposo,trabajadoresEmbotellado_3,
+                                                       trabajadoresEmbotellado_4,trabajadoresEmbotellado_5, int(iteraciones), float(nomina), float(costo_horno))
+
+                ruta = str(os.path.join(Path.home(), "Downloads"))  + "/" + nombre_archivo
+
+                if(os.path.exists(ruta)):
+                    QMessageBox.information(self, "Felicidades", "El reporte se ha generados exitosamente", QMessageBox.Discard)
+
+                else:
+                    QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+
+            except Exception as e:
+
+                QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+
+
+
+        else:
+
+            QMessageBox().critical(self, "Error", "Debe colocar un numero de semanas y el costos de nomina", QMessageBox.Discard)
 
     def closeEvent(self, event):
 

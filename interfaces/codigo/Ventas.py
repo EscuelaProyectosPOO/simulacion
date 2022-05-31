@@ -26,9 +26,13 @@ class Ventas(Abastecimiento):
 
             contador += 1
 
+         
         ganancias_totales = self.extraer_ganancias_totales(matriz_contador,numero_filas)
+        ganancias_promedio = ganancias_totales/ numero_filas
+        nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida = self.extraer_mas_menos_vendida(matriz_contador,numero_filas)
+
         #print(matriz_contador, ganancias_totales)
-        return matriz_contador, ganancias_totales
+        return ganancias_totales, ganancias_promedio, nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida 
 
     def crear_matriz_botellas(self, matriz, numero_filas):
         # crea una nueva matriz que se ultilizara para el conteo de las botellas
@@ -55,6 +59,33 @@ class Ventas(Abastecimiento):
 
 
         return ganancias_totales
+
+    def extraer_mas_menos_vendida(self, matriz, numero_filas):
+        # extrae la bebida mas vendida y la meos vendida
+        menos_vendida = matriz[0][2]
+        nombre_menos_vendida = 0
+        mas_vendida = 0
+        nombre_mas_vendida = 0
+
+        for i in range(numero_filas):
+
+            cantidad = matriz[i][2]
+
+            if(cantidad >= mas_vendida):
+
+                mas_vendida = cantidad
+                nombre_mas_vendida = matriz[i][0]
+
+            if(cantidad <= menos_vendida):
+
+                menos_vendida = cantidad
+                nombre_menos_vendida = matriz[i][0]
+
+        return nombre_mas_vendida, mas_vendida, nombre_menos_vendida, menos_vendida
+
+            
+                
+
 
 
 if(__name__ == "__main__"):

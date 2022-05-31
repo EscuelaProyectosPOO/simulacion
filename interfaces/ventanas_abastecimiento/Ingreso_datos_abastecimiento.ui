@@ -58,6 +58,11 @@
      <string>Suministro de materiales menores</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Sumiinistros de etiquetas y sellos</string>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="btnmas">
    <property name="geometry">

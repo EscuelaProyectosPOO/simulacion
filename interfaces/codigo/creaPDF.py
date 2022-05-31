@@ -38,7 +38,7 @@ def crear_pdf(ruta_template, informacion, nombre_archivo,rutacss=''):
     path_to_download_folder = str(os.path.join(Path.home(), "Downloads"))
     ruta_salida = path_to_download_folder + "/" + nombre_archivo
     pdfkit.from_string(html,ruta_salida,css=rutacss,options=options,configuration=configuracion)
-    print("En el método crear_pdf")
+
 
 if(__name__=="__main__"):
 

@@ -1,4 +1,4 @@
-
+from pathlib import Path
 import os
 import sys
 from PyQt5.QtWidgets import QDialog, QMessageBox, QApplication,  QFileDialog
@@ -109,6 +109,21 @@ class Ventana_datos_abastecimiento(QDialog):
             self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada tapones y corchos en días', 'Probabilidad'])
             self.tabla2.setColumnCount(2)
             self.tabla2.setHorizontalHeaderLabels (['Costo de envio de tapones y corchos en días', 'Probabilidad'])
+
+            #para que las columnas se repartan el espacio de la tabla y la llenen
+            header1 = self.tabla.horizontalHeader()       
+            header2 = self.tabla2.horizontalHeader()
+            header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+            header2.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+
+            self.colocar_datos_tablas()
+
+        elif(self.tablas_opcion.currentIndex() == 4):
+
+            self.tabla.setColumnCount(2)
+            self.tabla.setHorizontalHeaderLabels (['Tiempo de llegada etiquetas y sellos en días', 'Probabilidad'])
+            self.tabla2.setColumnCount(2)
+            self.tabla2.setHorizontalHeaderLabels (['Costo de envio de etiquetas y sellos en días', 'Probabilidad'])
 
             #para que las columnas se repartan el espacio de la tabla y la llenen
             header1 = self.tabla.horizontalHeader()       
@@ -295,19 +310,38 @@ class Ventana_datos_abastecimiento(QDialog):
 
             matriz7, numeroFilas7 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de llegada tapones y corchos en días',3)
             matriz8, numeroFilas8 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Costo de envio de tapones y corchos en días',3)
+
+            matriz9, numeroFilas9 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Tiempo de llegada etiquetas y sellos en días',3)
+            matriz10, numeroFilas10 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", 'Costo de envio de etiquetas y sellos en días',3)
                      
-            lista1 = [matriz1,numeroFilas1,3]
-            lista2 = [matriz2,numeroFilas2,3]
-            lista3 = [matriz3,numeroFilas3,3]
-            lista4 = [matriz4,numeroFilas4,3]
-            lista5 = [matriz5,numeroFilas5,3]
-            lista6 = [matriz6,numeroFilas6,3]
-            lista7 = [matriz7,numeroFilas7,3]
-            lista8 = [matriz8,numeroFilas8,3]
+            lista_pinas = [[matriz1],[matriz2],numeroFilas1, numeroFilas2,3,3]
+           
+            lista_botellas =  [[matriz3],[matriz4],numeroFilas3, numeroFilas4,3,3]
+           
+            lista_plastico =  [[matriz5],[matriz6],numeroFilas5, numeroFilas6,3,3]
+           
+           
+            lista_tapones =  [[matriz7],[matriz8],numeroFilas7, numeroFilas8,3,3]
             
-            self.funcionesAbastecimiento.iniciar_hilos()
+            lista_sellos =  [[matriz9],[matriz10],numeroFilas9, numeroFilas10,3,3]
+            try:
+            
+                nombre_archivo = self.funcionesAbastecimiento.iniciar_hilos(lista_pinas,lista_botellas,lista_tapones,lista_plastico,lista_sellos,int(iteraciones))
 
+                ruta = str(os.path.join(Path.home(), "Downloads"))  + "/" + nombre_archivo
 
+                if(os.path.exists(ruta)):
+                    QMessageBox.information(self, "Felicidades", "El reporte se ha generados exitosamente", QMessageBox.Discard)
+
+                else:
+                    QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+
+            except Exception as e:
+
+                QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+        else:
+
+            QMessageBox().critical(self, "Error", "Debe colocar un numero de semanas", QMessageBox.Discard)
         
 
 if(__name__ == "__main__"):
