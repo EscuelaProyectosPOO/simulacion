@@ -149,7 +149,7 @@ class Ventana_datos_produccion(QDialog):
         
         nombre_tabla = self.tabla.horizontalHeaderItem(0).text() 
 
-        if(numero_filas != 0 ):
+        if(numero_filas > 0 ):
             m1, n1 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", nombre_tabla,self.tabla.columnCount()+1)
 
             if(n1 != False):
@@ -210,6 +210,7 @@ class Ventana_datos_produccion(QDialog):
         except ValueError: 
             QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla ", QMessageBox.Discard)
             numero_filas = 0
+
 
         if(probabilidad_total == 1):
 
