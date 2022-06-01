@@ -33,7 +33,7 @@
 
 *{
 font-family: Victor Mono;
-background-image: url(:/bacground/images/bg.jpg);
+	background-image: url(:/bacground/images/bg.jpg);
 }
 
 QPushButton{
@@ -58,8 +58,8 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnproduccion">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>310</y>
+      <x>300</x>
+      <y>290</y>
       <width>161</width>
       <height>81</height>
      </rect>
@@ -71,8 +71,8 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnventa">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>310</y>
+      <x>60</x>
+      <y>290</y>
       <width>161</width>
       <height>81</height>
      </rect>
@@ -84,8 +84,8 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnabastecimiento">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>310</y>
+      <x>550</x>
+      <y>290</y>
       <width>161</width>
       <height>81</height>
      </rect>
@@ -111,6 +111,19 @@ background: #80a7ca;
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnabastecimiento_2">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>160</y>
+      <width>211</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Generacion aleatorios</string>
     </property>
    </widget>
   </widget>
