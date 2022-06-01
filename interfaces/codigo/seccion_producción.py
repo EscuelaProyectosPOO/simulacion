@@ -9,8 +9,8 @@ class funciones_produccion(Abastecimiento):
     # Hilo que se encarga de la coccion en el honro
     def metodo_hornos(self, lista_datos_hornos, numero_iteraciones):
         matriz_tiempo = lista_datos_hornos[0]
-        numero_filas_tiempo = lista_datos_hornos[2]
-        numero_columnas_tiempo = lista_datos_hornos[3]
+        numero_filas_tiempo = lista_datos_hornos[1]
+        numero_columnas_tiempo = lista_datos_hornos[2]
         
         #Obtencion de los registros de los tiempos de operación
         tiempo_promedio_horno, tiempo_maximo_horno, tiempo_minimo_horno = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
@@ -20,8 +20,8 @@ class funciones_produccion(Abastecimiento):
     # Hilo que se encarga de controlar la molida 
     def metodo_molinos(self,lista_datos_molinos,numero_iteraciones):
         matriz_tiempo = lista_datos_molinos[0]
-        numero_filas_tiempo = lista_datos_molinos[2]
-        numero_columnas_tiempo = lista_datos_molinos[4]
+        numero_filas_tiempo = lista_datos_molinos[1]
+        numero_columnas_tiempo = lista_datos_molinos[2]
         
         tiempo_promedio_molino, tiempo_maximo_molino, tiempo_minimo_molino = self.proceso_tiempo(matriz_tiempo, numero_filas_tiempo,numero_columnas_tiempo,numero_iteraciones)
 
@@ -236,7 +236,7 @@ class funciones_produccion(Abastecimiento):
                     "pago_prom_alm_3":nomina_prom_envasado_3,
                     }
         
-        print("Despues del diccionario")
+        #print("Despues del diccionario")
 
         #Creación del pdf
         anio = datetime.now().year
@@ -247,12 +247,12 @@ class funciones_produccion(Abastecimiento):
         segundo = datetime.now().second
         nombre_pdf = "Reporte_produccion-"+str(anio)+"-"+str(mes)+"-"+str(dia)+"_"+str(hora)+"-"+str(minuto)+"-"+str(segundo)+".pdf"
 
-        print(nombre_pdf)
+        #print(nombre_pdf)
 
-        print("Antes del pdf")
+        #print("Antes del pdf")
 
         #creaPDF.crear_pdf("C:/Users/ALEXG/Documents/Ingeniería en Sistemas Computacionales/Semestre 4/Simulacion/Proyecto simulacion/simulacion/templates/template_produccion.html",diccionario,nombre_pdf)
-        creaPDF.crear_pdf("C:/Users/tetil/OneDrive/Documents/simulacion/templates/template_abastecimiento.html",diccionario,nombre_pdf)
+        creaPDF.crear_pdf("C:/Users/tetil/OneDrive/Documents/simulacion/templates/template_produccion.html",diccionario,nombre_pdf)
         return nombre_pdf
 
 
