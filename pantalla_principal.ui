@@ -113,7 +113,7 @@ background: #80a7ca;
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnabastecimiento_2">
+   <widget class="QPushButton" name="btnageneracion">
     <property name="geometry">
      <rect>
       <x>290</x>

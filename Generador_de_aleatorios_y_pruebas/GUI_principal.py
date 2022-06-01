@@ -1,10 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 
-from GUI_metodo_multiplicativo import gui_metodo_multiplicativo
-from GUI_metodo_mixto import gui_metodo_mixto
-from GUI_prueba_frecuencias import gui_prueba_frecuencias
-from GUI_komolgorov import gui_Komolgorov_smirnoff
+from Generador_de_aleatorios_y_pruebas.GUI_metodo_multiplicativo import gui_metodo_multiplicativo
+from Generador_de_aleatorios_y_pruebas.GUI_metodo_mixto import gui_metodo_mixto
+from Generador_de_aleatorios_y_pruebas.GUI_prueba_frecuencias import gui_prueba_frecuencias
+from Generador_de_aleatorios_y_pruebas.GUI_komolgorov import gui_Komolgorov_smirnoff
 
 class main_gui:
     def gui_principal(self):
@@ -20,7 +20,7 @@ class main_gui:
         mainwindow.title('Simulacion - Programa integrador')
         mainwindow.config(bg = '#88bea1')
         mainwindow.resizable(0,0)
-        mainwindow.iconbitmap("logo.ico")
+        mainwindow.iconbitmap("Generador_de_aleatorios_y_pruebas/logo.ico")
 
         
         labeltitiulo = Label(mainwindow, text = "SIMULACION", bg = "#c0c1c3", font = "Times", width = "25", height= "2")
@@ -58,5 +58,3 @@ class main_gui:
         bunidad.config(activebackground="#94A9B9", width="16", height="1")
         mainwindow.mainloop()
 
-gui = main_gui()
-gui.gui_principal()
