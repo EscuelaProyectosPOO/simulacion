@@ -201,7 +201,7 @@ class Ventana_datos_produccion(QDialog):
                     else:
                         raise  AttributeError
 
-                probabilidad_total += matriz[i][numero_columnas-2]
+                probabilidad_total += matriz[i][1]
 
         except AttributeError as e:
             QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla ", QMessageBox.Discard)
@@ -212,7 +212,7 @@ class Ventana_datos_produccion(QDialog):
             numero_filas = 0
 
 
-        if(probabilidad_total == 1):
+        if(probabilidad_total >= 0.9999):
 
             return matriz, numero_columnas, numero_filas
 
