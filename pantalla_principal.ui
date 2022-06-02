@@ -33,7 +33,6 @@
 
 *{
 font-family: Victor Mono;
-	background-image: url(:/bacground/images/bg.jpg);
 }
 
 QPushButton{
@@ -58,9 +57,9 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnproduccion">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>290</y>
-      <width>161</width>
+      <x>260</x>
+      <y>300</y>
+      <width>241</width>
       <height>81</height>
      </rect>
     </property>
@@ -71,9 +70,9 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnventa">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>290</y>
-      <width>161</width>
+      <x>10</x>
+      <y>300</y>
+      <width>241</width>
       <height>81</height>
      </rect>
     </property>
@@ -84,9 +83,9 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnabastecimiento">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>290</y>
-      <width>161</width>
+      <x>510</x>
+      <y>300</y>
+      <width>241</width>
       <height>81</height>
      </rect>
     </property>
@@ -97,7 +96,7 @@ background: #80a7ca;
    <widget class="QLabel" name="label1">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>160</x>
       <y>30</y>
       <width>431</width>
       <height>91</height>
@@ -116,9 +115,9 @@ background: #80a7ca;
    <widget class="QPushButton" name="btnageneracion">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>260</x>
       <y>160</y>
-      <width>211</width>
+      <width>241</width>
       <height>81</height>
      </rect>
     </property>
@@ -126,6 +125,35 @@ background: #80a7ca;
      <string>Generacion aleatorios</string>
     </property>
    </widget>
+   <widget class="QToolButton" name="toolButton">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>-10</y>
+      <width>781</width>
+      <height>451</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>interfaces/images/bg.jpg</normaloff>interfaces/images/bg.jpg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>785</width>
+      <height>785</height>
+     </size>
+    </property>
+   </widget>
+   <zorder>toolButton</zorder>
+   <zorder>btnproduccion</zorder>
+   <zorder>btnventa</zorder>
+   <zorder>btnabastecimiento</zorder>
+   <zorder>label1</zorder>
+   <zorder>btnageneracion</zorder>
   </widget>
  </widget>
  <resources>

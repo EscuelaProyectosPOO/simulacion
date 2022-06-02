@@ -14,76 +14,105 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1173, 555)
+        Dialog.resize(1157, 649)
         Dialog.setStyleSheet("*{\n"
 "font-family: Victor Mono;\n"
 "}\n"
 "\n"
 "QFrame#frame_inputs{\n"
 "background: #80a7ca;\n"
-"border-size: 0;\n"
 "}\n"
 "\n"
 "QFrame#frame_labels{\n"
 "background: #80a7ca;\n"
-"border-size: 0;\n"
 "\n"
 "}\n"
 "\n"
 "QFrame#frame_aux{\n"
 "background: #80a7ca;\n"
-"border-size: 0;\n"
 "border-radius: 10px;\n"
+"font-size: 13px\n"
 "}\n"
 "\n"
 "QLineEdit{\n"
 "border-radius: 5px;\n"
+"background: #e1e1e1;\n"
 "}\n"
 "\n"
+"QFrame#frame_guardado{\n"
+"border-radius: 10px;\n"
+"background: #80a7ca;\n"
+"}\n"
+"\n"
+"QFrame#frame_seleccion{\n"
+"border-radius: 10px;\n"
+"background: #80a7ca;\n"
+"}\n"
+"\n"
+"QFrame#tabla{\n"
+"background: #e1e1e1;\n"
+"border-radius: 12px;\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"border-radius: 5px;\n"
+"background: #99b3ca;\n"
+"font-size: 16px\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background: #acc8e2;\n"
+"font-weight:bold;\n"
+"border-radius: 5px;\n"
+"}\n"
+"\n"
+"QComboBox{\n"
+"background: #e1e1e1;\n"
+"border-radius: 5px;\n"
+"}\n"
+"\n"
+"QLabel{\n"
+"font-size: 13px\n"
+"}\n"
+"\n"
+"QFrame#frame_titulo_ventana{\n"
+"background: #e1e1e1;\n"
+"border-radius: 12px;\n"
+"}\n"
+"\n"
+"QLabel#label_titulo_ventana{\n"
+"    background: #99b3ca;\n"
+"    border-radius: 10px;\n"
+"    font-size: 24px;\n"
+"}\n"
 "")
         self.tabla = QtWidgets.QTableWidget(Dialog)
-        self.tabla.setGeometry(QtCore.QRect(50, 150, 711, 281))
+        self.tabla.setGeometry(QtCore.QRect(20, 240, 711, 301))
         self.tabla.setObjectName("tabla")
         self.tabla.setColumnCount(0)
         self.tabla.setRowCount(0)
-        self.tablas_opcion = QtWidgets.QComboBox(Dialog)
-        self.tablas_opcion.setGeometry(QtCore.QRect(210, 100, 321, 41))
-        self.tablas_opcion.setObjectName("tablas_opcion")
-        self.tablas_opcion.addItem("")
-        self.tablas_opcion.addItem("")
-        self.tablas_opcion.addItem("")
-        self.tablas_opcion.addItem("")
-        self.tablas_opcion.addItem("")
-        self.tablas_opcion.addItem("")
-        self.label_2 = QtWidgets.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(100, 110, 71, 16))
-        self.label_2.setObjectName("label_2")
         self.Guardar = QtWidgets.QPushButton(Dialog)
-        self.Guardar.setGeometry(QtCore.QRect(250, 490, 201, 51))
+        self.Guardar.setGeometry(QtCore.QRect(420, 580, 201, 51))
         self.Guardar.setObjectName("Guardar")
         self.btnmas = QtWidgets.QPushButton(Dialog)
-        self.btnmas.setGeometry(QtCore.QRect(50, 450, 71, 31))
+        self.btnmas.setGeometry(QtCore.QRect(20, 550, 71, 31))
         font = QtGui.QFont()
         font.setFamily("Victor Mono")
+        font.setPointSize(-1)
         self.btnmas.setFont(font)
         self.btnmas.setObjectName("btnmas")
         self.btnmenos = QtWidgets.QPushButton(Dialog)
-        self.btnmenos.setGeometry(QtCore.QRect(130, 450, 71, 31))
+        self.btnmenos.setGeometry(QtCore.QRect(100, 550, 71, 31))
         font = QtGui.QFont()
         font.setFamily("Victor Mono")
+        font.setPointSize(-1)
         self.btnmenos.setFont(font)
         self.btnmenos.setObjectName("btnmenos")
-        self.btncargar = QtWidgets.QPushButton(Dialog)
-        self.btncargar.setGeometry(QtCore.QRect(240, 10, 231, 28))
-        self.btncargar.setObjectName("btncargar")
-        self.btndatos = QtWidgets.QPushButton(Dialog)
-        self.btndatos.setGeometry(QtCore.QRect(10, 10, 231, 28))
-        self.btndatos.setObjectName("btndatos")
         self.btniniciar = QtWidgets.QPushButton(Dialog)
-        self.btniniciar.setGeometry(QtCore.QRect(480, 490, 201, 51))
+        self.btniniciar.setGeometry(QtCore.QRect(660, 580, 201, 51))
         self.btniniciar.setObjectName("btniniciar")
         self.frame_aux = QtWidgets.QFrame(Dialog)
-        self.frame_aux.setGeometry(QtCore.QRect(780, 150, 381, 301))
+        self.frame_aux.setGeometry(QtCore.QRect(750, 240, 381, 301))
         self.frame_aux.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_aux.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_aux.setObjectName("frame_aux")
@@ -117,27 +146,87 @@ class Ui_Dialog(object):
         self.verticalLayout_2.addWidget(self.label_5)
         self.iteraciones = QtWidgets.QLineEdit(self.frame_aux)
         self.iteraciones.setGeometry(QtCore.QRect(210, 145, 160, 20))
+        self.iteraciones.setAlignment(QtCore.Qt.AlignCenter)
         self.iteraciones.setObjectName("iteraciones")
         self.costo_horno = QtWidgets.QLineEdit(self.frame_aux)
         self.costo_horno.setGeometry(QtCore.QRect(210, 40, 160, 20))
         self.costo_horno.setText("")
+        self.costo_horno.setAlignment(QtCore.Qt.AlignCenter)
         self.costo_horno.setObjectName("costo_horno")
         self.nomina = QtWidgets.QLineEdit(self.frame_aux)
         self.nomina.setGeometry(QtCore.QRect(210, 180, 160, 20))
         self.nomina.setText("")
+        self.nomina.setAlignment(QtCore.Qt.AlignCenter)
         self.nomina.setObjectName("nomina")
         self.costo_molino = QtWidgets.QLineEdit(self.frame_aux)
         self.costo_molino.setGeometry(QtCore.QRect(210, 75, 160, 20))
         self.costo_molino.setText("")
+        self.costo_molino.setAlignment(QtCore.Qt.AlignCenter)
         self.costo_molino.setObjectName("costo_molino")
         self.costoembotellado = QtWidgets.QLineEdit(self.frame_aux)
         self.costoembotellado.setGeometry(QtCore.QRect(210, 110, 160, 20))
         self.costoembotellado.setText("")
+        self.costoembotellado.setAlignment(QtCore.Qt.AlignCenter)
         self.costoembotellado.setObjectName("costoembotellado")
         self.label_3 = QtWidgets.QLabel(self.frame_aux)
         self.label_3.setGeometry(QtCore.QRect(30, 220, 301, 24))
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
+        self.toolButton = QtWidgets.QToolButton(Dialog)
+        self.toolButton.setGeometry(QtCore.QRect(-10, -10, 1171, 661))
+        self.toolButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("c:\\Users\\ALEXG\\Documents\\Ingeniería en Sistemas Computacionales\\Semestre 4\\Simulacion\\Proyecto simulacion\\simulacion\\interfaces\\ventanas_produccion\\../images/bg (Grande).jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton.setIcon(icon)
+        self.toolButton.setIconSize(QtCore.QSize(1205, 665))
+        self.toolButton.setObjectName("toolButton")
+        self.frame_guardado = QtWidgets.QFrame(Dialog)
+        self.frame_guardado.setGeometry(QtCore.QRect(770, 130, 331, 91))
+        self.frame_guardado.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_guardado.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_guardado.setObjectName("frame_guardado")
+        self.btncargar = QtWidgets.QPushButton(self.frame_guardado)
+        self.btncargar.setGeometry(QtCore.QRect(20, 50, 291, 31))
+        self.btncargar.setObjectName("btncargar")
+        self.btndatos = QtWidgets.QPushButton(self.frame_guardado)
+        self.btndatos.setGeometry(QtCore.QRect(20, 10, 291, 31))
+        self.btndatos.setObjectName("btndatos")
+        self.frame_seleccion = QtWidgets.QFrame(Dialog)
+        self.frame_seleccion.setGeometry(QtCore.QRect(100, 140, 501, 80))
+        self.frame_seleccion.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_seleccion.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_seleccion.setObjectName("frame_seleccion")
+        self.tablas_opcion = QtWidgets.QComboBox(self.frame_seleccion)
+        self.tablas_opcion.setGeometry(QtCore.QRect(160, 20, 321, 41))
+        self.tablas_opcion.setObjectName("tablas_opcion")
+        self.tablas_opcion.addItem("")
+        self.tablas_opcion.addItem("")
+        self.tablas_opcion.addItem("")
+        self.tablas_opcion.addItem("")
+        self.tablas_opcion.addItem("")
+        self.tablas_opcion.addItem("")
+        self.label_area = QtWidgets.QLabel(self.frame_seleccion)
+        self.label_area.setGeometry(QtCore.QRect(10, 20, 141, 41))
+        self.label_area.setObjectName("label_area")
+        self.frame_titulo_ventana = QtWidgets.QFrame(Dialog)
+        self.frame_titulo_ventana.setGeometry(QtCore.QRect(190, 20, 771, 81))
+        self.frame_titulo_ventana.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_titulo_ventana.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_titulo_ventana.setObjectName("frame_titulo_ventana")
+        self.label_titulo_ventana = QtWidgets.QLabel(self.frame_titulo_ventana)
+        self.label_titulo_ventana.setGeometry(QtCore.QRect(10, 10, 751, 61))
+        self.label_titulo_ventana.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_titulo_ventana.setObjectName("label_titulo_ventana")
+        self.toolButton.raise_()
+        self.tabla.raise_()
+        self.Guardar.raise_()
+        self.btnmas.raise_()
+        self.btnmenos.raise_()
+        self.btniniciar.raise_()
+        self.frame_aux.raise_()
+        self.frame_guardado.raise_()
+        self.frame_seleccion.raise_()
+        self.frame_titulo_ventana.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -145,18 +234,9 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.tablas_opcion.setItemText(0, _translate("Dialog", "Cocción"))
-        self.tablas_opcion.setItemText(1, _translate("Dialog", "Tiempo de molino"))
-        self.tablas_opcion.setItemText(2, _translate("Dialog", "Tiempo de fermentación"))
-        self.tablas_opcion.setItemText(3, _translate("Dialog", "Tiempo de gradución"))
-        self.tablas_opcion.setItemText(4, _translate("Dialog", "Embotellado y almacenaje"))
-        self.tablas_opcion.setItemText(5, _translate("Dialog", "Tiempo de reposo"))
-        self.label_2.setText(_translate("Dialog", "Tabla"))
         self.Guardar.setText(_translate("Dialog", "Aceptar"))
         self.btnmas.setText(_translate("Dialog", "+"))
         self.btnmenos.setText(_translate("Dialog", "-"))
-        self.btncargar.setText(_translate("Dialog", "Cargar datos simulacion "))
-        self.btndatos.setText(_translate("Dialog", "Guardar datos simulacion actual"))
         self.btniniciar.setText(_translate("Dialog", "Iniciar simulación"))
         self.label.setText(_translate("Dialog", "Lista de requerimientos"))
         self.llenar.setText(_translate("Dialog", "Llenar"))
@@ -166,3 +246,13 @@ class Ui_Dialog(object):
         self.label_4.setText(_translate("Dialog", "Cantidad de semanas"))
         self.label_5.setText(_translate("Dialog", "Nomina de empleados"))
         self.label_3.setText(_translate("Dialog", "Llenar las 3 tablas de personal "))
+        self.btncargar.setText(_translate("Dialog", "Cargar datos simulacion "))
+        self.btndatos.setText(_translate("Dialog", "Guardar datos simulacion actual"))
+        self.tablas_opcion.setItemText(0, _translate("Dialog", "Cocción"))
+        self.tablas_opcion.setItemText(1, _translate("Dialog", "Tiempo de molino"))
+        self.tablas_opcion.setItemText(2, _translate("Dialog", "Tiempo de fermentación"))
+        self.tablas_opcion.setItemText(3, _translate("Dialog", "Tiempo de gradución"))
+        self.tablas_opcion.setItemText(4, _translate("Dialog", "Embotellado y almacenaje"))
+        self.tablas_opcion.setItemText(5, _translate("Dialog", "Tiempo de reposo"))
+        self.label_area.setText(_translate("Dialog", "Área o departamento"))
+        self.label_titulo_ventana.setText(_translate("Dialog", "SIMULACIÓN SECCION PRODUCCIÓN"))

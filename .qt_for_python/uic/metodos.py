@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'c:\Users\ALEXG\Documents\Ingeniería en Sistemas Computacionales\Semestre 4\Simulacion\Proyecto simulacion\simulacion\Generador-de-aleatorios-y-pruebas\metodos.ui'
+# Form implementation generated from reading ui file 'c:\Users\ALEXG\Documents\Ingeniería en Sistemas Computacionales\Semestre 4\Simulacion\Proyecto simulacion\simulacion\Generador_de_aleatorios_y_pruebas\metodos.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #

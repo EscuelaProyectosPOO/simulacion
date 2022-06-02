@@ -22,7 +22,6 @@ class Ui_mainWindow(object):
 "\n"
 "*{\n"
 "font-family: Victor Mono;\n"
-"    background-image: url(:/bacground/images/bg.jpg);\n"
 "}\n"
 "\n"
 "QPushButton{\n"
@@ -45,22 +44,36 @@ class Ui_mainWindow(object):
         self.centralwidget = QtWidgets.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.btnproduccion = QtWidgets.QPushButton(self.centralwidget)
-        self.btnproduccion.setGeometry(QtCore.QRect(300, 290, 161, 81))
+        self.btnproduccion.setGeometry(QtCore.QRect(260, 300, 241, 81))
         self.btnproduccion.setObjectName("btnproduccion")
         self.btnventa = QtWidgets.QPushButton(self.centralwidget)
-        self.btnventa.setGeometry(QtCore.QRect(60, 290, 161, 81))
+        self.btnventa.setGeometry(QtCore.QRect(10, 300, 241, 81))
         self.btnventa.setObjectName("btnventa")
         self.btnabastecimiento = QtWidgets.QPushButton(self.centralwidget)
-        self.btnabastecimiento.setGeometry(QtCore.QRect(550, 290, 161, 81))
+        self.btnabastecimiento.setGeometry(QtCore.QRect(510, 300, 241, 81))
         self.btnabastecimiento.setObjectName("btnabastecimiento")
         self.label1 = QtWidgets.QLabel(self.centralwidget)
-        self.label1.setGeometry(QtCore.QRect(180, 30, 431, 91))
+        self.label1.setGeometry(QtCore.QRect(160, 30, 431, 91))
         self.label1.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label1.setAlignment(QtCore.Qt.AlignCenter)
         self.label1.setObjectName("label1")
-        self.btnabastecimiento_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.btnabastecimiento_2.setGeometry(QtCore.QRect(290, 160, 211, 81))
-        self.btnabastecimiento_2.setObjectName("btnabastecimiento_2")
+        self.btnageneracion = QtWidgets.QPushButton(self.centralwidget)
+        self.btnageneracion.setGeometry(QtCore.QRect(260, 160, 241, 81))
+        self.btnageneracion.setObjectName("btnageneracion")
+        self.toolButton = QtWidgets.QToolButton(self.centralwidget)
+        self.toolButton.setGeometry(QtCore.QRect(-10, -10, 781, 451))
+        self.toolButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("c:\\Users\\ALEXG\\Documents\\Ingeniería en Sistemas Computacionales\\Semestre 4\\Simulacion\\Proyecto simulacion\\simulacion\\interfaces/images/bg.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton.setIcon(icon)
+        self.toolButton.setIconSize(QtCore.QSize(785, 785))
+        self.toolButton.setObjectName("toolButton")
+        self.toolButton.raise_()
+        self.btnproduccion.raise_()
+        self.btnventa.raise_()
+        self.btnabastecimiento.raise_()
+        self.label1.raise_()
+        self.btnageneracion.raise_()
         mainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(mainWindow)
@@ -73,5 +86,5 @@ class Ui_mainWindow(object):
         self.btnventa.setText(_translate("mainWindow", "Venta"))
         self.btnabastecimiento.setText(_translate("mainWindow", "Abastecimiento"))
         self.label1.setText(_translate("mainWindow", "SIMULACION PROYECTO FINAL MEZCALERA"))
-        self.btnabastecimiento_2.setText(_translate("mainWindow", "Generacion aleatorios"))
+        self.btnageneracion.setText(_translate("mainWindow", "Generacion aleatorios"))
 import Source_rc

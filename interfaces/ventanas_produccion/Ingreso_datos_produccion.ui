@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1173</width>
-    <height>555</height>
+    <width>1157</width>
+    <height>649</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,95 +20,87 @@ font-family: Victor Mono;
 
 QFrame#frame_inputs{
 background: #80a7ca;
-border-size: 0;
 }
 
 QFrame#frame_labels{
 background: #80a7ca;
-border-size: 0;
 
 }
 
 QFrame#frame_aux{
 background: #80a7ca;
-border-size: 0;
 border-radius: 10px;
+font-size: 13px
 }
 
 QLineEdit{
 border-radius: 5px;
+background: #e1e1e1;
 }
 
+QFrame#frame_guardado{
+border-radius: 10px;
+background: #80a7ca;
+}
+
+QFrame#frame_seleccion{
+border-radius: 10px;
+background: #80a7ca;
+}
+
+QFrame#tabla{
+background: #e1e1e1;
+border-radius: 12px;
+}
+
+QPushButton{
+border-radius: 5px;
+background: #99b3ca;
+font-size: 16px
+}
+
+QPushButton:hover{
+background: #acc8e2;
+font-weight:bold;
+border-radius: 5px;
+}
+
+QComboBox{
+background: #e1e1e1;
+border-radius: 5px;
+}
+
+QLabel{
+font-size: 13px
+}
+
+QFrame#frame_titulo_ventana{
+background: #e1e1e1;
+border-radius: 12px;
+}
+
+QLabel#label_titulo_ventana{
+	background: #99b3ca;
+	border-radius: 10px;
+	font-size: 24px;
+}
 </string>
   </property>
   <widget class="QTableWidget" name="tabla">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>150</y>
+     <x>20</x>
+     <y>240</y>
      <width>711</width>
-     <height>281</height>
+     <height>301</height>
     </rect>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="tablas_opcion">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>100</y>
-     <width>321</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>Cocción</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Tiempo de molino</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Tiempo de fermentación</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Tiempo de gradución</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Embotellado y almacenaje</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Tiempo de reposo</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>110</y>
-     <width>71</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Tabla</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Guardar">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>490</y>
+     <x>420</x>
+     <y>580</y>
      <width>201</width>
      <height>51</height>
     </rect>
@@ -120,8 +112,8 @@ border-radius: 5px;
   <widget class="QPushButton" name="btnmas">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>450</y>
+     <x>20</x>
+     <y>550</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -129,6 +121,7 @@ border-radius: 5px;
    <property name="font">
     <font>
      <family>Victor Mono</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -138,8 +131,8 @@ border-radius: 5px;
   <widget class="QPushButton" name="btnmenos">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>450</y>
+     <x>100</x>
+     <y>550</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -147,43 +140,18 @@ border-radius: 5px;
    <property name="font">
     <font>
      <family>Victor Mono</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
     <string>-</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="btncargar">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>10</y>
-     <width>231</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Cargar datos simulacion </string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btndatos">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>231</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Guardar datos simulacion actual</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btniniciar">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>490</y>
+     <x>660</x>
+     <y>580</y>
      <width>201</width>
      <height>51</height>
     </rect>
@@ -195,8 +163,8 @@ border-radius: 5px;
   <widget class="QFrame" name="frame_aux">
    <property name="geometry">
     <rect>
-     <x>780</x>
-     <y>150</y>
+     <x>750</x>
+     <y>240</y>
      <width>381</width>
      <height>301</height>
     </rect>
@@ -295,6 +263,9 @@ border-radius: 5px;
       <height>20</height>
      </rect>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="costo_horno">
     <property name="geometry">
@@ -307,6 +278,9 @@ border-radius: 5px;
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="nomina">
@@ -321,6 +295,9 @@ border-radius: 5px;
     <property name="text">
      <string/>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="costo_molino">
     <property name="geometry">
@@ -334,6 +311,9 @@ border-radius: 5px;
     <property name="text">
      <string/>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="costoembotellado">
     <property name="geometry">
@@ -346,6 +326,9 @@ border-radius: 5px;
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -365,6 +348,182 @@ border-radius: 5px;
     </property>
    </widget>
   </widget>
+  <widget class="QToolButton" name="toolButton">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>-10</y>
+     <width>1171</width>
+     <height>661</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../images/bg (Grande).jpg</normaloff>../images/bg (Grande).jpg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>1205</width>
+     <height>665</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame_guardado">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>130</y>
+     <width>331</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="btncargar">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>50</y>
+      <width>291</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cargar datos simulacion </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btndatos">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>291</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Guardar datos simulacion actual</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_seleccion">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>140</y>
+     <width>501</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QComboBox" name="tablas_opcion">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>20</y>
+      <width>321</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Cocción</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tiempo de molino</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tiempo de fermentación</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tiempo de gradución</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Embotellado y almacenaje</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tiempo de reposo</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_area">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Área o departamento</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_titulo_ventana">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>20</y>
+     <width>771</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_titulo_ventana">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>751</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>SIMULACIÓN SECCION PRODUCCIÓN</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <zorder>toolButton</zorder>
+  <zorder>tabla</zorder>
+  <zorder>Guardar</zorder>
+  <zorder>btnmas</zorder>
+  <zorder>btnmenos</zorder>
+  <zorder>btniniciar</zorder>
+  <zorder>frame_aux</zorder>
+  <zorder>frame_guardado</zorder>
+  <zorder>frame_seleccion</zorder>
+  <zorder>frame_titulo_ventana</zorder>
  </widget>
  <resources/>
  <connections/>
