@@ -14,106 +14,184 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1174, 594)
+        Dialog.resize(1214, 626)
         Dialog.setAutoFillBackground(False)
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(900, 170, 151, 16))
-        self.label.setObjectName("label")
-        self.tablas_opcion = QtWidgets.QComboBox(Dialog)
-        self.tablas_opcion.setGeometry(QtCore.QRect(420, 100, 321, 41))
+        Dialog.setStyleSheet("*{\n"
+"font-family: Victor Mono\n"
+"}\n"
+"\n"
+"QFrame#frame_aux{\n"
+"background: #80a7ca;\n"
+"border-radius: 10px;\n"
+"font-size: 13px\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"border-radius: 5px;\n"
+"background: #99b3ca;\n"
+"font-size: 16px\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"background: #acc8e2;\n"
+"font-weight:bold;\n"
+"border-radius: 5px;\n"
+"}\n"
+"\n"
+"QComboBox{\n"
+"background: #e1e1e1;\n"
+"border-radius: 5px;\n"
+"font-size: 15px;\n"
+"}\n"
+"\n"
+"QLabel{\n"
+"font-size: 15px\n"
+"}\n"
+"\n"
+"QFrame#tabla{\n"
+"background: #e1e1e1;\n"
+"\n"
+"}\n"
+"\n"
+"QFrame#tabla2{\n"
+"background: #e1e1e1;\n"
+"border-radius: 12px;\n"
+"}\n"
+"\n"
+"QFrame#frame_seleccion{\n"
+"background: #99b3ca;\n"
+"border-radius: 12px;\n"
+"}\n"
+"\n"
+"QLabel#titulo{\n"
+"    background: #99b3ca;\n"
+"    border-radius: 10px;\n"
+"    font-size: 16px;\n"
+"}\n"
+"\n"
+"QFrame#frame{\n"
+"background: #e1e1e1;\n"
+"border-radius: 12px;\n"
+"}\n"
+"\n"
+"QLabel#label_titulo{\n"
+"    background: #99b3ca;\n"
+"    border-radius: 10px;\n"
+"    font-size: 24px;\n"
+"}\n"
+"\n"
+"")
+        self.btnmas = QtWidgets.QPushButton(Dialog)
+        self.btnmas.setGeometry(QtCore.QRect(10, 500, 71, 31))
+        font = QtGui.QFont()
+        font.setFamily("Victor Mono")
+        font.setPointSize(-1)
+        self.btnmas.setFont(font)
+        self.btnmas.setObjectName("btnmas")
+        self.Guardar = QtWidgets.QPushButton(Dialog)
+        self.Guardar.setGeometry(QtCore.QRect(210, 560, 201, 51))
+        self.Guardar.setObjectName("Guardar")
+        self.btnmenos = QtWidgets.QPushButton(Dialog)
+        self.btnmenos.setGeometry(QtCore.QRect(90, 500, 71, 31))
+        font = QtGui.QFont()
+        font.setFamily("Victor Mono")
+        font.setPointSize(-1)
+        self.btnmenos.setFont(font)
+        self.btnmenos.setObjectName("btnmenos")
+        self.btnmas2 = QtWidgets.QPushButton(Dialog)
+        self.btnmas2.setGeometry(QtCore.QRect(470, 500, 71, 31))
+        font = QtGui.QFont()
+        font.setFamily("Victor Mono")
+        font.setPointSize(-1)
+        self.btnmas2.setFont(font)
+        self.btnmas2.setObjectName("btnmas2")
+        self.btnmenos2 = QtWidgets.QPushButton(Dialog)
+        self.btnmenos2.setGeometry(QtCore.QRect(550, 500, 71, 31))
+        font = QtGui.QFont()
+        font.setFamily("Victor Mono")
+        font.setPointSize(-1)
+        self.btnmenos2.setFont(font)
+        self.btnmenos2.setObjectName("btnmenos2")
+        self.btniniciar = QtWidgets.QPushButton(Dialog)
+        self.btniniciar.setGeometry(QtCore.QRect(530, 560, 201, 51))
+        self.btniniciar.setObjectName("btniniciar")
+        self.tabla2 = QtWidgets.QTableWidget(Dialog)
+        self.tabla2.setGeometry(QtCore.QRect(460, 190, 411, 301))
+        self.tabla2.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
+        self.tabla2.setObjectName("tabla2")
+        self.tabla2.setColumnCount(0)
+        self.tabla2.setRowCount(0)
+        self.tabla = QtWidgets.QTableWidget(Dialog)
+        self.tabla.setGeometry(QtCore.QRect(10, 190, 441, 301))
+        self.tabla.setAutoFillBackground(True)
+        self.tabla.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
+        self.tabla.setObjectName("tabla")
+        self.tabla.setColumnCount(0)
+        self.tabla.setRowCount(0)
+        self.toolButton = QtWidgets.QToolButton(Dialog)
+        self.toolButton.setGeometry(QtCore.QRect(-10, -40, 1361, 791))
+        self.toolButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("c:\\Users\\ALEXG\\Documents\\Ingeniería en Sistemas Computacionales\\Semestre 4\\Simulacion\\Proyecto simulacion\\simulacion\\interfaces\\ventanas_abastecimiento\\../images/bg (Grande).jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.toolButton.setIcon(icon)
+        self.toolButton.setIconSize(QtCore.QSize(1500, 1500))
+        self.toolButton.setObjectName("toolButton")
+        self.frame_aux = QtWidgets.QFrame(Dialog)
+        self.frame_aux.setGeometry(QtCore.QRect(890, 190, 311, 301))
+        self.frame_aux.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_aux.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_aux.setObjectName("frame_aux")
+        self.label_3 = QtWidgets.QLabel(self.frame_aux)
+        self.label_3.setGeometry(QtCore.QRect(20, 20, 271, 31))
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setObjectName("label_3")
+        self.iteraciones = QtWidgets.QLineEdit(self.frame_aux)
+        self.iteraciones.setGeometry(QtCore.QRect(20, 70, 271, 31))
+        self.iteraciones.setAlignment(QtCore.Qt.AlignCenter)
+        self.iteraciones.setObjectName("iteraciones")
+        self.btncargar = QtWidgets.QPushButton(self.frame_aux)
+        self.btncargar.setGeometry(QtCore.QRect(10, 200, 281, 31))
+        self.btncargar.setObjectName("btncargar")
+        self.btndatos = QtWidgets.QPushButton(self.frame_aux)
+        self.btndatos.setGeometry(QtCore.QRect(10, 250, 291, 31))
+        self.btndatos.setObjectName("btndatos")
+        self.frame_seleccion = QtWidgets.QFrame(Dialog)
+        self.frame_seleccion.setGeometry(QtCore.QRect(130, 109, 651, 71))
+        self.frame_seleccion.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_seleccion.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_seleccion.setObjectName("frame_seleccion")
+        self.tablas_opcion = QtWidgets.QComboBox(self.frame_seleccion)
+        self.tablas_opcion.setGeometry(QtCore.QRect(270, 20, 371, 31))
         self.tablas_opcion.setObjectName("tablas_opcion")
         self.tablas_opcion.addItem("")
         self.tablas_opcion.addItem("")
         self.tablas_opcion.addItem("")
         self.tablas_opcion.addItem("")
         self.tablas_opcion.addItem("")
-        self.btnmas = QtWidgets.QPushButton(Dialog)
-        self.btnmas.setGeometry(QtCore.QRect(20, 440, 71, 31))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.btnmas.setFont(font)
-        self.btnmas.setObjectName("btnmas")
-        self.label_2 = QtWidgets.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(250, 110, 151, 16))
-        self.label_2.setObjectName("label_2")
-        self.Guardar = QtWidgets.QPushButton(Dialog)
-        self.Guardar.setGeometry(QtCore.QRect(240, 520, 201, 51))
-        self.Guardar.setObjectName("Guardar")
-        self.requisitos_frame = QtWidgets.QFrame(Dialog)
-        self.requisitos_frame.setGeometry(QtCore.QRect(900, 200, 243, 125))
-        self.requisitos_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.requisitos_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.requisitos_frame.setObjectName("requisitos_frame")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.requisitos_frame)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.checkBox_25 = QtWidgets.QCheckBox(self.requisitos_frame)
-        self.checkBox_25.setEnabled(False)
-        self.checkBox_25.setObjectName("checkBox_25")
-        self.verticalLayout.addWidget(self.checkBox_25)
-        self.checkBox_27 = QtWidgets.QCheckBox(self.requisitos_frame)
-        self.checkBox_27.setEnabled(False)
-        self.checkBox_27.setObjectName("checkBox_27")
-        self.verticalLayout.addWidget(self.checkBox_27)
-        self.checkBox_26 = QtWidgets.QCheckBox(self.requisitos_frame)
-        self.checkBox_26.setEnabled(False)
-        self.checkBox_26.setObjectName("checkBox_26")
-        self.verticalLayout.addWidget(self.checkBox_26)
-        self.checkBox_28 = QtWidgets.QCheckBox(self.requisitos_frame)
-        self.checkBox_28.setEnabled(False)
-        self.checkBox_28.setObjectName("checkBox_28")
-        self.verticalLayout.addWidget(self.checkBox_28)
-        self.btnmenos = QtWidgets.QPushButton(Dialog)
-        self.btnmenos.setGeometry(QtCore.QRect(100, 440, 71, 31))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.btnmenos.setFont(font)
-        self.btnmenos.setObjectName("btnmenos")
-        self.btnmas2 = QtWidgets.QPushButton(Dialog)
-        self.btnmas2.setGeometry(QtCore.QRect(480, 440, 71, 31))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.btnmas2.setFont(font)
-        self.btnmas2.setObjectName("btnmas2")
-        self.btnmenos2 = QtWidgets.QPushButton(Dialog)
-        self.btnmenos2.setGeometry(QtCore.QRect(560, 440, 71, 31))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.btnmenos2.setFont(font)
-        self.btnmenos2.setObjectName("btnmenos2")
-        self.layoutWidget = QtWidgets.QWidget(Dialog)
-        self.layoutWidget.setGeometry(QtCore.QRect(900, 330, 231, 101))
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.btncargar = QtWidgets.QPushButton(self.layoutWidget)
-        self.btncargar.setObjectName("btncargar")
-        self.verticalLayout_2.addWidget(self.btncargar)
-        self.btndatos = QtWidgets.QPushButton(self.layoutWidget)
-        self.btndatos.setObjectName("btndatos")
-        self.verticalLayout_2.addWidget(self.btndatos)
-        self.btniniciar = QtWidgets.QPushButton(Dialog)
-        self.btniniciar.setGeometry(QtCore.QRect(530, 520, 201, 51))
-        self.btniniciar.setObjectName("btniniciar")
-        self.iteraciones = QtWidgets.QLineEdit(Dialog)
-        self.iteraciones.setGeometry(QtCore.QRect(1040, 120, 113, 22))
-        self.iteraciones.setObjectName("iteraciones")
-        self.label_3 = QtWidgets.QLabel(Dialog)
-        self.label_3.setGeometry(QtCore.QRect(900, 120, 131, 16))
-        self.label_3.setObjectName("label_3")
-        self.tabla2 = QtWidgets.QTableWidget(Dialog)
-        self.tabla2.setGeometry(QtCore.QRect(480, 160, 411, 269))
-        self.tabla2.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
-        self.tabla2.setObjectName("tabla2")
-        self.tabla2.setColumnCount(0)
-        self.tabla2.setRowCount(0)
-        self.tabla = QtWidgets.QTableWidget(Dialog)
-        self.tabla.setGeometry(QtCore.QRect(20, 160, 441, 269))
-        self.tabla.setAutoFillBackground(True)
-        self.tabla.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
-        self.tabla.setObjectName("tabla")
-        self.tabla.setColumnCount(0)
-        self.tabla.setRowCount(0)
+        self.titulo = QtWidgets.QLabel(self.frame_seleccion)
+        self.titulo.setGeometry(QtCore.QRect(20, 20, 231, 31))
+        self.titulo.setObjectName("titulo")
+        self.frame = QtWidgets.QFrame(Dialog)
+        self.frame.setGeometry(QtCore.QRect(200, 10, 851, 80))
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.label_titulo = QtWidgets.QLabel(self.frame)
+        self.label_titulo.setGeometry(QtCore.QRect(10, 10, 831, 61))
+        self.label_titulo.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_titulo.setObjectName("label_titulo")
+        self.toolButton.raise_()
+        self.btnmas.raise_()
+        self.Guardar.raise_()
+        self.btnmenos.raise_()
+        self.btnmas2.raise_()
+        self.btnmenos2.raise_()
+        self.btniniciar.raise_()
+        self.tabla2.raise_()
+        self.tabla.raise_()
+        self.frame_aux.raise_()
+        self.frame_seleccion.raise_()
+        self.frame.raise_()
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -121,23 +199,19 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Lista de requerimientos"))
+        self.btnmas.setText(_translate("Dialog", "+"))
+        self.Guardar.setText(_translate("Dialog", "Guardar"))
+        self.btnmenos.setText(_translate("Dialog", "-"))
+        self.btnmas2.setText(_translate("Dialog", "+"))
+        self.btnmenos2.setText(_translate("Dialog", "-"))
+        self.btniniciar.setText(_translate("Dialog", "Iniciar simulación"))
+        self.label_3.setText(_translate("Dialog", "Cantidad de semanas"))
+        self.btncargar.setText(_translate("Dialog", "Cargar datos simulacion "))
+        self.btndatos.setText(_translate("Dialog", "Guardar datos simulacion actual"))
         self.tablas_opcion.setItemText(0, _translate("Dialog", "Suministro de piñas"))
         self.tablas_opcion.setItemText(1, _translate("Dialog", "Suminstros de consumo de vidrio"))
         self.tablas_opcion.setItemText(2, _translate("Dialog", "Suministro de consumo de plastico"))
         self.tablas_opcion.setItemText(3, _translate("Dialog", "Suministro de adquisicion de tapones y corchos"))
         self.tablas_opcion.setItemText(4, _translate("Dialog", "Sumiinistros de etiquetas y sellos"))
-        self.btnmas.setText(_translate("Dialog", "+"))
-        self.label_2.setText(_translate("Dialog", "Tabla"))
-        self.Guardar.setText(_translate("Dialog", "Guardar"))
-        self.checkBox_25.setText(_translate("Dialog", "Piñas"))
-        self.checkBox_27.setText(_translate("Dialog", "Consumo de botellas de PET"))
-        self.checkBox_26.setText(_translate("Dialog", "Consumo de botellas de vidrio"))
-        self.checkBox_28.setText(_translate("Dialog", "Consumo de adquisicion menores"))
-        self.btnmenos.setText(_translate("Dialog", "-"))
-        self.btnmas2.setText(_translate("Dialog", "+"))
-        self.btnmenos2.setText(_translate("Dialog", "-"))
-        self.btncargar.setText(_translate("Dialog", "Cargar datos simulacion "))
-        self.btndatos.setText(_translate("Dialog", "Guardar datos simulacion actual"))
-        self.btniniciar.setText(_translate("Dialog", "Iniciar simulación"))
-        self.label_3.setText(_translate("Dialog", "Cantidad de semanas"))
+        self.titulo.setText(_translate("Dialog", "Transporte o suministro:"))
+        self.label_titulo.setText(_translate("Dialog", "SIMULACION SECCIÓN ABASTECIMIENTO"))

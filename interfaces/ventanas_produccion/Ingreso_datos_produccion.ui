@@ -7,8 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>1157</width>
-    <height>649</height>
+    <height>650</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1157</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1157</width>
+    <height>650</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -165,7 +177,7 @@ QLabel#label_titulo_ventana{
     <rect>
      <x>750</x>
      <y>240</y>
-     <width>381</width>
+     <width>391</width>
      <height>301</height>
     </rect>
    </property>
@@ -356,6 +368,18 @@ QLabel#label_titulo_ventana{
      <width>1171</width>
      <height>661</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1222131</width>
+     <height>1231213</height>
+    </size>
    </property>
    <property name="text">
     <string/>

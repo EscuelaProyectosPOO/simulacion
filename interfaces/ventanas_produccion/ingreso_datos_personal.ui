@@ -6,17 +6,50 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>830</width>
-    <height>550</height>
+    <width>756</width>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+font-family: Victor Mono;
+}
+
+QPushButton{
+border-radius: 5px;
+background: #99b3ca;
+font-size: 16px
+}
+
+QPushButton:hover{
+background: #acc8e2;
+font-weight:bold;
+border-radius: 5px;
+}
+
+QFrame#tabla{
+background: #e1e1e1;
+border-radius: 12px;
+}
+
+QFrame#frame_titulo_ventana{
+background: #e1e1e1;
+border-radius: 12px;
+}
+
+QLabel#titulo{
+	background: #99b3ca;
+	border-radius: 5px;
+	font-size: 24px;
+}</string>
+  </property>
   <widget class="QTableWidget" name="tabla">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>20</x>
      <y>130</y>
      <width>711</width>
      <height>271</height>
@@ -26,7 +59,7 @@
   <widget class="QPushButton" name="btnmas">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>20</x>
      <y>410</y>
      <width>71</width>
      <height>31</height>
@@ -34,7 +67,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <family>Victor Mono</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -44,7 +78,7 @@
   <widget class="QPushButton" name="btnmenos">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>100</x>
      <y>410</y>
      <width>71</width>
      <height>31</height>
@@ -52,7 +86,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <family>Victor Mono</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -62,8 +97,8 @@
   <widget class="QPushButton" name="Guardar">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>450</y>
+     <x>260</x>
+     <y>430</y>
      <width>201</width>
      <height>51</height>
     </rect>
@@ -72,19 +107,67 @@
     <string>Guardar</string>
    </property>
   </widget>
-  <widget class="QLabel" name="titulo">
+  <widget class="QToolButton" name="toolButton">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>50</y>
-     <width>151</width>
-     <height>16</height>
+     <x>-10</x>
+     <y>-10</y>
+     <width>1001</width>
+     <height>561</height>
     </rect>
    </property>
    <property name="text">
-    <string>Personal</string>
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../images/bg (Grande).jpg</normaloff>../images/bg (Grande).jpg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>1920</width>
+     <height>1080</height>
+    </size>
    </property>
   </widget>
+  <widget class="QFrame" name="frame_titulo_ventana">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>40</y>
+     <width>621</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="titulo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>671</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ingreso de datos del personal</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <zorder>toolButton</zorder>
+  <zorder>tabla</zorder>
+  <zorder>btnmas</zorder>
+  <zorder>btnmenos</zorder>
+  <zorder>Guardar</zorder>
+  <zorder>frame_titulo_ventana</zorder>
  </widget>
  <resources/>
  <connections/>

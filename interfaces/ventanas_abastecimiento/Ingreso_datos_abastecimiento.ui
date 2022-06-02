@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1174</width>
-    <height>594</height>
+    <width>1214</width>
+    <height>626</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,90 +16,97 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>900</x>
-     <y>170</y>
-     <width>151</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Lista de requerimientos</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="tablas_opcion">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>100</y>
-     <width>321</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>Suministro de piñas</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Suminstros de consumo de vidrio</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Suministro de consumo de plastico</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Suministro de adquisicion de tapones y corchos</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Sumiinistros de etiquetas y sellos</string>
-    </property>
-   </item>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">*{
+font-family: Victor Mono
+}
+
+QFrame#frame_aux{
+background: #80a7ca;
+border-radius: 10px;
+font-size: 13px
+}
+
+QPushButton{
+border-radius: 5px;
+background: #99b3ca;
+font-size: 16px
+}
+
+QPushButton:hover{
+background: #acc8e2;
+font-weight:bold;
+border-radius: 5px;
+}
+
+QComboBox{
+background: #e1e1e1;
+border-radius: 5px;
+font-size: 15px;
+}
+
+QLabel{
+font-size: 15px
+}
+
+QFrame#tabla{
+background: #e1e1e1;
+
+}
+
+QFrame#tabla2{
+background: #e1e1e1;
+border-radius: 12px;
+}
+
+QFrame#frame_seleccion{
+background: #99b3ca;
+border-radius: 12px;
+}
+
+QLabel#titulo{
+	background: #99b3ca;
+	border-radius: 10px;
+	font-size: 16px;
+}
+
+QFrame#frame{
+background: #e1e1e1;
+border-radius: 12px;
+}
+
+QLabel#label_titulo{
+	background: #99b3ca;
+	border-radius: 10px;
+	font-size: 24px;
+}
+
+</string>
+  </property>
   <widget class="QPushButton" name="btnmas">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>440</y>
+     <x>10</x>
+     <y>500</y>
      <width>71</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <family>Victor Mono</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
     <string>+</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>110</y>
-     <width>151</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Tabla</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="Guardar">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>520</y>
+     <x>210</x>
+     <y>560</y>
      <width>201</width>
      <height>51</height>
     </rect>
@@ -108,76 +115,19 @@
     <string>Guardar</string>
    </property>
   </widget>
-  <widget class="QFrame" name="requisitos_frame">
-   <property name="geometry">
-    <rect>
-     <x>900</x>
-     <y>200</y>
-     <width>243</width>
-     <height>125</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QCheckBox" name="checkBox_25">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Piñas</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="checkBox_27">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Consumo de botellas de PET</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="checkBox_26">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Consumo de botellas de vidrio</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="checkBox_28">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Consumo de adquisicion menores</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QPushButton" name="btnmenos">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>440</y>
+     <x>90</x>
+     <y>500</y>
      <width>71</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <family>Victor Mono</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -187,15 +137,16 @@
   <widget class="QPushButton" name="btnmas2">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>440</y>
+     <x>470</x>
+     <y>500</y>
      <width>71</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <family>Victor Mono</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -205,52 +156,27 @@
   <widget class="QPushButton" name="btnmenos2">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>440</y>
+     <x>550</x>
+     <y>500</y>
      <width>71</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <family>Victor Mono</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
     <string>-</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>900</x>
-     <y>330</y>
-     <width>231</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QPushButton" name="btncargar">
-      <property name="text">
-       <string>Cargar datos simulacion </string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btndatos">
-      <property name="text">
-       <string>Guardar datos simulacion actual</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QPushButton" name="btniniciar">
    <property name="geometry">
     <rect>
      <x>530</x>
-     <y>520</y>
+     <y>560</y>
      <width>201</width>
      <height>51</height>
     </rect>
@@ -259,36 +185,13 @@
     <string>Iniciar simulación</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="iteraciones">
-   <property name="geometry">
-    <rect>
-     <x>1040</x>
-     <y>120</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>900</x>
-     <y>120</y>
-     <width>131</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Cantidad de semanas</string>
-   </property>
-  </widget>
   <widget class="QTableWidget" name="tabla2">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>160</y>
+     <x>460</x>
+     <y>190</y>
      <width>411</width>
-     <height>269</height>
+     <height>301</height>
     </rect>
    </property>
    <property name="sizeAdjustPolicy">
@@ -298,10 +201,10 @@
   <widget class="QTableWidget" name="tabla">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>160</y>
+     <x>10</x>
+     <y>190</y>
      <width>441</width>
-     <height>269</height>
+     <height>301</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -311,6 +214,209 @@
     <enum>QAbstractScrollArea::AdjustToContents</enum>
    </property>
   </widget>
+  <widget class="QToolButton" name="toolButton">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>-40</y>
+     <width>1361</width>
+     <height>791</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../images/bg (Grande).jpg</normaloff>../images/bg (Grande).jpg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>1500</width>
+     <height>1500</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame_aux">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>190</y>
+     <width>311</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cantidad de semanas</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="iteraciones">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btncargar">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>281</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cargar datos simulacion </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btndatos">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>291</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Guardar datos simulacion actual</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_seleccion">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>109</y>
+     <width>651</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QComboBox" name="tablas_opcion">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>20</y>
+      <width>371</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Suministro de piñas</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Suminstros de consumo de vidrio</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Suministro de consumo de plastico</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Suministro de adquisicion de tapones y corchos</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sumiinistros de etiquetas y sellos</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="titulo">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Transporte o suministro:</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>10</y>
+     <width>851</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_titulo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>831</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>SIMULACION SECCIÓN ABASTECIMIENTO</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <zorder>toolButton</zorder>
+  <zorder>btnmas</zorder>
+  <zorder>Guardar</zorder>
+  <zorder>btnmenos</zorder>
+  <zorder>btnmas2</zorder>
+  <zorder>btnmenos2</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>btniniciar</zorder>
+  <zorder>tabla2</zorder>
+  <zorder>tabla</zorder>
+  <zorder>frame_aux</zorder>
+  <zorder>frame_seleccion</zorder>
+  <zorder>frame</zorder>
  </widget>
  <resources/>
  <connections/>

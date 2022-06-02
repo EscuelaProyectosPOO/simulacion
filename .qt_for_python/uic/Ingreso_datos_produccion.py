@@ -14,7 +14,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1157, 649)
+        Dialog.resize(1157, 650)
+        Dialog.setMinimumSize(QtCore.QSize(1157, 650))
+        Dialog.setMaximumSize(QtCore.QSize(1157, 650))
         Dialog.setStyleSheet("*{\n"
 "font-family: Victor Mono;\n"
 "}\n"
@@ -112,7 +114,7 @@ class Ui_Dialog(object):
         self.btniniciar.setGeometry(QtCore.QRect(660, 580, 201, 51))
         self.btniniciar.setObjectName("btniniciar")
         self.frame_aux = QtWidgets.QFrame(Dialog)
-        self.frame_aux.setGeometry(QtCore.QRect(750, 240, 381, 301))
+        self.frame_aux.setGeometry(QtCore.QRect(750, 240, 391, 301))
         self.frame_aux.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_aux.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_aux.setObjectName("frame_aux")
@@ -174,6 +176,8 @@ class Ui_Dialog(object):
         self.label_3.setObjectName("label_3")
         self.toolButton = QtWidgets.QToolButton(Dialog)
         self.toolButton.setGeometry(QtCore.QRect(-10, -10, 1171, 661))
+        self.toolButton.setMinimumSize(QtCore.QSize(0, 0))
+        self.toolButton.setMaximumSize(QtCore.QSize(1222131, 1231213))
         self.toolButton.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("c:\\Users\\ALEXG\\Documents\\Ingeniería en Sistemas Computacionales\\Semestre 4\\Simulacion\\Proyecto simulacion\\simulacion\\interfaces\\ventanas_produccion\\../images/bg (Grande).jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
