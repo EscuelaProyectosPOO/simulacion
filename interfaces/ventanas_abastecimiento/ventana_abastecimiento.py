@@ -232,7 +232,7 @@ class Ventana_datos_abastecimiento(QDialog):
             numero_filas = 0
 
        
-        if(probabilidad_total >= 0.9999):
+        if(probabilidad_total >= 0.98):
 
             return matriz, numero_columnas, numero_filas
 

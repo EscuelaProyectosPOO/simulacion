@@ -68,7 +68,7 @@ class Ventana_datos_produccion(QDialog):
         elif(self.tablas_opcion.currentIndex() == 1):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Costo de molino en horas', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Debes llenar las tablas de ', ' personal'])
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
@@ -99,7 +99,7 @@ class Ventana_datos_produccion(QDialog):
         elif(self.tablas_opcion.currentIndex() == 4):
 
             self.tabla.setColumnCount(2)
-            self.tabla.setHorizontalHeaderLabels (['Costo de embotellado y almacenaje', 'Probabilidad'])
+            self.tabla.setHorizontalHeaderLabels (['Debes llenar las tablas de ', ' personal'])
             header1 = self.tabla.horizontalHeader()
             header1.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
             header1.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
@@ -212,7 +212,7 @@ class Ventana_datos_produccion(QDialog):
             numero_filas = 0
 
 
-        if(probabilidad_total >= 0.9999):
+        if(probabilidad_total >= 0.98):
 
             return matriz, numero_columnas, numero_filas
 
