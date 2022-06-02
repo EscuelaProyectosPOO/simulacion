@@ -2,8 +2,8 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 
-from programa_mixto import metodo_mixto
-from GUI_mostrar_resultados import gui_resultados
+from Generador_de_aleatorios_y_pruebas.programa_mixto import metodo_mixto
+from Generador_de_aleatorios_y_pruebas.GUI_mostrar_resultados import gui_resultados
 
 class gui_metodo_mixto:
 
@@ -20,7 +20,7 @@ class gui_metodo_mixto:
         gui.title('Simulacion - Metodo mixto')
         gui.config(bg = '#88bea1')
         gui.resizable(0,0)
-        gui.iconbitmap("logo.ico")
+        gui.iconbitmap("Generador_de_aleatorios_y_pruebas/logo.ico")
 
         labeltitiulo = Label(gui, text = "Metodo mixto", bg = "#c0c1c3", font = "Times", width = "25", height= "2")
         labeltitiulo.place(relx=0.175, rely=0.125)

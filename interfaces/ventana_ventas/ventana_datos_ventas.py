@@ -111,12 +111,8 @@ class Ventana_datos_ventas(QDialog):
         matriz1, numero_columnas, numero_filas  = self.tomar_valores_tabla(self.tabla)
         
         nombre_tabla = self.tabla.horizontalHeaderItem(0).text() 
-
-
-        if(numero_filas == 0 ):
-
-            QMessageBox.warning(self, "Advertencia", "Debe colocar datos en la tabla", QMessageBox.Discard)
-        else:
+        
+        if(numero_filas > 0 ):
             m1, n1 = self.manejo_archivos.leer("base_datos/Datos_ventas.txt", nombre_tabla,self.tabla.columnCount()+1)
 
             if(n1 != False):
@@ -148,11 +144,12 @@ class Ventana_datos_ventas(QDialog):
         numero_filas = tabla.rowCount()
         numero_columnas = tabla.columnCount()+1
         nombre_tabla = tabla.horizontalHeaderItem(0).text() 
-
+        probabilidad_total = 0
         matriz = [ [0]*numero_columnas for _ in range(numero_filas)]
         try:
             for i in range(numero_filas):
-
+                
+                
                 for j in range(numero_columnas-1):
 
                     celda = tabla.item(i, j)
@@ -166,12 +163,20 @@ class Ventana_datos_ventas(QDialog):
                         matriz[i][j] = float(valor)
                     else:
                         raise  AttributeError
+                probabilidad_total += matriz[i][numero_columnas-2]
 
         except AttributeError as e:
             QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla ", QMessageBox.Discard)
             numero_filas = 0
 
-        return matriz, numero_columnas, numero_filas
+        if(probabilidad_total == 1):
+
+            return matriz, numero_columnas, numero_filas
+
+        else:
+            QMessageBox().critical(self, "Error", "La suma de todas las probabilidades debe sumar 1", QMessageBox.Discard)
+            return matriz, numero_columnas, 0
+            
 
     def open_file(self):
         # abre el archivo con datos de una simulacion anterior para cargarlos al nuevo

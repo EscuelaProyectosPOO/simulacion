@@ -15,7 +15,8 @@ class Abastecimiento():
 
         while(contador < numero_iteraciones):
 
-            numero_aleatorio  = random.random()
+            #numero_aleatorio  = random.random()
+            numero_aleatorio = self.obtener_aleatorio()
 
             valor, numero_fila = self.sacar_valor(matriz,numero_filas,numero_columnas,numero_aleatorio)
 
@@ -57,7 +58,8 @@ class Abastecimiento():
         #print(matriz)
         while(contador < numero_iteraciones):
 
-            numero_aleatorio  = random.random()
+            #numero_aleatorio  = random.random()
+            numero_aleatorio = self.obtener_aleatorio()
             #print(numero_aleatorio)
             # el valor es el dato que le corresponde al numero aleatorio, esto lo sabemos gracias a los rangos
             # el numero de fila, es la fila en la que se encuentra el el dato
@@ -134,6 +136,16 @@ class Abastecimiento():
                 suelo = tope 
                     
         return numero, numero_fila
+
+   
+    def obtener_aleatorio(self):
+
+        with open("base_datos/Numeros_aleatorios.txt") as file:
+            lineas = file.readlines()    
+        
+        numero_aleatorio = float(random.choice(lineas))
+        
+        return numero_aleatorio
 
 if(__name__ == "__main__"):
 

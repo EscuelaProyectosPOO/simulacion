@@ -6,7 +6,7 @@ from interfaces.ventanas_produccion.ventana_datos_produccion import Ventana_dato
 from interfaces.ventanas_abastecimiento import ventana_abastecimiento
 from interfaces.ventana_ventas.ventana_datos_ventas import Ventana_datos_ventas
 from interfaces.codigo.Manejo_archivos import Manejo_archivos
-
+from Generador_de_aleatorios_y_pruebas.GUI_principal import main_gui
 
 class Ventana_principal(QMainWindow):
 
@@ -29,7 +29,7 @@ class Ventana_principal(QMainWindow):
         self.btnproduccion.clicked.connect(self.produccion)
         self.btnabastecimiento.clicked.connect(self.abastecimiento)
         self.btnventa.clicked.connect(self.ventas)
-        self.btnageneracion.clicked.connct(self.generacion_aleatorios)
+        self.btnageneracion.clicked.connect(self.generacion_aleatorios)
         
         self.conexion_Archivos = Manejo_archivos()
         self.conexion_Archivos.eliminar_archivo("base_datos/Datos_abastecimiento.txt")
@@ -61,9 +61,8 @@ class Ventana_principal(QMainWindow):
         self.ex.show()
 
     def generacion_aleatorios(self):
-        self.hide()
-        self.ex = Ventana_datos_ventas(self)
-        self.ex.show()
+        gui = main_gui()
+        gui.gui_principal()
 
 
 if(__name__ == "__main__"):

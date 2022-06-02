@@ -149,11 +149,7 @@ class Ventana_datos_produccion(QDialog):
         
         nombre_tabla = self.tabla.horizontalHeaderItem(0).text() 
 
-
-        if(numero_filas == 0 ):
-
-            QMessageBox.warning(self, "Advertencia", "Debe colocar datos en la tabla", QMessageBox.Discard)
-        else:
+        if(numero_filas > 0 ):
             m1, n1 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", nombre_tabla,self.tabla.columnCount()+1)
 
             if(n1 != False):
@@ -162,6 +158,7 @@ class Ventana_datos_produccion(QDialog):
             self.manejo_archivos.escribrir("base_datos/Datos_produccion.txt",nombre_tabla,matriz1,numero_filas,numero_columnas)
 
             QMessageBox.information(self, "Guardar", "Los datos se han guardado exitosamente", QMessageBox.Discard)
+        
         
     def limpiar_tabla(self, tabla):
         # elimina todos los datos que se enucntren el la tabla
@@ -185,10 +182,13 @@ class Ventana_datos_produccion(QDialog):
         numero_filas = tabla.rowCount()
         numero_columnas = tabla.columnCount()+1
         nombre_tabla = tabla.horizontalHeaderItem(0).text() 
+        probabilidad_total = 0
 
         matriz = [ [0]*numero_columnas for _ in range(numero_filas)]
         try:
             for i in range(numero_filas):
+
+                
 
                 for j in range(numero_columnas-1):
 
@@ -201,6 +201,8 @@ class Ventana_datos_produccion(QDialog):
                     else:
                         raise  AttributeError
 
+                probabilidad_total += matriz[i][numero_columnas-2]
+
         except AttributeError as e:
             QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla ", QMessageBox.Discard)
             numero_filas = 0
@@ -209,7 +211,15 @@ class Ventana_datos_produccion(QDialog):
             QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla ", QMessageBox.Discard)
             numero_filas = 0
 
-        return matriz, numero_columnas, numero_filas
+
+        if(probabilidad_total == 1):
+
+            return matriz, numero_columnas, numero_filas
+
+        else:
+            QMessageBox().critical(self, "Error", "La suma de todas las probabilidades debe sumar 1", QMessageBox.Discard)
+            return matriz, numero_columnas, 0
+            
 
 
     def open_file(self):
@@ -292,7 +302,8 @@ class Ventana_datos_produccion(QDialog):
         costo_embotellado = self.costoembotellado.text()
         costo_molino = self.costo_molino.text()
 
-        if(iteraciones != "" and self.has_numbers(iteraciones) and nomina != "" and self.has_numbers(nomina) and costo_horno != "" and self.has_numbers(costo_horno) and costo_embotellado != "" and self.has_numbers(costo_embotellado)):
+        if(iteraciones != "" and self.has_numbers(iteraciones) and nomina != "" and self.has_numbers(nomina) and costo_horno != "" and self.has_numbers(costo_horno) and costo_embotellado != "" and self.has_numbers(costo_embotellado)
+            and costo_molino != "" and self.has_numbers(costo_molino)):
 
             matriz1, numeroFilas1 = self.manejo_archivos.leer("base_datos/Datos_produccion.txt", 'Tiempo de cocción en horas',3)
 
@@ -351,6 +362,8 @@ class Ventana_datos_produccion(QDialog):
         else:
 
             QMessageBox().critical(self, "Error", "Debe colocar un numero de semanas y el costos de nomina", QMessageBox.Discard)
+
+
 
     def closeEvent(self, event):
 

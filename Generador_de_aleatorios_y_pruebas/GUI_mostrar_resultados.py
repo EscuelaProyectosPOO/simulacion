@@ -15,7 +15,7 @@ class gui_resultados:
         gui.title('Simulacion - ventana de resultados')
         gui.config(bg = '#88bea1')
         gui.resizable(0,0)
-        gui.iconbitmap("logo.ico")
+        gui.iconbitmap("Generador_de_aleatorios_y_pruebas/logo.ico")
 
         labeltitiulo = Label(gui, text = "Resultados", bg = "#c0c1c3", font = "Times", width = "25", height= "2")
         labeltitiulo.place(relx=0.175, rely=0.125)
@@ -46,19 +46,8 @@ class gui_resultados:
         
 
         def guardar_aleatorios():
-            archivo_creado = False
-            while not archivo_creado:
-                try:
-                    nombre = simpledialog.askstring("Aviso","Ingrese un nombre para asignar al archivo:")
-                    nombre_archivo = nombre + ".txt"
-                    archivo = open(nombre_archivo,"x")
-                    archivo_creado = True
-                    break
-
-                except FileExistsError:
-                    messagebox.showerror("Error", "El archivo que intenta crear ya existe.")
-
-            archivo_abierto = open(nombre_archivo,"a")
+           
+            archivo_abierto = open("base_datos/Numeros_aleatorios.txt","a")
 
             for i in range(len(aleatorios)):
     

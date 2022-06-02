@@ -17,7 +17,8 @@ class Ventas(Abastecimiento):
 
         while(contador < numero_iteraciones):
 
-            numero_aleatorio = random.random()
+            #numero_aleatorio = random.random()
+            numero_aleatorio = self.obtener_aleatorio()
 
             valor, numero_fila = self.sacar_valor(matriz,numero_filas,numero_columnas,numero_aleatorio)
 

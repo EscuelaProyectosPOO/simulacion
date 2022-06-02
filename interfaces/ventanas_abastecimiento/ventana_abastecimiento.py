@@ -170,10 +170,9 @@ class Ventana_datos_abastecimiento(QDialog):
         matriz1, numero_columnas, numero_filas  = self.tomar_valores_tabla(self.tabla)
         matriz2, numero_columnas2, numero_filas2  = self.tomar_valores_tabla(self.tabla2)
 
-        if(numero_filas == 0 or numero_filas2 == 0):
+        
+        if(numero_filas > 0 and numero_filas2 > 0):
 
-            QMessageBox().critical(self, "Error en guardar", "Debe colocar datos en ambas tablas", QMessageBox.Discard)
-        else:
             m1, n1 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", nombre_tabla,self.tabla.columnCount()+1)
             m2, n2 = self.manejo_archivos.leer("base_datos/Datos_abastecimiento.txt", nombre_tabla2,self.tabla2.columnCount()+1)
 
@@ -209,11 +208,12 @@ class Ventana_datos_abastecimiento(QDialog):
         numero_filas = tabla.rowCount()
         numero_columnas = tabla.columnCount()+1
         nombre_tabla = tabla.horizontalHeaderItem(0).text() 
+        probabilidad_total = 0
 
         matriz = [ [0]*numero_columnas for _ in range(numero_filas)]
         try:
             for i in range(numero_filas):
-
+                
                 for j in range(numero_columnas-1):
 
                     celda = tabla.item(i, j)
@@ -225,13 +225,21 @@ class Ventana_datos_abastecimiento(QDialog):
                     else:
                         raise  AttributeError
 
+                probabilidad_total += matriz[i][numero_columnas-2]
+
         except AttributeError as e:
             QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla "+ nombre_tabla, QMessageBox.Discard)
             numero_filas = 0
 
        
-        return matriz, numero_columnas, numero_filas
+        if(probabilidad_total == 1):
 
+            return matriz, numero_columnas, numero_filas
+
+        else:
+            QMessageBox().critical(self, "Error", "La suma de todas las probabilidades debe sumar 1 en la tabla " + nombre_tabla, QMessageBox.Discard)
+            return matriz, numero_columnas, 0
+            
     def open_file(self):
         # abre el archivo con datos de una simulacion anterior para cargarlos al nuevo
         fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()","file","Txt (*.txt)")
