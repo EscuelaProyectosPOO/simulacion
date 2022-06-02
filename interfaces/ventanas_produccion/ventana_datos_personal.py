@@ -148,7 +148,7 @@ class Ventana_datos_personal(QDialog):
             QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla ", QMessageBox.Discard)
             numero_filas = 0
 
-        if(probabilidad_total >= 0.98):
+        if(probabilidad_total >= 0.98 and probabilidad_total <= 1):
 
             return matriz, numero_columnas, numero_filas
 

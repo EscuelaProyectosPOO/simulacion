@@ -38,7 +38,7 @@ class Ventana_datos_abastecimiento(QDialog):
 
         
         #conectar botones
-        self.btnmas.clicked.connect(lambda :self.agregar_filas(self.tabla)
+        self.btnmas.clicked.connect(lambda :self.agregar_filas(self.tabla))
         self.btnmenos.clicked.connect(lambda :self.eliminar_filas(self.tabla))
         self.btnmas2.clicked.connect(lambda :self.agregar_filas(self.tabla2))
         self.btnmenos2.clicked.connect(lambda :self.eliminar_filas(self.tabla2))
@@ -232,7 +232,7 @@ class Ventana_datos_abastecimiento(QDialog):
             numero_filas = 0
 
        
-        if(probabilidad_total >= 0.98):
+        if(probabilidad_total >= 0.98 and probabilidad_total <= 1):
 
             return matriz, numero_columnas, numero_filas
 
@@ -332,22 +332,27 @@ class Ventana_datos_abastecimiento(QDialog):
             lista_tapones =  [matriz7,matriz8,numeroFilas7, numeroFilas8,3,3]
             
             lista_sellos =  [matriz9,matriz10,numeroFilas9, numeroFilas10,3,3]
-            try:
-            
-                nombre_archivo = self.funcionesAbastecimiento.iniciar_hilos(lista_pinas,lista_botellas,lista_tapones,lista_plastico,lista_sellos,int(iteraciones))
 
-                ruta = str(os.path.join(Path.home(), "Downloads"))  + "/" + nombre_archivo
+            if(numeroFilas1 >0 and numeroFilas2 > 0 and numeroFilas3 >0 and numeroFilas4 > 0 and numeroFilas5 > 0 and numeroFilas6 > 0 and numeroFilas7 > 0 and numeroFilas8 > 0 and numeroFilas9 >0 and numeroFilas10 > 0):
+                try:
+                
+                    nombre_archivo = self.funcionesAbastecimiento.iniciar_hilos(lista_pinas,lista_botellas,lista_tapones,lista_plastico,lista_sellos,int(iteraciones))
 
-                if(os.path.exists(ruta)):
-                    QMessageBox.information(self, "Felicidades", "El reporte se ha generados exitosamente", QMessageBox.Discard)
+                    ruta = str(os.path.join(Path.home(), "Downloads"))  + "/" + nombre_archivo
 
-                else:
+                    if(os.path.exists(ruta)):
+                        QMessageBox.information(self, "Felicidades", "El reporte se ha generados exitosamente", QMessageBox.Discard)
+
+                    else:
+                        QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+
+                except Exception as e:
+
                     QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
 
-            except Exception as e:
-
-                QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
-        
+            else:
+                QMessageBox().critical(self, "Error", "Debes llenar todas las tablas para iniciar la simulación", QMessageBox.Discard)
+            
         else:
 
             QMessageBox().critical(self, "Error", "Debe colocar un numero de semanas", QMessageBox.Discard)

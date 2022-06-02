@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Producción</string>
   </property>
   <property name="styleSheet">
    <string notr="true">*{
@@ -118,7 +118,7 @@ QLabel#label_titulo_ventana{
     </rect>
    </property>
    <property name="text">
-    <string>Aceptar</string>
+    <string>Guardar</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnmas">
@@ -420,7 +420,7 @@ QLabel#label_titulo_ventana{
      </rect>
     </property>
     <property name="text">
-     <string>Cargar datos simulacion </string>
+     <string>Cargar datos simulación </string>
     </property>
    </widget>
    <widget class="QPushButton" name="btndatos">
@@ -433,7 +433,7 @@ QLabel#label_titulo_ventana{
      </rect>
     </property>
     <property name="text">
-     <string>Guardar datos simulacion actual</string>
+     <string>Guardar datos simulación actual</string>
     </property>
    </widget>
   </widget>

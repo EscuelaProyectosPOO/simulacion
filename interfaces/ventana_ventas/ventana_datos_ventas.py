@@ -170,7 +170,7 @@ class Ventana_datos_ventas(QDialog):
             QMessageBox().critical(self, "Error", "Debe colocar datos numericos en la tabla ", QMessageBox.Discard)
             numero_filas = 0
 
-        if(probabilidad_total >= 0.9899):
+        if(probabilidad_total >= 0.98 and probabilidad_total <= 1):
 
             return matriz, numero_columnas, numero_filas
 
@@ -246,7 +246,7 @@ class Ventana_datos_ventas(QDialog):
             lista2 = [matriz2,numeroFilas2,3]
             lista3 = [matriz3,numeroFilas3,4]
             
-
+            
             try:
             
                 nombre_archivo = self.funcionesVentas.iniciar_hilos(lista1,lista2, lista3, int(iteraciones))

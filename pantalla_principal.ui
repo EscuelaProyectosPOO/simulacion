@@ -26,7 +26,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Simulación</string>
   </property>
   <property name="styleSheet">
    <string notr="true">@import url('https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap');
@@ -64,7 +64,7 @@ background: #80a7ca;
      </rect>
     </property>
     <property name="text">
-     <string>Produccion</string>
+     <string>Producción</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnventa">
@@ -106,7 +106,7 @@ background: #80a7ca;
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>SIMULACION PROYECTO FINAL MEZCALERA</string>
+     <string>SIMULACIÓN PROYECTO FINAL MEZCALERA</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

@@ -160,12 +160,12 @@ if(__name__ == "__main__"):
     matriz[2][0] = 8
     matriz[2][1] = 0.2
     
-    #m = Abastecimiento()
-    #matriz_acumulada = m.probabilidad_acumulada(matriz,3,3)
-    #print(matriz_acumulada)
-    #print(m.sacar_valor(matriz_acumulada,3,3,0.801))
-    #print(m.probabilidad_acumulada(matriz,3,3))
-    #m.proceso_costo(matriz,3,3,100000)
+    m = Abastecimiento()
+    matriz_acumulada = m.probabilidad_acumulada(matriz,3,3)
+    print(matriz_acumulada)
+    print(m.sacar_valor(matriz_acumulada,3,3,0.801))
+    print(m.probabilidad_acumulada(matriz,3,3))
+    m.proceso_costo(matriz,3,3,5)
     #m.proceso_tiempo(matriz,3,3,100000)
     
     

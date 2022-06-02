@@ -212,7 +212,7 @@ class Ventana_datos_produccion(QDialog):
             numero_filas = 0
 
 
-        if(probabilidad_total >= 0.98):
+        if(probabilidad_total >= 0.98 and probabilidad_total <= 1):
 
             return matriz, numero_columnas, numero_filas
 
@@ -336,28 +336,31 @@ class Ventana_datos_produccion(QDialog):
             lista_reposo = [matriz_reposo,numeroFilas_reposo,3]
            
             
+            if(numeroFilas1 >0 and numeroFilas_trabajadoresMolino3 >0 and  numeroFilas_trabajadoresMolino4 >0 and  numeroFilas_trabajadoresMolino5 >0  and  numeroFilas_trabajadoresEmbotellado3 > 0
+                and numeroFilas_trabajadoresEmbotellado4 > 0 and numeroFilas_trabajadoresEmbotellado5 > 0 and numeroFilas_reposo >0):
             
 
-            try:
-                nombre_archivo = self.funcionesProduccion.iniciar_hilos(lista_coccion,trabajadoresMolino_3,trabajadoresMolino_4, trabajadoresMolino_5, lista_fermentacion,lista_graduacion,
-                                                                    lista_reposo,trabajadoresEmbotellado_3, trabajadoresEmbotellado_4, trabajadoresEmbotellado_5,int(iteraciones), float(nomina),
-                                                                    float(costo_horno),float(costo_molino),float(costo_embotellado))
-          
+                try:
+                    nombre_archivo = self.funcionesProduccion.iniciar_hilos(lista_coccion,trabajadoresMolino_3,trabajadoresMolino_4, trabajadoresMolino_5, lista_fermentacion,lista_graduacion,
+                                                                        lista_reposo,trabajadoresEmbotellado_3, trabajadoresEmbotellado_4, trabajadoresEmbotellado_5,int(iteraciones), float(nomina),
+                                                                        float(costo_horno),float(costo_molino),float(costo_embotellado))
+            
 
-                ruta = str(os.path.join(Path.home(), "Downloads"))  + "/" + nombre_archivo
+                    ruta = str(os.path.join(Path.home(), "Downloads"))  + "/" + nombre_archivo
 
-                if(os.path.exists(ruta)):
-                    QMessageBox.information(self, "Felicidades", "El reporte se ha generados exitosamente", QMessageBox.Discard)
+                    if(os.path.exists(ruta)):
+                        QMessageBox.information(self, "Felicidades", "El reporte se ha generados exitosamente", QMessageBox.Discard)
 
-                else:
+                    else:
+                        QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
+
+                except Exception as e:
+
                     QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
 
-            except Exception as e:
+            else:
 
-                QMessageBox().critical(self, "Error", "No se pudo generar archivo", QMessageBox.Discard)
-                print(e)
-
-
+                QMessageBox().critical(self, "Error", "Debes llenar todas las tablas para iniciar la simulación", QMessageBox.Discard)
 
         else:
 
