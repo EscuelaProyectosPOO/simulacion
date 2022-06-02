@@ -38,7 +38,7 @@ class Ventana_datos_abastecimiento(QDialog):
 
         
         #conectar botones
-        self.btnmas.clicked.connect(lambda :self.agregar_filas(self.tabla))
+        self.btnmas.clicked.connect(lambda :self.agregar_filas(self.tabla)
         self.btnmenos.clicked.connect(lambda :self.eliminar_filas(self.tabla))
         self.btnmas2.clicked.connect(lambda :self.agregar_filas(self.tabla2))
         self.btnmenos2.clicked.connect(lambda :self.eliminar_filas(self.tabla2))

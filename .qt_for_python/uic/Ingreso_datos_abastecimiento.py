@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1214, 626)
+        Dialog.resize(1261, 626)
         Dialog.setAutoFillBackground(False)
         Dialog.setStyleSheet("*{\n"
 "font-family: Victor Mono\n"
@@ -116,7 +116,7 @@ class Ui_Dialog(object):
         self.btniniciar.setGeometry(QtCore.QRect(530, 560, 201, 51))
         self.btniniciar.setObjectName("btniniciar")
         self.tabla2 = QtWidgets.QTableWidget(Dialog)
-        self.tabla2.setGeometry(QtCore.QRect(460, 190, 411, 301))
+        self.tabla2.setGeometry(QtCore.QRect(460, 190, 471, 301))
         self.tabla2.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContents)
         self.tabla2.setObjectName("tabla2")
         self.tabla2.setColumnCount(0)
@@ -137,7 +137,7 @@ class Ui_Dialog(object):
         self.toolButton.setIconSize(QtCore.QSize(1500, 1500))
         self.toolButton.setObjectName("toolButton")
         self.frame_aux = QtWidgets.QFrame(Dialog)
-        self.frame_aux.setGeometry(QtCore.QRect(890, 190, 311, 301))
+        self.frame_aux.setGeometry(QtCore.QRect(940, 190, 311, 301))
         self.frame_aux.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_aux.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_aux.setObjectName("frame_aux")

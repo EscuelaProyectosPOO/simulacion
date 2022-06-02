@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1214</width>
+    <width>1261</width>
     <height>626</height>
    </rect>
   </property>
@@ -190,7 +190,7 @@ QLabel#label_titulo{
     <rect>
      <x>460</x>
      <y>190</y>
-     <width>411</width>
+     <width>471</width>
      <height>301</height>
     </rect>
    </property>
@@ -240,7 +240,7 @@ QLabel#label_titulo{
   <widget class="QFrame" name="frame_aux">
    <property name="geometry">
     <rect>
-     <x>890</x>
+     <x>940</x>
      <y>190</y>
      <width>311</width>
      <height>301</height>
@@ -410,7 +410,6 @@ QLabel#label_titulo{
   <zorder>btnmenos</zorder>
   <zorder>btnmas2</zorder>
   <zorder>btnmenos2</zorder>
-  <zorder>layoutWidget</zorder>
   <zorder>btniniciar</zorder>
   <zorder>tabla2</zorder>
   <zorder>tabla</zorder>
